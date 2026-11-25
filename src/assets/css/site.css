@@ -2,7 +2,7 @@
 
 :root {
   --bg: #F8F4EE; --ink: #24272B; --muted: #5F6166; --card: #FFFDF9; --line: rgba(42, 44, 49, .14);
-  --tint: #EEE7DC; --accent: #B86F36; --accent-ink: #9C5826; --accent-soft: #F2E3D3; --accent-on-dark: #EEE7DB;
+  --tint: #EEE7DC; --accent: #EE8524; --accent-ink: #BE5F12; --accent-soft: #FBE5CF; --accent-on-dark: #EEE7DB;
   --green: #2F5443; --green-soft: #E3EAE4; --dark: #1E3329; --on-dark: #EEE7DB; --on-dark-muted: #B7BFB6;
   --btn-bg: #1E3329; --btn-fg: #FFFFFF; --radius: 8px; --radius-sm: 6px;
   --display: "ivypresto-display", Georgia, serif; --h-weight: 300; --h-track: -0.012em;
@@ -28,7 +28,7 @@ h1 em, h2 em { white-space: nowrap; }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; }
 /* Section label: a mini clementine (orange fruit, small green leaf) before green text. */
 .eyebrow { gap: 9px; }
-.eyebrow::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: -3px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='14' r='8' fill='%23B86F36'/%3E%3Cpath d='M12.5 6.5C12.5 3 15.5 1 21 1c0 4-3.5 6.5-8.5 5.5z' fill='%233D6B55'/%3E%3C/svg%3E") center / contain no-repeat; }
+.eyebrow::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: -3px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='14' r='8' fill='%23F08A24'/%3E%3Cpath d='M12.5 6.5C12.5 3 15.5 1 21 1c0 4-3.5 6.5-8.5 5.5z' fill='%234C8A57'/%3E%3C/svg%3E") center / contain no-repeat; }
 
 .wrap { max-width: 1296px; margin: 0 auto; padding: 0 48px; }
 .band { padding: 112px 0; }
