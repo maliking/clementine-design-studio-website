@@ -2,7 +2,7 @@
 
 :root {
   --bg: #FBF5EC; --ink: #2A2C31; --muted: #62646B; --card: #FFFFFF; --line: rgba(42, 44, 49, .14);
-  --tint: #F3EBDD; --accent: #F89810; --accent-ink: #C96A00; --accent-soft: #FDE9CC; --accent-on-dark: #F4C48A;
+  --tint: #F3EBDD; --accent: #F89810; --accent-ink: #C96A00; --accent-soft: #FDE9CC; --accent-on-dark: #FBF5EC;
   --green: #4E7D2B; --green-soft: #E7EFDC; --dark: #22382A; --on-dark: #FBF5EC; --on-dark-muted: #C9D3C4;
   --btn-bg: #4E7D2B; --btn-fg: #FFFFFF; --radius: 8px; --radius-sm: 6px;
   --display: "ivypresto-display", Georgia, serif; --h-weight: 300; --h-track: -0.012em;
@@ -460,18 +460,18 @@ h1 em, h2 em { white-space: nowrap; }
 .reviews h2 { margin-bottom: 14px; }
 .rev-meta { margin-bottom: 44px; color: var(--on-dark-muted); font-weight: 600; }
 .rev-stars { color: #E9A93C; letter-spacing: .12em; margin-right: 6px; }
-.rev-meta a { color: var(--accent-on-dark); margin-left: 14px; white-space: nowrap; }
+.rev-meta a { color: var(--accent-on-dark); margin-left: 14px; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .rev-meta a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .rev-meta .ext { width: 15px; height: 15px; margin-left: 4px; vertical-align: -2px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .rev-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: start; }
-.rev-feature { border-left: 3px solid var(--accent-on-dark); padding: 4px 0 4px 32px; }
+.rev-feature { border-left: 3px solid var(--accent); padding: 4px 0 4px 32px; }
 .rev-feature p { color: var(--on-dark-muted); font-size: 17px; }
 .rev-feature .rev-big { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 34px; line-height: 1.25; color: var(--on-dark); margin-bottom: 18px; }
 .rev-list li { padding: 26px 0; border-top: 1px solid rgba(255, 255, 255, .16); }
 .rev-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
 .rev-list p { font-size: 16px; color: var(--on-dark-muted); }
 .rev-list .rev-head { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 24px; line-height: 1.2; color: var(--on-dark); margin-bottom: 8px; }
-.reviews .rev-who { margin-top: 14px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-on-dark); }
+.reviews .rev-who { margin-top: 14px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-on-dark); opacity: .75; }
 
 .hi-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
 .hi-photo { aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; max-width: 420px; }
@@ -555,7 +555,7 @@ h1 em, h2 em { white-space: nowrap; }
 .jcard small { margin-right: 0; }
 .jcard .go, .jcard.wide .go { border: 0; width: 16px; height: 16px; right: 22px; top: 31px; margin-top: 0; background-size: 13px; opacity: .55; }
 .jcard:hover .go { opacity: 1; }
-.jcard.wide .ic { background: none; color: var(--accent-on-dark); }
+.jcard.wide .ic { background: none; color: var(--accent); }
 .jcard.wide .go { top: 50%; margin-top: -8px; }
 .jcard.wide:hover { border-color: var(--dark); }
 @media (max-width: 900px) {
