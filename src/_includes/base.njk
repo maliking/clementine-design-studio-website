@@ -77,7 +77,9 @@
       e.preventDefault();
       var start = window.scrollY;
       var max = document.documentElement.scrollHeight - window.innerHeight;
-      var end = Math.min(max, Math.max(0, target.getBoundingClientRect().top + start));
+      var bar = document.querySelector('.svc-nav');
+      var off = bar && id !== 'help' ? bar.offsetHeight : 0;
+      var end = Math.min(max, Math.max(0, target.getBoundingClientRect().top + start - off));
       var done = function () {
         history.pushState(null, '', '#' + id);
         if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
@@ -95,6 +97,36 @@
       raf = requestAnimationFrame(step);
     });
 
+    // Services page section bar: show it after the help cards, hide it at the end, and mark the section you're in.
+    var nav = document.querySelector('.svc-nav');
+    if (nav) {
+      var cards = document.getElementById('help');
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+      var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+      var lastSec = secs[secs.length - 1];
+      var current = null, ticking = false;
+      var update = function () {
+        ticking = false;
+        var y = window.innerHeight * 0.35;
+        var show = cards.getBoundingClientRect().bottom < 0 && lastSec.getBoundingClientRect().bottom > y;
+        nav.classList.toggle('show', show);
+        var on = null;
+        secs.forEach(function (sec, i) { var r = sec.getBoundingClientRect(); if (r.top <= y && r.bottom > y) on = links[i]; });
+        if (on !== current) {
+          if (current) current.classList.remove('on');
+          if (on) {
+            on.classList.add('on');
+            var w = nav.querySelector('.wrap');
+            if (w.scrollWidth > w.clientWidth) w.scrollTo({ left: on.offsetLeft - (w.clientWidth - on.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+          }
+          current = on;
+        }
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+
     if (reduce || !('IntersectionObserver' in window)) return;
     var groups = /(^|\s)(jgroup|jump-grid|pf-grid|help-grid|update-grid|rev-list|steps|kind|plan-grid|hi-grid|start-grid)(\s|$)/;
     function expand(el) {
@@ -103,7 +135,7 @@
       Array.prototype.forEach.call(el.children, function (c) { out = out.concat(expand(c)); });
       return out;
     }
-    var sections = document.querySelectorAll('main > section:not(:first-child):not(.trust)');
+    var sections = document.querySelectorAll('main > section:not(:first-of-type):not(.trust)');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;

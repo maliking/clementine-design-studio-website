@@ -620,7 +620,7 @@ p, li { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) { .js-anim .reveal { opacity: 1; transform: none; transition: none; } }
 
 /* Services table: "Your part" and "Cost" carry their own labels and stay in view while you read a long row. */
-.svc-row .stick { position: sticky; top: 28px; }
+.svc-row .stick { position: sticky; top: 88px; }
 .svc-row .stick::before { display: block; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 14px; }
 .svc-row > div:nth-child(2) .stick::before { content: "Your part"; color: var(--green); }
 .svc-row .cost .stick::before { content: "Cost"; color: var(--accent-on-dark); opacity: .8; }
@@ -637,3 +637,20 @@ p, li { text-wrap: pretty; }
   .brand-note .brand-price { text-align: left; }
   .brand-note .brand-price b { font-size: 26px; }
 }
+
+
+/* Sticky section bar on the services page: slides in after the help cards, highlights the section you're in. */
+.svc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: var(--bg); box-shadow: 0 10px 28px -18px rgba(30, 25, 15, .35); transform: translateY(-100%); visibility: hidden; transition: transform .35s ease, visibility 0s linear .35s; }
+.svc-nav.show { transform: none; visibility: visible; transition: transform .35s ease; }
+.svc-nav .wrap { display: flex; justify-content: center; align-items: center; gap: 36px; height: 60px; }
+.svc-nav a { position: relative; padding: 6px 0; font-size: 15px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.svc-nav a:hover { color: var(--ink); }
+.svc-nav a.on { color: var(--ink); }
+.svc-nav a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; border-radius: 2px; background: var(--accent); }
+@media (max-width: 1100px) { .svc-nav .wrap { gap: 26px; } }
+@media (max-width: 900px) {
+  .svc-nav .wrap { justify-content: flex-start; gap: 24px; height: 52px; overflow-x: auto; scrollbar-width: none; padding-left: 22px; padding-right: 22px; -webkit-mask-image: linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 22px), transparent); mask-image: linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 22px), transparent); }
+  .svc-nav .wrap::-webkit-scrollbar { display: none; }
+  .svc-nav a { font-size: 14.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .svc-nav, .svc-nav.show { transition: none; } }

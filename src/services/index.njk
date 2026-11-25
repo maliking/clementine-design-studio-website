@@ -5,6 +5,19 @@ description: "Websites, marketing and custom tools for small businesses. You'll 
 nav: services
 permalink: /services/
 ---
+<!-- Sticky section bar: shows once you scroll past the help cards (script in base.njk). -->
+<nav class="svc-nav" aria-label="Services on this page">
+  <div class="wrap">
+    <a href="#s-website">Website design</a>
+    <a href="#s-update">Updates</a>
+    <a href="#q-market">Marketing</a>
+    <a href="#q-email">Email</a>
+    <a href="#q-sell">Courses and shops</a>
+    <a href="#q-admin">Automation</a>
+    <a href="#s-plan">Not sure?</a>
+  </div>
+</nav>
+
 <!-- 1. HERO -->
 <section class="hero">
   <div class="hero-panel">
@@ -32,7 +45,7 @@ permalink: /services/
 {% include "trust.njk" %}
 
 <!-- 2. JUMP -->
-<section class="band jump-sec">
+<section class="band jump-sec" id="help">
   <div class="wrap">
     <h2 class="center">What do you need <em>help with?</em></h2>
     <div class="jgroup">
