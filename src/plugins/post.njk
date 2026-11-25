@@ -6,10 +6,12 @@ pagination:
   data: pluginPosts
   size: 1
   alias: post
-permalink: "/plugins/{{ post.slug }}/"
+permalink: "/plugins/{{ post.slug }}.html"
+postMeta: true
 eleventyComputed:
-  title: "{{ post.seoTitle or post.title }}"
-  description: "{{ post.seoDescription or post.summary }}"
+  canonicalPath: "{{ post.url }}"
+  title: "{{ (post.seoTitle or post.title) | safe }}"
+  description: "{{ (post.seoDescription or post.summary) | safe }}"
 ---
 {%- set posts = pluginPosts %}{% set listUrl = "/plugins" %}{% set listLabel = "All plugins" %}
 {% include "post-page.njk" %}

@@ -6,7 +6,8 @@
 <title>{{ title }} | {{ site.name }}</title>
 {% if description %}<meta name="description" content="{{ description }}">{% endif %}
 {% if preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
-<link rel="canonical" href="{{ site.url }}{{ page.url | replace('/index.html', '') }}">
+<link rel="canonical" href="{{ site.url }}{{ canonicalPath or (page.url | replace('/index.html', '')) }}">
+{% if postMeta %}{% include "post-meta.njk" %}{% endif %}
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">

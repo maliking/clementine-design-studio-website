@@ -11,3 +11,44 @@
   from = "/home"
   to = "/"
   status = 301
+
+# ---- Blog and Plugins (added 11/25 by the blog/plugins thread) ----
+# Blog and plugin pages are built as /blog/<name>.html so they open at the exact Squarespace address (no slash at the end).
+# Old addresses Google still remembers for two posts, sent to the posts they became.
+[[redirects]]
+  from = "/blog/i-tried-the-best-3-ai-professional-headshot-generators-with-results-xxag9"
+  to = "/blog/the-best-3-ai-professional-linkedin-headshot-generators-with-results-xxag9"
+  status = 301
+[[redirects]]
+  from = "/blog/the-best-3-ai-professional-linkedin-headshot-generators-with-results-xx8w"
+  to = "/blog/the-best-3-ai-professional-linkedin-headshot-generators-with-results-xxag9"
+  status = 301
+[[redirects]]
+  from = "/blog/squarespace-professional-website-cost-breakdown"
+  to = "/blog/squarespace-website-cost-breakdown"
+  status = 301
+# Squarespace extras that have no page here: blog categories/tags, the RSS feed, and the template's sample blogs.
+[[redirects]]
+  from = "/blog/category/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog/tag/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog-1-1/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog-1-1"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/draft/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/draft"
+  to = "/blog"
+  status = 301

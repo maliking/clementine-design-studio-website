@@ -1,0 +1,28 @@
+{#- Search and sharing details for one blog post or plugin page, matching what Squarespace published (11/25). -#}
+{%- set absUrl = site.url + post.url %}
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ absUrl }}">
+{% if post.image %}<meta property="og:image" content="{{ site.url }}{{ post.image }}">{% endif %}
+<meta property="article:published_time" content="{{ post.published }}">
+<meta property="article:modified_time" content="{{ post.modified }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+{% if post.image %}<meta name="twitter:image" content="{{ site.url }}{{ post.image }}">{% endif %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": absUrl,
+  "url": absUrl,
+  "headline": post.title,
+  "name": title,
+  "description": description,
+  "image": (site.url + post.image) if post.image else undefined,
+  "datePublished": post.published,
+  "dateModified": post.modified,
+  "author": { "@type": "Organization", "name": site.name, "url": site.url },
+  "publisher": { "@type": "Organization", "name": site.name, "url": site.url, "logo": { "@type": "ImageObject", "url": site.url + "/assets/img/logo.png" } }
+} | dump | safe }}</script>
