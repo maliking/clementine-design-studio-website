@@ -1,0 +1,57 @@
+---
+layout: base.njk
+title: "About | Meet the Designer"
+description: "Born and raised in the SF Bay Area, with a BA in web design and over 7 years of hands-on experience."
+nav: about
+permalink: /about/
+---
+{#- Words copied from the live About page (11/25). Change them only when Mali asks. -#}
+
+<section class="hero page-hero">
+  <div class="wrap center-head">
+    <div class="eyebrow">Take a peek behind the studio’s curtain!</div>
+    <h1>Meet the <em>Designer</em></h1>
+  </div>
+</section>
+
+<section class="band about-intro">
+  <div class="wrap hi-grid">
+    <div class="hi-photo"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
+    <div>
+      <h2>Hey there! I’m <em>Mali</em> 🌈</h2>
+      <p class="role">Owner &amp; Creative Director</p>
+      <ul class="facts-list">
+        <li><b>Pronouns:</b> she/her</li>
+        <li><b>Languages:</b> English &amp; Japanese</li>
+        <li><b>Horoscope:</b> Gemini</li>
+        <li><b>MBTI:</b> INFJ</li>
+        <li><b>Enneagram:</b> 1w2</li>
+      </ul>
+      <p class="lead">Born and raised in the SF Bay Area, I've been immersed in the dynamic world of technology and design from day one. With a BA in web design and over 7 years of hands-on experience, I've honed my skills to create visually stunning websites that truly make an impact.</p>
+      <p class="about-more">When I’m not designing websites, you can find me at the park with my senior pug Sydney, reading books on psychology, listening to comedy podcasts, and traveling to countries with good food!</p>
+    </div>
+  </div>
+</section>
+
+<section class="band tint">
+  <div class="wrap">
+    <div class="center-head">
+      <h2>Industries <em>We’ve Worked With</em></h2>
+    </div>
+    <ul class="industries">
+      {%- for i in ["Interior Designers", "Restaurants / Bars", "Public Speakers", "Start-Ups", "Private Practice Therapists", "Life Coaches", "Consultants", "Attorneys", "Capital Companies", "Wineries / Vineyards", "Gyms", "Recruiting Companies", "CPAs / Accountants", "Sales Development Agencies", "Dentists", "Realtors", "Property Managers", "Music Artists", "Window Treatment Companies", "Churches", "Authors", "Laundromats", "Sports Coaches"] %}
+      <li>{{ i }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-panel">
+      <div class="cta-face"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
+      <h2>Let’s collaborate &amp; create a website you can’t wait to <em>show your friends and family!</em></h2>
+      <p style="margin-top: 36px;"><a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a></p>
+    </div>
+  </div>
+</section>

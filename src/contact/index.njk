@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: "Contact | Get in Touch Today"
+nav: contact
+permalink: /contact/
+---
+{#- Words and form fields copied from the live Contact page (11/25). Submissions go to Netlify Forms; email notifications get set up in Netlify before launch. -#}
+
+<section class="hero page-hero">
+  <div class="wrap contact-grid">
+    <div>
+      <h1>Get In <em>Touch!</em></h1>
+      <div class="contact-photo"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
+    </div>
+    <form class="form-card" name="contact" method="POST" action="/contact/thank-you/" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp"><label>Leave this empty <input name="company"></label></p>
+      <label class="field"><span>Name <i>(required)</i></span><input name="name" autocomplete="name" required></label>
+      <label class="field"><span>Email <i>(required)</i></span><input type="email" name="email" autocomplete="email" required></label>
+      <fieldset class="field">
+        <legend>How can I help? <i>(required)</i></legend>
+        <label class="opt"><input type="radio" name="how-can-i-help" value="I need a new website" required> I need a new website</label>
+        <label class="opt"><input type="radio" name="how-can-i-help" value="I want to update my current Squarespace website"> I want to update my current Squarespace website</label>
+        <label class="opt"><input type="radio" name="how-can-i-help" value="Something else!"> Something else!</label>
+      </fieldset>
+      <fieldset class="field">
+        <legend>How did you hear about me?</legend>
+        <label class="opt"><input type="radio" name="how-did-you-hear" value="Google"> Google</label>
+        <label class="opt"><input type="radio" name="how-did-you-hear" value="99Designs"> 99Designs</label>
+        <label class="opt"><input type="radio" name="how-did-you-hear" value="Squarespace Marketplace"> Squarespace Marketplace</label>
+        <label class="opt"><input type="radio" name="how-did-you-hear" value="Referral"> Referral</label>
+        <label class="opt"><input type="radio" name="how-did-you-hear" value="Other"> Other</label>
+      </fieldset>
+      <label class="field"><span>Message <i>(required)</i></span><textarea name="message" rows="6" required></textarea></label>
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </div>
+</section>
