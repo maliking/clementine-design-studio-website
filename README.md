@@ -26,3 +26,4 @@ npm start       # local preview at http://localhost:8080
 - **Photos:** the stock photos are 1080px copies. Swap in full-size Unsplash+ downloads before launch.
 - **Old URLs:** every live Squarespace URL that's kept needs to keep working (blog posts, plugin posts, /99designs pages). Redirects for anything renamed go in a `_redirects` file.
 - **Email:** clementinedesign.studio has Google Workspace mail records (MX, SPF, DMARC, verification TXT). Only the website records (A and www) change at the switch. The mail records must stay as they are.
+- **Netlify free plan:** it only deploys commits from one Git account on a private repository. Commits here are made as `maliking` (the repository owner) so every push goes live on the preview.
