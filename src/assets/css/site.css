@@ -2,7 +2,7 @@
 
 :root {
   --bg: #F8F4EE; --ink: #24272B; --muted: #5F6166; --card: #FFFDF9; --line: rgba(42, 44, 49, .14);
-  --tint: #EEE7DC; --accent: #EE8524; --accent-ink: #BE5F12; --accent-soft: #FBE5CF; --accent-on-dark: #EEE7DB;
+  --tint: #EEE7DC; --accent: #EE8524; --accent-ink: #BE5F12; --accent-soft: #EEE7DC; --accent-on-dark: #EEE7DB;
   --green: #2F5443; --green-soft: #E3EAE4; --dark: #1E3329; --on-dark: #EEE7DB; --on-dark-muted: #B7BFB6;
   --btn-bg: #1E3329; --btn-fg: #FFFFFF; --radius: 8px; --radius-sm: 6px;
   --display: "ivypresto-display", Georgia, serif; --h-weight: 300; --h-track: -0.012em;
