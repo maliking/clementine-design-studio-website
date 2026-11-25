@@ -571,3 +571,13 @@ h1 em, h2 em { white-space: nowrap; }
 .cross a { color: var(--green); font-weight: 500; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .cross a:hover { color: var(--ink); }
 @media (max-width: 760px) { .cross { font-size: 16px; } }
+
+/* Where I start: intro line inside the panel with its list (11/25). */
+.start-panel { background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--radius); padding: 32px 34px 10px; }
+.start-grid .start-panel .list-intro { margin: 0 0 4px; color: var(--on-dark); font-weight: 600; font-size: 18px; line-height: 1.45; }
+.start-panel .tiles { background: none; border: 0; border-radius: 0; padding: 0; }
+@media (max-width: 900px) {
+  .start-panel { padding: 22px 22px 4px; }
+  .start-grid .start-panel .list-intro { font-size: 17px; }
+  .start-panel .tiles { padding: 0; }
+}
