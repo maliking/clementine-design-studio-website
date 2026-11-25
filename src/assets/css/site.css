@@ -774,13 +774,20 @@ html.pf-lock { overflow: hidden; }
 
   /* Hero: the picture comes first on phones, then the words. */
   .hero-grid > .hero-art { order: -1; }
-  .hero { padding: 8px 0 52px; }
-  .hero-grid { gap: 30px; }
+  .hero { padding: 16px 0 60px; }
+  .hero-grid { gap: 48px; }
   /* Pictures line up with the text: the group spans the same width as the words (Mali, 11/25). */
-  .hero-art { height: 340px; width: 100%; max-width: none; margin: 0; }
-  .hero-art .portrait { width: 74%; height: 330px; right: 0; top: 0; }
-  .hero-art .disc { width: 58%; height: auto; aspect-ratio: 1; left: 0; right: auto; top: 92px; }
-  .hero-art .mini { width: 40%; height: auto; aspect-ratio: 1; left: 0; bottom: 0; }
+  /* The whole group scales with the screen: arch photo on the right, a smaller orange circle tucked behind its lower left,
+     everything inside the group's box so nothing crowds the heading. */
+  .hero-art { height: auto; aspect-ratio: 10 / 9; width: 100%; max-width: none; margin: 0; }
+  .hero-art .portrait { width: 70%; height: 100%; right: 0; top: 0; }
+  .hero-art .disc { width: 46%; height: auto; aspect-ratio: 1; left: 2%; right: auto; top: auto; bottom: 9%; }
+  .hero-art .mini { width: 40%; height: auto; aspect-ratio: 1; left: 0; bottom: -4%; }
+  .hero-text h1 { margin-bottom: 20px; }
+
+  /* A colored section never just touches the dark call-to-action card: its color runs behind the top of the card. */
+  .tint + .cta { background: linear-gradient(var(--tint) 0 72px, transparent 72px); }
+  .tint:has(+ .cta) { padding-bottom: 48px; }
   .hi-photo { max-width: none; width: 100%; margin: 0; }
 
   /* Proof strip: three equal rows, the same space above and below each line, short centered dividers. */
