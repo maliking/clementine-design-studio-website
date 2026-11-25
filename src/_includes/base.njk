@@ -55,6 +55,82 @@
       document.body.classList.toggle('menu-open', !open);
     });
   })();
+
+  // Scroll animation. Same-page links (like the "What do you need help with?" cards) glide down instead of jumping,
+  // and content fades up once as it scrolls into view. Both are off for people who turn on "reduce motion".
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var root = document.documentElement;
+
+    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    var raf = null;
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, stop, { passive: true }); });
+
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = decodeURIComponent(a.getAttribute('href').slice(1));
+      var target = id && document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      var start = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var end = Math.min(max, Math.max(0, target.getBoundingClientRect().top + start));
+      var done = function () {
+        history.pushState(null, '', '#' + id);
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      };
+      stop();
+      if (reduce) { window.scrollTo(0, end); done(); return; }
+      var dist = end - start, dur = Math.min(1300, Math.max(600, Math.abs(dist) * 0.4)), t0 = null;
+      var step = function (now) {
+        if (t0 === null) t0 = now;
+        var t = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, start + dist * ease(t));
+        if (t < 1) raf = requestAnimationFrame(step); else { raf = null; done(); }
+      };
+      raf = requestAnimationFrame(step);
+    });
+
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var groups = /(^|\s)(jgroup|jump-grid|pf-grid|help-grid|update-grid|rev-list|steps|kind|plan-grid|hi-grid|start-grid)(\s|$)/;
+    function expand(el) {
+      if (!groups.test(el.className || '')) return [el];
+      var out = [];
+      Array.prototype.forEach.call(el.children, function (c) { out = out.concat(expand(c)); });
+      return out;
+    }
+    var sections = document.querySelectorAll('main > section:not(:first-child):not(.trust)');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        io.unobserve(el);
+        el.classList.add('in');
+        setTimeout(function () { el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, 900 + (parseFloat(el.style.transitionDelay) || 0) * 1000);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    root.classList.add('js-anim');
+    sections.forEach(function (sec) {
+      var items = [];
+      sec.querySelectorAll(':scope > .wrap, :scope > div > .wrap, :scope > .wrap-wide').forEach(function (w) {
+        Array.prototype.forEach.call(w.children, function (c) { items = items.concat(expand(c)); });
+      });
+      if (!items.length) items = [sec];
+      var lastTop = null, n = 0;
+      items.forEach(function (el) {
+        var top = Math.round(el.getBoundingClientRect().top);
+        n = top === lastTop ? n + 1 : 0;
+        lastTop = top;
+        if (n) el.style.transitionDelay = Math.min(n, 4) * 0.08 + 's';
+        el.classList.add('reveal');
+        io.observe(el);
+      });
+    });
+  })();
 </script>
 </body>
 </html>

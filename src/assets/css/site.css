@@ -69,7 +69,7 @@ h1 em, h2 em { white-space: nowrap; }
 .hero-art { position: relative; height: 560px; }
 .hero-art .portrait { position: absolute; right: 0; top: 0; width: 400px; height: 520px; overflow: hidden; }
 .hero-art .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
-.hero-art .mini { position: absolute; left: 0; bottom: 0; width: 214px; height: 214px; overflow: hidden; border: 6px solid var(--card); border-radius: var(--radius); box-shadow: 0 18px 40px rgba(30, 25, 15, .18); }
+.hero-art .mini { position: absolute; left: 0; bottom: 0; width: 214px; height: 214px; overflow: hidden; border-radius: var(--radius); box-shadow: 0 18px 40px rgba(30, 25, 15, .18); }
 .hero-art .mini img { width: 100%; height: 100%; object-fit: cover; }
 .hero-art .disc { position: absolute; border-radius: 50%; }
 
@@ -279,7 +279,7 @@ h1 em, h2 em { white-space: nowrap; }
   .cta-row { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 28px; text-align: center; }
   .hero-art { height: 372px; width: 100%; max-width: 340px; margin: 0 auto; }
   .hero-art .portrait { width: 270px; height: 350px; }
-  .hero-art .mini { width: 148px; height: 148px; border-width: 5px; }
+  .hero-art .mini { width: 148px; height: 148px; }
   .hero-art .disc { width: 220px; height: 220px; right: 130px; top: 104px; }
 
   .jump-sec { padding-top: 64px; }
@@ -415,20 +415,21 @@ h1 em, h2 em { white-space: nowrap; }
 
 /* Trust strip: copied from the old Squarespace site's code block (same sizes, spacing, divider and phone layout). */
 .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.trust-row { display: flex; align-items: stretch; padding-top: 28px; padding-bottom: 28px; }
+.trust-row { display: flex; justify-content: center; align-items: stretch; padding-top: 28px; padding-bottom: 28px; }
 .trust p { margin: 0; font-size: 14px; line-height: 1.4; letter-spacing: .01em; color: #33343B; }
-.trust-item { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 10px; padding: 0 48px; }
-.trust-item:first-child { justify-content: flex-end; }
-.trust-item:last-child { justify-content: flex-start; border-left: 1px solid rgba(51, 52, 59, .25); }
+.trust-item { flex: 0 0 auto; min-width: 0; display: flex; align-items: center; gap: 10px; padding: 0 32px; }
+.trust-item:last-child { flex: 0 1 auto; }
+.trust-item:not(:last-child) p { white-space: nowrap; }
+.trust-item + .trust-item { border-left: 1px solid rgba(51, 52, 59, .25); }
 .trust .stars { display: flex; gap: 2px; flex: 0 0 auto; }
 .trust .stars svg { width: 15px; height: 15px; fill: var(--accent); display: block; }
 .trust a { color: #33343B; text-decoration: none; white-space: nowrap; }
 .trust a:hover { text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 700px) {
+@media (max-width: 1080px) {
   .trust-row { flex-direction: column; align-items: center; gap: 10px; padding-top: 22px; padding-bottom: 22px; }
   .trust p { font-size: 13px; text-align: center; text-wrap: balance; }
   .trust-item { flex: 0 0 auto; width: 100%; justify-content: center !important; padding: 0 8px; gap: 8px; }
-  .trust-item:last-child { border-left: 0; border-top: 1px solid rgba(51, 52, 59, .25); padding-top: 10px; }
+  .trust-item + .trust-item { border-left: 0; border-top: 1px solid rgba(51, 52, 59, .25); padding-top: 10px; }
 }
 
 .pf-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 0 0 48px; }
@@ -618,3 +619,9 @@ p, li { text-wrap: pretty; }
   .jcard.wide small { font-size: 15.5px; }
   .jcard.wide .go { margin: 12px auto 0; }
 }
+
+/* Scroll animation: cards glide-scroll to their section (base.njk script), and content fades up as it scrolls into view. */
+.js-anim .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.js-anim .reveal.in { opacity: 1; transform: none; }
+[tabindex="-1"]:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) { .js-anim .reveal { opacity: 1; transform: none; transition: none; } }
