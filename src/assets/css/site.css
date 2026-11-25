@@ -565,3 +565,9 @@ h1 em, h2 em { white-space: nowrap; }
   .jcard b { font-size: 21px; }
   .jcard .go, .jcard.wide .go { right: 16px; top: 50%; margin-top: -8px; }
 }
+
+/* Cross-link between sections (11/25): catches people who clicked the "other" card. */
+.cross { margin: 18px 0 0; font-size: 17px; line-height: 1.5; color: var(--muted); }
+.cross a { color: var(--green); font-weight: 500; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.cross a:hover { color: var(--ink); }
+@media (max-width: 760px) { .cross { font-size: 16px; } }
