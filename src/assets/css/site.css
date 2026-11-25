@@ -409,21 +409,18 @@ h1 em, h2 em { white-space: nowrap; }
 .hero-art .mini.round { border-radius: 50%; }
 .hero-art .mini.round img { object-position: 50% 20%; }
 
-/* Trust strip: same quiet look as the old site (gold stars, thin divider, no icon circles). */
-.trust { border-bottom: 1px solid var(--line); }
-.trust-row { display: flex; align-items: stretch; padding-top: 22px; padding-bottom: 22px; font-size: 15px; letter-spacing: .01em; white-space: nowrap; }
-.trust-item { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 10px; padding: 0 48px; }
-.trust-item:first-child { justify-content: flex-end; }
-.trust-item:last-child { justify-content: flex-start; border-left: 1px solid rgba(42, 44, 49, .25); }
-.trust .stars { display: flex; gap: 3px; flex: none; }
-.trust .stars svg { width: 16px; height: 16px; fill: #E9A93C; display: block; }
-.trust a { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; white-space: nowrap; }
+/* Trust strip: centered row, equal space on both sides of a mini clementine. Phone: stacked, everything centered, equal gaps. */
+.trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trust-row { display: flex; justify-content: center; align-items: center; gap: 36px; padding-top: 26px; padding-bottom: 26px; font-size: 15px; letter-spacing: .03em; }
+.trust-item { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.trust .stars { display: flex; gap: 4px; flex: none; }
+.trust .stars svg { width: 15px; height: 15px; fill: #E9A93C; display: block; }
+.trust a { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(42, 44, 49, .35); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.trust a:hover { text-decoration-color: currentColor; }
+.trust-dot { flex: none; width: 14px; height: 14px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='14' r='8' fill='%23F89810'/%3E%3Cpath d='M12.5 6.5C12.5 3 15.5 1 21 1c0 4-3.5 6.5-8.5 5.5z' fill='%234E7D2B'/%3E%3C/svg%3E") center / contain no-repeat; }
 @media (max-width: 900px) {
-  .trust-row { flex-direction: column; align-items: center; gap: 12px; font-size: 13px; white-space: normal; }
-  .trust .stars svg { width: 14px; height: 14px; }
-  .trust-item { gap: 8px; }
-  .trust-item { flex: none; align-self: stretch; justify-content: center !important; padding: 0 8px; text-align: center; }
-  .trust-item:last-child { border-left: 0; border-top: 1px solid rgba(42, 44, 49, .25); padding-top: 12px; }
+  .trust-row { flex-direction: column; gap: 16px; padding-top: 30px; padding-bottom: 30px; font-size: 14px; text-align: center; }
+  .trust-item { flex-direction: column; gap: 8px; white-space: normal; max-width: 300px; text-wrap: balance; }
 }
 
 .pf-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 0 0 48px; }
