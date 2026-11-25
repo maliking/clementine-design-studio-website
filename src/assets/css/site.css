@@ -253,7 +253,8 @@ h1 em, h2 em { white-space: nowrap; }
 .site-footer .copy { margin-top: 12px; }
 
 /* ---------- Phone ---------- */
-@media (max-width: 760px) {
+/* Phones and narrow tablets (also wide phones in landscape and foldables). */
+@media (max-width: 900px) {
   body { font-size: 17px; }
   :root { --h1: 44px; --h2: 36px; --h3: 25px; }
   h1 em, h2 em { white-space: normal; }
@@ -375,4 +376,26 @@ h1 em, h2 em { white-space: nowrap; }
   .cta-face { width: 88px; height: 88px; margin-bottom: 22px; }
   .cta .lead { margin: 16px auto 28px; }
   .site-footer { padding: 36px 0 48px; }
+}
+
+/* Between phone and full desktop: keep the phone layout readable on wider screens. */
+@media (min-width: 761px) and (max-width: 900px) {
+  :root { --h1: 54px; --h2: 42px; }
+  .wrap { max-width: 700px; }
+  .site-header { padding: 0 32px; }
+}
+
+/* Small laptops and tablets in landscape: shrink the hero photos so they don't cover the heading. */
+@media (min-width: 901px) and (max-width: 1180px) {
+  :root { --h1: 60px; --h2: 50px; }
+  .wrap, .site-header { padding-left: 36px; padding-right: 36px; }
+  .site-header { gap: 22px; }
+  .site-header .logo img { width: 170px; }
+  .site-header .nav { gap: 20px; font-size: 15px; }
+  .btn-head { margin-left: 4px; padding: 13px 20px; white-space: nowrap; }
+  .hero-grid { gap: 40px; }
+  .hero-art { height: 440px; }
+  .hero-art .portrait { width: 310px; height: 410px; }
+  .hero-art .mini { width: 170px; height: 170px; }
+  .hero-art .disc { width: 250px; height: 250px; right: 150px; top: 118px; }
 }
