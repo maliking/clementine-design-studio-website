@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: "Page Not Found"
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+{#- Netlify shows this page for any address that doesn't exist. Old Squarespace addresses are forwarded in netlify.toml first. -#}
+<section class="hero page-hero">
+  <div class="wrap center-head">
+    <div class="eyebrow">404</div>
+    <h1>Page not <em>found</em></h1>
+    <p style="margin-top: 18px;">The page you’re looking for may have moved.</p>
+    <div class="cta-row nf-ctas"><a class="btn" href="/">Go to the Home Page</a><a class="btn btn-line" href="/consultation">Book a Free Consultation</a></div>
+  </div>
+</section>
+<style>.nf-ctas { justify-content: center; flex-wrap: wrap; gap: 14px; } @media (max-width: 600px) { .nf-ctas { flex-direction: column; align-items: stretch; } }</style>

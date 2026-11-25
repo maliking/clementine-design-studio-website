@@ -6,8 +6,222 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# The real site (main branch) is the only one search engines may list. Deploy Previews keep "noindex".
+[context.production.environment]
+  SITE_LIVE = "true"
+
 # The old Squarespace site had a copy of the home page at /home.
 [[redirects]]
   from = "/home"
   to = "/"
+  status = 301
+
+# ---- JuiceKit demo (added 11/25) ----
+# The demo stays on Mali's Squarespace site until it has a new home. After clementinedesign.studio
+# points to Netlify, these send the demo's old addresses to the same pages on the Squarespace built-in address.
+# 302 (temporary) because the demo will move again.
+[[redirects]]
+  from = "/optionkit-demo"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-demo"
+  status = 302
+[[redirects]]
+  from = "/optionkit-demo/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-demo/:splat"
+  status = 302
+[[redirects]]
+  from = "/optionkit-test"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-test"
+  status = 302
+[[redirects]]
+  from = "/optionkit-test/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-test/:splat"
+  status = 302
+[[redirects]]
+  from = "/store-2"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/store-2"
+  status = 302
+[[redirects]]
+  from = "/store-2/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/store-2/:splat"
+  status = 302
+[[redirects]]
+  from = "/booking"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/booking"
+  status = 302
+[[redirects]]
+  from = "/booking/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/booking/:splat"
+  status = 302
+[[redirects]]
+  from = "/videos"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/videos"
+  status = 302
+[[redirects]]
+  from = "/videos/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/videos/:splat"
+  status = 302
+
+# ---- Blog and Plugins (added 11/25 by the blog/plugins thread) ----
+# Blog and plugin pages are built as /blog/<name>.html so they open at the exact Squarespace address (no slash at the end).
+# Old addresses Google still remembers for two posts, sent to the posts they became.
+[[redirects]]
+  from = "/blog/i-tried-the-best-3-ai-professional-headshot-generators-with-results-xxag9"
+  to = "/blog/the-best-3-ai-professional-linkedin-headshot-generators-with-results-xxag9"
+  status = 301
+[[redirects]]
+  from = "/blog/the-best-3-ai-professional-linkedin-headshot-generators-with-results-xx8w"
+  to = "/blog/the-best-3-ai-professional-linkedin-headshot-generators-with-results-xxag9"
+  status = 301
+[[redirects]]
+  from = "/blog/squarespace-professional-website-cost-breakdown"
+  to = "/blog/squarespace-website-cost-breakdown"
+  status = 301
+# Squarespace extras that have no page here: blog categories/tags, the RSS feed, and the template's sample blogs.
+[[redirects]]
+  from = "/blog/category/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog/tag/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog-1-1/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog-1-1"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/draft/*"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/draft"
+  to = "/blog"
+  status = 301
+
+# Old Squarespace pages Mali no longer uses (she confirmed 11/25), sent to the closest page.
+[[redirects]]
+  from = "/99designs"
+  to = "/consultation"
+  status = 301
+[[redirects]]
+  from = "/99designs-hourly"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/hourly-squarespace-help"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/monthly-maintenance"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/expert-for-a-day"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/website-in-a-day"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/website-in-a-day-package"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/website-in-a-week"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/squarespace-websites"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/web-designer-san-jose"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/contract-example"
+  to = "/services"
+  status = 301
+[[redirects]]
+  from = "/services-new"
+  to = "/services"
+  status = 301
+[[redirects]]
+  from = "/holiday-hope"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/holiday-hope-1"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/newsletter"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/home-1"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/home-2"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-1"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-2"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-3"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-4"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-5"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-22"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-29"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-44"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-63"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-93"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-95"
+  to = "/"
+  status = 301
+
+# The old Custom Website package page is replaced by the website section of the new Services page (11/25).
+[[redirects]]
+  from = "/custom-website"
+  to = "/services#s-website"
   status = 301

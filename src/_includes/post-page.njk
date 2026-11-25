@@ -1,0 +1,44 @@
+{#- Shared layout for one blog post or plugin page. Needs `post`, `posts` (the whole list, newest first), `listUrl` and `listLabel`. -#}
+{%- set i = posts.indexOf(post) %}
+{%- set newer = posts[i - 1] if i > 0 else null %}
+{%- set older = posts[i + 1] if i + 1 < posts.length else null %}
+<section class="post-head">
+  <div class="wrap post-wrap">
+    <a class="post-back" href="{{ listUrl }}"><span aria-hidden="true">←</span> {{ listLabel }}</a>
+    <p class="post-date"><time datetime="{{ post.date }}">{{ post.dateLabel }}</time> · Written by Clementine Design Studio</p>
+    <h1>{{ post.title }}</h1>
+  </div>
+</section>
+
+<section class="post-main">
+  <div class="wrap post-wrap">
+    <article class="post-body">
+{{ post.body | safe }}
+    </article>
+    <aside class="author">
+      <p class="eyebrow">About the author</p>
+      <p>I’m a Squarespace expert with a BA in Communication Design (with an emphasis in web design), and I’ve designed hundreds of websites over the past 7+ years. I love working with small businesses and entrepreneurs to create beautiful, functional websites that stand out from the competition and attract the right clients.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="post-pager">
+  <div class="wrap post-pager-row">
+    {% if older %}<a class="pager older" href="{{ older.url }}"><small><span aria-hidden="true">←</span> Older</small><b>{{ older.title }}</b></a>{% else %}<span></span>{% endif %}
+    {% if newer %}<a class="pager newer" href="{{ newer.url }}"><small>Newer <span aria-hidden="true">→</span></small><b>{{ newer.title }}</b></a>{% endif %}
+  </div>
+</section>
+
+{% include "post-cta.njk" %}
+
+<script>
+  // "Copy code" buttons on plugin code boxes.
+  document.querySelectorAll('.code .copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var code = btn.parentNode.querySelector('code').textContent;
+      var done = function () { btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = 'Copy code'; }, 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(code).then(done, function () {});
+      else { var t = document.createElement('textarea'); t.value = code; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); done(); }
+    });
+  });
+</script>

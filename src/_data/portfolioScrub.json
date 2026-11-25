@@ -1,0 +1,42 @@
+{
+ "tufas": {
+  "desktop": {
+   "vw": 1440,
+   "vh": 900,
+   "max": 5337,
+   "hold": 45,
+   "step": 8,
+   "frames": 736,
+   "fps": 30
+  },
+  "phone": {
+   "vw": 390,
+   "vh": 844,
+   "max": 8224,
+   "hold": 45,
+   "step": 8,
+   "frames": 1096,
+   "fps": 30
+  }
+ },
+ "triptych-kyoto": {
+  "desktop": {
+   "vw": 1440,
+   "vh": 900,
+   "max": 8851,
+   "hold": 45,
+   "step": 8,
+   "frames": 1175,
+   "fps": 30
+  },
+  "phone": {
+   "vw": 390,
+   "vh": 844,
+   "max": 6052,
+   "hold": 45,
+   "step": 8,
+   "frames": 825,
+   "fps": 30
+  }
+ }
+}

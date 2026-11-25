@@ -20,23 +20,12 @@ permalink: /
     <div class="hero-art">
       <div class="disc"></div>
       <div class="portrait"><img src="/assets/img/hero-laptop.jpg" alt="A laptop on a wooden stool showing a website I designed"></div>
-      <div class="mini round"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
     </div>
   </div>
 </section>
 
 <!-- 2. TRUST -->
-<section class="trust">
-  <div class="wrap trust-row">
-    <div class="trust-item">
-      <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg></span>
-      <p><a href="https://99designs.com/profiles/clementinedesignstudio/about" target="_blank" rel="noopener">5.0 from 100+ reviews on 99designs</a></p>
-    </div>
-    <div class="trust-item">
-      <p>Based in Monterey, CA - working with businesses everywhere</p>
-    </div>
-  </div>
-</section>
+{% include "trust.njk" %}
 
 <!-- 3. PORTFOLIO -->
 <section class="band">
@@ -46,27 +35,12 @@ permalink: /
       <h2>Different businesses. The same <em>thoughtful care.</em></h2>
     </div>
     <ul class="pf-grid">
-      {%- set work = [
-        { name: "Oakland Chinatown Chamber", type: "Chamber of Commerce", tags: ["bold", "trustworthy", "clean"], url: "oaklandchinatownchamber.org", img: "oakland-chinatown-chamber.jpg" },
-        { name: "The Whisper Group", type: "Advisory Firm", tags: ["approachable", "clean", "modern"], url: "wearethewhispergroup.com", img: "whisper-group.jpg" },
-        { name: "VIBE Pilates", type: "Pilates Studio", tags: ["sleek", "moody", "energetic"], url: "vibepilatesstudio.com", img: "vibe-pilates.jpg" },
-        { name: "Luretik", type: "Luxury Olive Oils", tags: ["elegant", "calm", "luxurious"], url: "luretik.com", img: "luretik.jpg" },
-        { name: "Stef Reid", type: "Paralympian", tags: ["bold", "clean", "professional"], url: "stefreid.com", img: "stef-reid.jpg" },
-        { name: "Clementine Promos", type: "Branded Corporate Merchandise", tags: ["bright", "modern", "clean"], url: "clementinepromos.com", img: "clementine-promos.jpg" }
-      ] %}
-      {%- for w in work %}
-      <li class="pf-card">
-        <a class="pf-photo" href="https://{{ w.url }}" target="_blank" rel="noopener"><img src="/assets/img/portfolio/{{ w.img }}" alt="{{ w.name }} website" loading="lazy"></a>
-        <div class="pf-body">
-          <h3>{{ w.name }}</h3>
-          <p class="pf-type">{{ w.type }}</p>
-          <p class="pf-tags">{% for t in w.tags %}<span>{{ t }}</span>{% endfor %}</p>
-          <a class="pf-link" href="https://{{ w.url }}" target="_blank" rel="noopener">{{ w.url }}</a>
-        </div>
-      </li>
-      {%- endfor %}
+      {%- set pfHref = "/example-sites/" %}
+      {%- for p in portfolio.projects %}{% if p.home %}
+      {% include "pf-card.njk" %}
+      {%- endif %}{% endfor %}
     </ul>
-    <p class="center"><a class="btn btn-line" href="/example-sites">View the Portfolio ↗</a></p>
+    <p class="center"><a class="btn btn-line" href="/example-sites/">View the Portfolio</a></p>
   </div>
 </section>
 
@@ -157,7 +131,6 @@ permalink: /
 <section class="cta">
   <div class="wrap">
     <div class="cta-panel">
-      <div class="cta-face"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
       <h2>Ready to get <em>started?</em></h2>
       <p style="margin-top: 36px;"><a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a></p>
     </div>

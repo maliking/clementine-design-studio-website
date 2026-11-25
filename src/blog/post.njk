@@ -1,0 +1,17 @@
+---
+layout: base.njk
+nav: blog
+extraCss: posts.css
+pagination:
+  data: blogPosts
+  size: 1
+  alias: post
+permalink: "/blog/{{ post.slug }}.html"
+postMeta: true
+eleventyComputed:
+  canonicalPath: "{{ post.url }}"
+  title: "{{ (post.seoTitle or post.title) | safe }}"
+  description: "{{ (post.seoDescription or post.summary) | safe }}"
+---
+{%- set posts = blogPosts %}{% set listUrl = "/blog" %}{% set listLabel = "All posts" %}
+{% include "post-page.njk" %}

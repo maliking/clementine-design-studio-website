@@ -6,14 +6,18 @@
 <title>{{ title }} | {{ site.name }}</title>
 {% if description %}<meta name="description" content="{{ description }}">{% endif %}
 {% if preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
-<link rel="canonical" href="{{ site.url }}{{ page.url | replace('/index.html', '') }}">
-<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="canonical" href="{{ site.url }}{{ canonicalPath or (page.url | replace('/index.html', '')) }}">
+{% if postMeta %}{% include "post-meta.njk" %}{% endif %}
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {# Headings: IvyPresto Display needs an Adobe Fonts web project from Mali's own Adobe account (see README). Until then a free stand-in loads. #}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap">
 <link rel="stylesheet" href="https://use.typekit.net/dfz0hqs.css">
 <link rel="stylesheet" href="/assets/css/site.css">
+{% if extraCss %}<link rel="stylesheet" href="/assets/css/{{ extraCss }}">{% endif %}
 </head>
 <body>
 
@@ -42,6 +46,7 @@
       <p class="disc">Disclaimer: Clementine Design Studio is not affiliated, sponsored, or endorsed by Squarespace. The term "Squarespace" is the registered trademark and property of Squarespace, Inc.</p>
       <p class="copy">© {{ year }} {{ site.name }}</p>
     </div>
+    <a class="circle-badge" href="https://www.squarespace.com/circle" target="_blank" rel="noopener"><img src="/assets/img/squarespace-circle-platinum-2026.webp" alt="Squarespace Circle Platinum Partner 2026" width="640" height="219" loading="lazy"></a>
   </div>
 </footer>
 
@@ -53,6 +58,114 @@
       btn.setAttribute('aria-expanded', String(!open));
       menu.hidden = open;
       document.body.classList.toggle('menu-open', !open);
+    });
+  })();
+
+  // Scroll animation. Same-page links (like the "What do you need help with?" cards) glide down instead of jumping,
+  // and content fades up once as it scrolls into view. Both are off for people who turn on "reduce motion".
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var root = document.documentElement;
+
+    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    var raf = null;
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { window.addEventListener(ev, stop, { passive: true }); });
+
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = decodeURIComponent(a.getAttribute('href').slice(1));
+      var target = id && document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      var start = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var bar = document.querySelector('.svc-nav');
+      var off = bar && id !== 'help' ? bar.offsetHeight + 24 : 0;
+      var end = Math.min(max, Math.max(0, target.getBoundingClientRect().top + start - off));
+      var done = function () {
+        history.pushState(null, '', '#' + id);
+        if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      };
+      stop();
+      if (reduce) { window.scrollTo(0, end); done(); return; }
+      var dist = end - start, dur = Math.min(1300, Math.max(600, Math.abs(dist) * 0.4)), t0 = null;
+      var step = function (now) {
+        if (t0 === null) t0 = now;
+        var t = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, start + dist * ease(t));
+        if (t < 1) raf = requestAnimationFrame(step); else { raf = null; done(); }
+      };
+      raf = requestAnimationFrame(step);
+    });
+
+    // Services page section bar: show it after the help cards, hide it at the end, and mark the section you're in.
+    var nav = document.querySelector('.svc-nav');
+    if (nav) {
+      var cards = document.getElementById('help');
+      var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+      var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+      var lastSec = secs[secs.length - 1];
+      var current = null, ticking = false;
+      var update = function () {
+        ticking = false;
+        var y = window.innerHeight * 0.35;
+        var show = cards.getBoundingClientRect().bottom < 0 && lastSec.getBoundingClientRect().bottom > y;
+        nav.classList.toggle('show', show);
+        var on = null;
+        secs.forEach(function (sec, i) { var r = sec.getBoundingClientRect(); if (r.top <= y && r.bottom > y) on = links[i]; });
+        if (on !== current) {
+          if (current) current.classList.remove('on');
+          if (on) {
+            on.classList.add('on');
+            var w = nav.querySelector('.wrap');
+            if (w.scrollWidth > w.clientWidth) w.scrollTo({ left: on.offsetLeft - (w.clientWidth - on.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+          }
+          current = on;
+        }
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var groups = /(^|\s)(jgroup|jump-grid|pf-grid|help-grid|update-grid|rev-list|steps|kind|plan-grid|hi-grid|start-grid)(\s|$)/;
+    function expand(el) {
+      if (!groups.test(el.className || '')) return [el];
+      var out = [];
+      Array.prototype.forEach.call(el.children, function (c) { out = out.concat(expand(c)); });
+      return out;
+    }
+    var sections = document.querySelectorAll('main > section:not(:first-of-type):not(.trust)');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        io.unobserve(el);
+        el.classList.add('in');
+        setTimeout(function () { el.classList.remove('reveal', 'in'); el.style.transitionDelay = ''; }, 900 + (parseFloat(el.style.transitionDelay) || 0) * 1000);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    root.classList.add('js-anim');
+    sections.forEach(function (sec) {
+      var items = [];
+      sec.querySelectorAll(':scope > .wrap, :scope > div > .wrap, :scope > .wrap-wide').forEach(function (w) {
+        Array.prototype.forEach.call(w.children, function (c) { items = items.concat(expand(c)); });
+      });
+      if (!items.length) items = [sec];
+      var lastTop = null, n = 0;
+      items.forEach(function (el) {
+        var top = Math.round(el.getBoundingClientRect().top);
+        n = top === lastTop ? n + 1 : 0;
+        lastTop = top;
+        if (n) el.style.transitionDelay = Math.min(n, 4) * 0.08 + 's';
+        el.classList.add('reveal');
+        io.observe(el);
+      });
     });
   })();
 </script>

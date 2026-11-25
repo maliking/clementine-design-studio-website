@@ -1,0 +1,20 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{#- Google reads this to find every page. Squarespace had one at the same address.
+    Blog and plugin posts come from their data files (a paginated template only adds its first page to collections). -#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all | sort(false, false, 'url') %}
+{%- if item.url and not item.data.pagination and item.data.sitemap !== false %}
+  <url><loc>{{ site.url }}{{ item.data.canonicalPath or (item.url | replace('/index.html', '')) }}</loc></url>
+{%- endif %}
+{%- endfor %}
+{%- for post in blogPosts %}
+  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.date | truncate(10, true, '') }}</lastmod></url>
+{%- endfor %}
+{%- for post in pluginPosts %}
+  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.date | truncate(10, true, '') }}</lastmod></url>
+{%- endfor %}
+</urlset>

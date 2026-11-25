@@ -1,0 +1,128 @@
+{
+  "groups": [
+    { "key": "shops", "label": "Shops & products" },
+    { "key": "fitness", "label": "Fitness & wellness" },
+    { "key": "beauty", "label": "Beauty & photography" },
+    { "key": "experts", "label": "Consultants & speakers" },
+    { "key": "events", "label": "Nonprofits & events" }
+  ],
+  "projects": [
+    {
+      "slug": "triptych-kyoto",
+      "name": "Triptych Kyoto",
+      "type": "Artisan Lighting Studio",
+      "group": "shops",
+      "tags": ["minimal", "moody", "refined"],
+      "about": "A design studio that works with Kyoto artisans in wood, lacquer, handmade paper, ceramics and glass to make contemporary lighting. The site is mostly large photos of each light, with a short note on how it’s made.",
+      "video": true
+    },
+    {
+      "slug": "tufas",
+      "name": "Tufas Boulder Lounge",
+      "type": "Bouldering Gym",
+      "group": "fitness",
+      "tags": ["playful", "bold", "animated"],
+      "about": "A community-first bouldering gym in Philadelphia. The site covers day passes and memberships, events, programs, birthday parties and gift cards, with illustrations throughout.",
+      "video": true
+    },
+    {
+      "slug": "redwoods-greenfields",
+      "name": "Redwoods & Greenfields",
+      "type": "Guided Forest Bathing",
+      "group": "fitness",
+      "tags": ["calm", "natural", "earthy"]
+    },
+    {
+      "slug": "chan-adr",
+      "name": "Chan ADR",
+      "type": "Mediation Services",
+      "group": "experts",
+      "tags": ["grounded", "trustworthy", "calm"]
+    },
+    {
+      "slug": "cfo-beauty",
+      "name": "cfobeauty",
+      "type": "Hair & Makeup Artist",
+      "group": "beauty",
+      "tags": ["warm", "stylish", "personal"]
+    },
+    {
+      "slug": "ruta-del-jefe",
+      "name": "Ruta del Jefe",
+      "type": "Cycling Festival",
+      "group": "events",
+      "tags": ["earthy", "adventurous", "bold"],
+      "about": "A four-day bike festival in Patagonia, Arizona, that raises money for organizations working in the borderlands. The site handles registration, scholarships, partners and trip prep."
+    },
+    {
+      "slug": "stef-reid",
+      "name": "Stef Reid",
+      "type": "Motivational Speaker & Coach",
+      "group": "experts",
+      "tags": ["bold", "clean", "professional"],
+      "home": true
+    },
+    {
+      "slug": "iza-erkin",
+      "name": "Iza Erkin",
+      "type": "Wedding Photography",
+      "group": "beauty",
+      "tags": ["romantic", "timeless", "elegant"]
+    },
+    {
+      "slug": "cardinal-direction",
+      "name": "Cardinal Direction",
+      "type": "Qualitative Research",
+      "group": "experts",
+      "tags": ["creative", "polished", "modern"]
+    },
+    {
+      "slug": "oakland-chinatown-chamber",
+      "name": "Oakland Chinatown Chamber",
+      "type": "Chamber of Commerce",
+      "group": "events",
+      "tags": ["bold", "trustworthy", "clean"],
+      "home": true
+    },
+    {
+      "slug": "favarh",
+      "name": "Favarh",
+      "type": "Disability Services Nonprofit",
+      "group": "events",
+      "tags": ["bold", "warm", "colorful"],
+      "about": "A nonprofit in Connecticut’s Farmington Valley that helps people with intellectual and developmental disabilities live as independently as possible. The site covers its programs, inclusive hiring, careers, ways to get involved and its thrift shop."
+    },
+    {
+      "slug": "whisper-group",
+      "name": "The Whisper Group",
+      "type": "Advisory Firm",
+      "group": "experts",
+      "tags": ["approachable", "clean", "modern"],
+      "home": true
+    },
+    {
+      "slug": "vibe-pilates",
+      "name": "VIBE Pilates",
+      "type": "Pilates Studio",
+      "group": "fitness",
+      "tags": ["sleek", "moody", "energetic"],
+      "home": true
+    },
+    {
+      "slug": "luretik",
+      "name": "Luretik",
+      "type": "Luxury Olive Oils",
+      "group": "shops",
+      "tags": ["elegant", "calm", "luxurious"],
+      "home": true
+    },
+    {
+      "slug": "clementine-promos",
+      "name": "Clementine Promos",
+      "type": "Branded Corporate Merchandise",
+      "group": "shops",
+      "tags": ["bright", "modern", "clean"],
+      "home": true
+    }
+  ]
+}

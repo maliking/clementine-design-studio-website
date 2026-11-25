@@ -1,0 +1,176 @@
+/* Blog and Plugins pages (list pages and single posts). Loaded only on those pages (extraCss: posts.css).
+   Uses the colors and type from site.css. Copied content from Squarespace sits inside .post-body. */
+
+/* ---------- List pages ---------- */
+.posts-page { padding: 0 0 112px; }
+
+.post-lead { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 0 var(--line), 0 14px 34px rgba(30, 25, 15, .07); margin-bottom: 28px; transition: box-shadow .3s; }
+.post-lead:hover { box-shadow: 0 1px 0 var(--line), 0 22px 46px rgba(30, 25, 15, .13); }
+.post-lead .post-photo { aspect-ratio: auto; min-height: 100%; }
+.post-lead .post-text { padding: 48px 48px 44px; justify-content: center; }
+.post-lead h2 { font-size: 40px; line-height: 1.1; }
+.post-lead .post-sum { -webkit-line-clamp: 4; font-size: 18px; }
+.post-lead .post-more { margin-top: 0; padding-top: 24px; }
+
+.post-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.post-card { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 0 var(--line), 0 14px 34px rgba(30, 25, 15, .07); transition: box-shadow .3s; }
+.post-card:hover { box-shadow: 0 1px 0 var(--line), 0 22px 46px rgba(30, 25, 15, .13); }
+.post-open, .post-lead { color: inherit; }
+.post-open { display: flex; flex-direction: column; height: 100%; }
+.post-open:focus-visible, .post-lead:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; border-radius: var(--radius); }
+.post-photo { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--tint); }
+.post-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; transition: transform .4s; }
+.post-open:hover .post-photo img, .post-lead:hover .post-photo img { transform: scale(1.03); }
+.post-text { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 24px; }
+.post-date { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+.post-text h3 { font-size: 25px; line-height: 1.16; }
+.post-sum { margin-top: 10px; font-size: 16px; line-height: 1.55; color: var(--muted); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.post-more { margin-top: auto; padding-top: 18px; font-size: 15px; font-weight: 600; color: var(--accent-ink); }
+.post-open:hover .post-more, .post-lead:hover .post-more { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- One post ---------- */
+.post-wrap { max-width: 856px; }   /* 760px of text plus the 48px side padding */
+.post-head { padding: 40px 0 36px; }
+.post-back { display: inline-block; font-size: 15px; font-weight: 600; color: var(--accent-ink); margin-bottom: 30px; }
+.post-back:hover { text-decoration: underline; text-underline-offset: 3px; }
+.post-head h1 { font-size: 52px; line-height: 1.08; }
+.post-head .post-date { margin-bottom: 14px; }
+.post-main { padding: 0 0 96px; }
+
+.post-body { font-size: 18px; line-height: 1.7; }
+.post-body::after { content: ""; display: table; clear: both; }
+.post-body > * + *, .post-body .note-box > * + * { margin-top: 20px; }
+.post-body h2 { font-size: 38px; line-height: 1.12; margin-top: 56px; }
+.post-body h3 { font-size: 29px; line-height: 1.18; margin-top: 44px; }
+.post-body h4 { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 24px; line-height: 1.2; margin-top: 36px; }
+.post-body h2 + *, .post-body h3 + *, .post-body h4 + * { margin-top: 12px; }
+.post-body > :first-child { margin-top: 0; }
+.post-body strong { font-weight: 600; }
+.post-body em { color: inherit; }
+.post-body .big { font-size: 1.2em; }
+.post-body a { color: var(--accent-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.post-body a:hover { text-decoration-thickness: 2px; }
+.post-body ul, .post-body ol { display: grid; gap: 8px; }
+.post-body ul li { position: relative; padding-left: 22px; }
+.post-body ul li::before { content: ""; position: absolute; left: 3px; top: .72em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.post-body ol { list-style: decimal; padding-left: 24px; }
+.post-body ol li::marker { color: var(--accent-ink); font-weight: 600; }
+.post-body li > p + p { margin-top: 8px; }
+
+.post-body figure { margin: 36px 0; }
+.post-body figure img { width: 100%; height: auto; border-radius: var(--radius); }
+.post-body figcaption { margin-top: 10px; font-size: 15px; color: var(--muted); }
+.post-body figure.float { float: right; width: 42%; margin: 6px 0 20px 32px; }
+.post-body > figure:first-child { margin-top: 0; }
+.post-body .video video { display: block; width: 100%; height: auto; border-radius: var(--radius); background: var(--tint); }
+
+.post-body .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 32px 0; }
+.post-body .gallery figure { margin: 0; aspect-ratio: 1; overflow: hidden; border-radius: var(--radius-sm); }
+.post-body .gallery img { height: 100%; object-fit: cover; border-radius: 0; }
+
+/* "Customization" notes (not .callout, which site.css already uses) and other shaded boxes from Squarespace: a solid linen card. */
+.post-body .note-box { background: var(--tint); border-radius: var(--radius); padding: 30px 34px 32px; margin: 36px 0; }
+.post-body .note-box h4:first-child, .post-body .note-box h3:first-child { margin-top: 0; }
+
+/* Code boxes on plugin pages, with a copy button. */
+.post-body .code { position: relative; margin: 32px 0; background: var(--dark); border-radius: var(--radius); }
+.post-body .code pre { margin: 0; padding: 26px 28px 28px; overflow-x: auto; color: var(--on-dark); font: 14.5px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; tab-size: 2; }
+.post-body .code .copy { position: absolute; top: 12px; right: 12px; z-index: 1; font: 600 13px/1 "Instrument Sans", system-ui, sans-serif; color: var(--dark); background: var(--on-dark); border: 0; border-radius: var(--radius-sm); padding: 9px 13px 8px; cursor: pointer; }
+.post-body .code .copy:hover { background: #fff; }
+.post-body .code pre { padding-top: 54px; }
+.post-body :not(pre) > code { font: .88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--tint); padding: 2px 6px; border-radius: 4px; }
+
+/* Tables (the headshot comparison) */
+.post-body .embed { margin: 36px 0; }
+.post-body table { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.45; }
+.post-body [class$="table-wrap"] { overflow-x: auto; background: var(--card); border-radius: var(--radius); box-shadow: 0 1px 0 var(--line); }
+.post-body th, .post-body td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.post-body thead th { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+.post-body tbody tr:last-child td { border-bottom: 0; }
+.post-body tbody td:first-child { font-weight: 600; white-space: nowrap; }
+.post-body [class$="__header"] { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-weight: 600; font-size: 19px; }
+
+.author { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
+.author .eyebrow { margin-bottom: 12px; }
+
+.post-pager { padding: 0 0 96px; }
+.post-pager-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pager { display: flex; flex-direction: column; gap: 8px; background: var(--card); border-radius: var(--radius); padding: 26px 28px 28px; box-shadow: 0 1px 0 var(--line); transition: box-shadow .3s; }
+.pager:hover { box-shadow: 0 1px 0 var(--line), 0 14px 34px rgba(30, 25, 15, .09); }
+.pager small { font-size: 14px; font-weight: 600; color: var(--accent-ink); }
+.pager b { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 24px; line-height: 1.2; }
+.pager.newer { text-align: right; grid-column: 2; }
+
+/* ---------- Smaller screens ---------- */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .post-lead .post-text { padding: 36px; }
+  .post-lead h2 { font-size: 34px; }
+}
+@media (max-width: 900px) {
+  .posts-page { padding-bottom: 64px; }
+  .post-lead { grid-template-columns: minmax(0, 1fr); margin-bottom: 20px; }
+  .post-lead .post-photo { aspect-ratio: 3 / 2; }
+  .post-lead .post-text { padding: 22px 24px 24px; }
+  .post-lead h2 { font-size: 30px; }
+  .post-lead .post-sum { font-size: 16px; -webkit-line-clamp: 3; }
+  .post-lead .post-more { padding-top: 18px; }
+  .post-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .post-head { padding: 12px 0 24px; }
+  .post-back { margin-bottom: 20px; }
+  .post-head h1 { font-size: 36px; }
+  .post-main { padding-bottom: 64px; }
+  .post-body { font-size: 17px; }
+  .post-body h2 { font-size: 30px; margin-top: 44px; }
+  .post-body h3 { font-size: 25px; margin-top: 36px; }
+  .post-body h4 { font-size: 21px; }
+  .post-body figure.float { float: none; width: auto; margin: 28px 0; }
+  .post-body .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .post-body .note-box { padding: 22px 20px 24px; }
+  .post-body .code { margin-left: -8px; margin-right: -8px; }
+  .post-body .code pre { padding: 50px 18px 20px; font-size: 13.5px; }
+  .post-body table { min-width: 560px; font-size: 15px; }
+  .post-pager { padding-bottom: 56px; }
+  .post-pager-row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .pager.newer { grid-column: auto; text-align: left; }
+  .pager b { font-size: 21px; }
+}
+
+/* Long page titles break into even lines. */
+.page-hero h1 { text-wrap: balance; }
+.post-body .note-box > :first-child { margin-top: 0; }
+.post-body .note-box h2 { font-size: 32px; }
+@media (max-width: 900px) { .post-body .note-box h2 { font-size: 26px; } }
+
+/* ---------- Footer pages: FAQs, Icompendium Help, Therapist Websites, Privacy, Cookies ---------- */
+.faq-list .faq-item + .faq-item { margin-top: 0; padding-top: 34px; border-top: 1px solid var(--line); }
+.faq-list .faq-item { padding-bottom: 34px; }
+.faq-list .faq-item h3 { margin-top: 0; font-size: 30px; }
+.faq-list .faq-item > * + * { margin-top: 14px; }
+.post-body.legal { font-size: 16.5px; }
+.post-body.legal h4 { font-size: 24px; }
+.post-body .table-responsive { overflow-x: auto; background: var(--card); border-radius: var(--radius); box-shadow: 0 1px 0 var(--line); }
+.post-body.legal td ul { gap: 2px; }
+.post-body.legal td { font-weight: 400 !important; white-space: normal !important; }
+.post-body .note-box .btn { color: var(--btn-fg); text-decoration: none; margin-top: 6px; }
+
+.split-2 { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
+.split-photo { aspect-ratio: 4 / 5; }
+.split-text h2 { margin-bottom: 22px; }
+.split-text p + p { margin-top: 16px; }
+.split-text p:first-of-type { font-size: 21px; line-height: 1.5; }
+.btn-row { margin-top: 30px; }
+.card-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.card-pair .ucard { display: flex; flex-direction: column; padding: 38px 38px 40px; }
+.card-pair h4 { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 27px; line-height: 1.22; margin-bottom: 16px; }
+.card-pair .ucard p br:first-child { display: none; }
+.card-pair .btn-row { margin-top: auto; padding-top: 28px; }
+@media (max-width: 900px) {
+  .split-2, .card-pair { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .split-photo { aspect-ratio: 4 / 3; }
+  .split-text p:first-of-type { font-size: 19px; }
+  .card-pair .ucard { padding: 26px 22px 28px; }
+  .card-pair h4 { font-size: 23px; }
+  .btn-row .btn { display: block; text-align: center; }
+  .faq-list .faq-item h3 { font-size: 25px; }
+}
