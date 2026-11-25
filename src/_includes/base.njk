@@ -29,10 +29,16 @@
   <a class="btn btn-head" href="{{ site.consultUrl }}">Book a Free Consultation</a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span></button>
 </header>
-<nav class="mobile-menu" id="mobile-menu" hidden>
-  {%- for item in site.nav %}<a href="{{ item.url }}"{% if item.key == nav %} class="on" aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
-  <a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a>
-</nav>
+{#- Phone menu: a full-screen layer over the page (it never pushes the page down). Opens with a circle that grows from the menu button. -#}
+<div class="mobile-menu" id="mobile-menu" aria-label="Menu" inert>
+  <nav class="mm-links">
+    {%- for item in site.nav %}<a href="{{ item.url }}" style="--i: {{ loop.index }}"{% if item.key == nav %} class="on" aria-current="page"{% endif %}><span class="mm-num">{{ "0" if loop.index < 10 }}{{ loop.index }}</span><span class="mm-label">{{ item.label }}</span></a>{% endfor %}
+  </nav>
+  <div class="mm-foot" style="--i: {{ site.nav.length + 1 }}">
+    <a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a>
+    <img class="mm-badge" src="/assets/img/squarespace-circle-platinum-2026.webp" alt="Squarespace Circle Platinum Partner 2026" width="640" height="219" loading="lazy">
+  </div>
+</div>
 
 <main>
 {{ content | safe }}
@@ -53,12 +59,16 @@
 <script>
   (function () {
     var btn = document.querySelector('.menu-btn'), menu = document.getElementById('mobile-menu');
-    btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-      menu.hidden = open;
-      document.body.classList.toggle('menu-open', !open);
-    });
+    function setOpen(open) {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+      if (open) menu.removeAttribute('inert'); else menu.setAttribute('inert', '');
+      document.documentElement.classList.toggle('menu-open', open);
+    }
+    btn.addEventListener('click', function () { setOpen(btn.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { setOpen(false); btn.focus(); } });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 900 && btn.getAttribute('aria-expanded') === 'true') setOpen(false); });
   })();
 
   // Scroll animation. Same-page links (like the "What do you need help with?" cards) glide down instead of jumping,
