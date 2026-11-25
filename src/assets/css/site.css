@@ -774,10 +774,12 @@ html.pf-lock { overflow: hidden; }
   .hero-grid > .hero-art { order: -1; }
   .hero { padding: 8px 0 52px; }
   .hero-grid { gap: 30px; }
-  .hero-art { height: 316px; max-width: 330px; }
-  .hero-art .portrait { width: 238px; height: 300px; }
-  .hero-art .disc { width: 188px; height: 188px; right: 118px; top: 90px; }
-  .hero-art .mini { width: 128px; height: 128px; }
+  /* Pictures line up with the text: the group spans the same width as the words (Mali, 11/25). */
+  .hero-art { height: 340px; width: 100%; max-width: none; margin: 0; }
+  .hero-art .portrait { width: 74%; height: 330px; right: 0; top: 0; }
+  .hero-art .disc { width: 58%; height: auto; aspect-ratio: 1; left: 0; right: auto; top: 92px; }
+  .hero-art .mini { width: 40%; height: auto; aspect-ratio: 1; left: 0; bottom: 0; }
+  .hi-photo { max-width: none; width: 100%; margin: 0; }
 
   /* Proof strip: three equal rows, the same space above and below each line, short centered dividers. */
   .trust-row { gap: 0; padding-top: 10px; padding-bottom: 10px; }
