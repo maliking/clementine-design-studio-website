@@ -544,3 +544,24 @@ h1 em, h2 em { white-space: nowrap; }
 .trust p, .kind li p { font-family: "commuters-sans", "Instrument Sans", system-ui, sans-serif; font-weight: 300; }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Jump cards, calmer (11/25, Krug pass): no colored circles behind the icons, no circled arrows.
+   The "I need..." line does the work; the icon and a plain arrow are quiet hints. Whole card is the link. */
+.jcard { grid-template-columns: 26px minmax(0, 1fr); column-gap: 16px; padding: 26px 52px 26px 24px; min-height: 0; transition: border-color .15s, box-shadow .15s; }
+.jcard:hover { border-color: var(--green); box-shadow: 0 6px 18px rgba(42, 44, 49, .06); }
+.jcard .ic { width: 26px; height: 26px; background: none; border-radius: 0; color: var(--green); place-items: start; margin-top: 3px; }
+.jcard svg { width: 24px; height: 24px; }
+.jcard b { font-size: 24px; align-self: start; }
+.jcard small { margin-right: 0; }
+.jcard .go, .jcard.wide .go { border: 0; width: 16px; height: 16px; right: 22px; top: 31px; margin-top: 0; background-size: 13px; opacity: .55; }
+.jcard:hover .go { opacity: 1; }
+.jcard.wide .ic { background: none; color: var(--accent-on-dark); }
+.jcard.wide .go { top: 50%; margin-top: -8px; }
+.jcard.wide:hover { border-color: var(--dark); }
+@media (max-width: 900px) {
+  .jcard, .jcard.wide { grid-template-columns: 24px minmax(0, 1fr); column-gap: 14px; padding: 18px 44px 18px 18px; }
+  .jcard .ic { width: 24px; height: 24px; margin-top: 2px; }
+  .jcard svg { width: 22px; height: 22px; }
+  .jcard b { font-size: 21px; }
+  .jcard .go, .jcard.wide .go { right: 16px; top: 50%; margin-top: -8px; }
+}
