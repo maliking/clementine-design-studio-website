@@ -5,7 +5,7 @@
   --tint: #F3EBDD; --accent: #F89810; --accent-ink: #C96A00; --accent-soft: #FDE9CC;
   --green: #4E7D2B; --green-soft: #E7EFDC; --dark: #22382A; --on-dark: #FBF5EC; --on-dark-muted: #C9D3C4;
   --btn-bg: #4E7D2B; --btn-fg: #FFFFFF; --radius: 20px; --radius-sm: 14px;
-  --display: "ivymode", Georgia, serif; --h-weight: 400; --h-track: -0.012em;
+  --display: "ivypresto-display", Georgia, serif; --h-weight: 400; --h-track: -0.012em;
   --h1: 76px; --h2: 58px; --h3: 31px;
 }
 
