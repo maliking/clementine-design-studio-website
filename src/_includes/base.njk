@@ -78,7 +78,7 @@
       var start = window.scrollY;
       var max = document.documentElement.scrollHeight - window.innerHeight;
       var bar = document.querySelector('.svc-nav');
-      var off = bar && id !== 'help' ? bar.offsetHeight : 0;
+      var off = bar && id !== 'help' ? bar.offsetHeight + 24 : 0;
       var end = Math.min(max, Math.max(0, target.getBoundingClientRect().top + start - off));
       var done = function () {
         history.pushState(null, '', '#' + id);
