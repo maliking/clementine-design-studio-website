@@ -6,11 +6,60 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# The real site (main branch) is the only one search engines may list. Deploy Previews keep "noindex".
+[context.production.environment]
+  SITE_LIVE = "true"
+
 # The old Squarespace site had a copy of the home page at /home.
 [[redirects]]
   from = "/home"
   to = "/"
   status = 301
+
+# ---- JuiceKit demo (added 11/25) ----
+# The demo stays on Mali's Squarespace site until it has a new home. After clementinedesign.studio
+# points to Netlify, these send the demo's old addresses to the same pages on the Squarespace built-in address.
+# 302 (temporary) because the demo will move again.
+[[redirects]]
+  from = "/optionkit-demo"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-demo"
+  status = 302
+[[redirects]]
+  from = "/optionkit-demo/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-demo/:splat"
+  status = 302
+[[redirects]]
+  from = "/optionkit-test"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-test"
+  status = 302
+[[redirects]]
+  from = "/optionkit-test/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-test/:splat"
+  status = 302
+[[redirects]]
+  from = "/store-2"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/store-2"
+  status = 302
+[[redirects]]
+  from = "/store-2/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/store-2/:splat"
+  status = 302
+[[redirects]]
+  from = "/booking"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/booking"
+  status = 302
+[[redirects]]
+  from = "/booking/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/booking/:splat"
+  status = 302
+[[redirects]]
+  from = "/videos"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/videos"
+  status = 302
+[[redirects]]
+  from = "/videos/*"
+  to = "https://sphere-buttercup-r8ag.squarespace.com/videos/:splat"
+  status = 302
 
 # ---- Blog and Plugins (added 11/25 by the blog/plugins thread) ----
 # Blog and plugin pages are built as /blog/<name>.html so they open at the exact Squarespace address (no slash at the end).
