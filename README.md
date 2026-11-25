@@ -8,6 +8,7 @@ Mali King's website (Clementine Design Studio), rebuilt in code off Squarespace.
 - `src/_includes/base.njk` is the shared header, phone menu and footer for every page.
 - `src/_data/site.json` holds the menu, footer links and the "Book a Free Consultation" link.
 - `src/assets/css/site.css` holds the Direction A design (colors, type, spacing). Phone rules are in the `max-width: 760px` block near the end.
+- `netlify.toml` tells the host how to build the site.
 - Each page is a folder in `src/` with an `index.njk` (for example `src/services/index.njk` becomes `/services/`).
 
 ## Run it

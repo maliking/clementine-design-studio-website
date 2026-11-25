@@ -1,0 +1,14 @@
+# Netlify settings, so nothing has to be typed in on the Netlify side.
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Temporary: the home page isn't rebuilt yet, so the preview link opens on the services page.
+# Remove this when src/index.njk exists.
+[[redirects]]
+  from = "/"
+  to = "/services/"
+  status = 302
