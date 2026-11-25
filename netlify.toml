@@ -10,6 +10,29 @@
 [context.production.environment]
   SITE_LIVE = "true"
 
+# maliking.com (Mali's older domain) moved off Squarespace 11/25: every address on it goes to the same page here.
+# These must stay the first rules in the file.
+[[redirects]]
+  from = "https://maliking.com/*"
+  to = "https://clementinedesign.studio/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://maliking.com/*"
+  to = "https://clementinedesign.studio/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.maliking.com/*"
+  to = "https://clementinedesign.studio/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://www.maliking.com/*"
+  to = "https://clementinedesign.studio/:splat"
+  status = 301
+  force = true
+
 # The old Squarespace site had a copy of the home page at /home.
 [[redirects]]
   from = "/home"
