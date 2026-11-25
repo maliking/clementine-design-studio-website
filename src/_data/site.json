@@ -1,0 +1,19 @@
+{
+  "name": "Clementine Design Studio",
+  "url": "https://clementinedesign.studio",
+  "consultUrl": "/consultation",
+  "nav": [
+    { "key": "home", "label": "Home", "url": "/" },
+    { "key": "about", "label": "About", "url": "/about" },
+    { "key": "services", "label": "Services", "url": "/services" },
+    { "key": "portfolio", "label": "Portfolio", "url": "/example-sites" },
+    { "key": "plugins", "label": "Plugins", "url": "/plugins" },
+    { "key": "blog", "label": "Blog", "url": "/blog" },
+    { "key": "contact", "label": "Contact", "url": "/contact" }
+  ],
+  "footerLinks": [
+    { "label": "FAQs", "url": "/faqs" },
+    { "label": "Icompendium Help", "url": "/icompendium-hourly-help" },
+    { "label": "Private Practice Therapist Websites", "url": "/private-practice-therapist-websites" }
+  ]
+}

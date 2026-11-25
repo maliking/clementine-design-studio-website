@@ -1,0 +1,14 @@
+{
+  "name": "clementine-site",
+  "version": "1.0.0",
+  "description": "clementinedesign.studio, built with Eleventy",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  },
+  "private": true,
+  "type": "module"
+}

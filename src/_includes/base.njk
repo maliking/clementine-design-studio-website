@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }} | {{ site.name }}</title>
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+{% if preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<link rel="canonical" href="{{ site.url }}{{ page.url | replace('/index.html', '') }}">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{# Headings: IvyPresto Display needs an Adobe Fonts web project from Mali's own Adobe account (see README). Until then a free stand-in loads. #}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="/"><img src="/assets/img/logo.png" alt="{{ site.name }}"></a>
+  <nav class="nav">
+    {%- for item in site.nav %}<a href="{{ item.url }}"{% if item.key == nav %} class="on" aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor -%}
+  </nav>
+  <a class="btn btn-head" href="{{ site.consultUrl }}">Book a Free Consultation</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobile-menu" hidden>
+  {%- for item in site.nav %}<a href="{{ item.url }}"{% if item.key == nav %} class="on" aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+  <a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a>
+</nav>
+
+<main>
+{{ content | safe }}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="links">{% for l in site.footerLinks %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+      <p class="legal"><a href="/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/cookie-policy">Cookie Policy</a></p>
+      <p class="disc">Disclaimer: Clementine Design Studio is not affiliated, sponsored, or endorsed by Squarespace. The term "Squarespace" is the registered trademark and property of Squarespace, Inc.</p>
+      <p class="copy">© {{ year }} {{ site.name }}</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.menu-btn'), menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      menu.hidden = open;
+      document.body.classList.toggle('menu-open', !open);
+    });
+  })();
+</script>
+</body>
+</html>
