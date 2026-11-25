@@ -26,10 +26,9 @@ h1 em, h2 em { white-space: nowrap; }
 .small { font-size: 15px; color: var(--muted); }
 .center { text-align: center; }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; }
-/* Section label: a small green leaf, then the label with a loose hand-drawn orange stroke under it. */
-.eyebrow { position: relative; gap: 9px; padding-bottom: 10px; }
-.eyebrow::before { content: ""; flex: none; width: 16px; height: 16px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 21C3 11 9 4 21 3c0 11-7 18-18 18z' fill='%234E7D2B'/%3E%3Cpath d='M4 20L14 10' stroke='%23FBF5EC' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; }
-.eyebrow::after { content: ""; position: absolute; left: 25px; right: -2px; bottom: 0; height: 9px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9c30-6 70-8 110-5 30 2 55 4 84-1' fill='none' stroke='%23F89810' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+/* Section label: a mini clementine (orange fruit, small green leaf) before green text. */
+.eyebrow { gap: 9px; }
+.eyebrow::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: -3px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='14' r='8' fill='%23F89810'/%3E%3Cpath d='M12.5 6.5C12.5 3 15.5 1 21 1c0 4-3.5 6.5-8.5 5.5z' fill='%234E7D2B'/%3E%3C/svg%3E") center / contain no-repeat; }
 
 .wrap { max-width: 1296px; margin: 0 auto; padding: 0 48px; }
 .band { padding: 112px 0; }
