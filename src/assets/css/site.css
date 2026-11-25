@@ -581,6 +581,8 @@ h1 em, h2 em { white-space: nowrap; }
   .start-panel { padding: 22px 22px 4px; }
   .start-grid .start-panel .list-intro { font-size: 17px; }
   .start-panel .tiles { padding: 0; }
+}
+
 /* Help cards grouped (11/25): website cards first, then everything beyond the website. */
 .jgroup + .jgroup { margin-top: 44px; }
 .jump-grid.jlast { margin-top: 44px; }
@@ -591,4 +593,16 @@ h1 em, h2 em { white-space: nowrap; }
   .jump-grid.two { grid-template-columns: minmax(0, 1fr); }
   .jgroup + .jgroup, .jump-grid.jlast { margin-top: 32px; }
   .jlabel { margin-bottom: 12px; gap: 14px; }
+}
+
+/* No one-word last lines, smaller check circles (11/25). */
+p, li { text-wrap: pretty; }
+.start-panel .list-intro { text-wrap: balance; }
+.checks li { padding-left: 32px; }
+.checks li::before { width: 20px; height: 20px; top: 4px; background-size: 10px; }
+.tiles li { padding-left: 38px; }
+.tiles li::before { width: 22px; height: 22px; top: 26px; background-size: 10px; }
+@media (max-width: 900px) {
+  .tiles li { padding-left: 34px; }
+  .tiles li::before { width: 20px; height: 20px; top: 21px; }
 }
