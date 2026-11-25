@@ -1,0 +1,165 @@
+---
+layout: base.njk
+title: "Expert Squarespace Designer | Custom & 1-Day Websites"
+description: "I design custom Squarespace sites that reflect your business, make it easy for people to book or buy, and are simple for you to update."
+nav: home
+permalink: /
+---
+{#- Words on this page are copied from the live home page (11/25). Change them only when Mali asks. -#}
+
+<!-- 1. HERO -->
+<section class="hero home-hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1>Let’s Build a Squarespace Website You’re <em>Proud to Share</em></h1>
+      <p class="lead">Whether you’re starting fresh or your current website needs a little love, I’m here to help. I design custom Squarespace sites that reflect your business, make it easy for people to book or buy, and are simple for you to update.</p>
+      <div class="cta-row">
+        <a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="disc"></div>
+      <div class="portrait"><img src="/assets/img/hero-laptop.jpg" alt="A laptop on a wooden stool showing a website I designed"></div>
+      <div class="mini round"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TRUST -->
+<section class="trust">
+  <div class="wrap trust-row">
+    <a class="trust-item" href="https://99designs.com/profiles/clementinedesignstudio/about" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3z"/></svg></span>
+      <span>5.0 from 100+ reviews on 99designs</span>
+    </a>
+    <span class="trust-item">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+      <span>Based in Monterey, CA - working with businesses everywhere</span>
+    </span>
+  </div>
+</section>
+
+<!-- 3. PORTFOLIO -->
+<section class="band">
+  <div class="wrap">
+    <div class="center-head">
+      <div class="eyebrow">A few recent favorites</div>
+      <h2>Different businesses. The same <em>thoughtful care.</em></h2>
+    </div>
+    <ul class="pf-grid">
+      {%- set work = [
+        { name: "Oakland Chinatown Chamber", type: "Chamber of Commerce", tags: ["bold", "trustworthy", "clean"], url: "oaklandchinatownchamber.org", img: "oakland-chinatown-chamber.jpg" },
+        { name: "The Whisper Group", type: "Advisory Firm", tags: ["approachable", "clean", "modern"], url: "wearethewhispergroup.com", img: "whisper-group.jpg" },
+        { name: "VIBE Pilates", type: "Pilates Studio", tags: ["sleek", "moody", "energetic"], url: "vibepilatesstudio.com", img: "vibe-pilates.jpg" },
+        { name: "Luretik", type: "Luxury Olive Oils", tags: ["elegant", "calm", "luxurious"], url: "luretik.com", img: "luretik.jpg" },
+        { name: "Stef Reid", type: "Paralympian", tags: ["bold", "clean", "professional"], url: "stefreid.com", img: "stef-reid.jpg" },
+        { name: "Clementine Promos", type: "Branded Corporate Merchandise", tags: ["bright", "modern", "clean"], url: "clementinepromos.com", img: "clementine-promos.jpg" }
+      ] %}
+      {%- for w in work %}
+      <li class="pf-card">
+        <a class="pf-photo" href="https://{{ w.url }}" target="_blank" rel="noopener"><img src="/assets/img/portfolio/{{ w.img }}" alt="{{ w.name }} website" loading="lazy"></a>
+        <div class="pf-body">
+          <h3>{{ w.name }}</h3>
+          <p class="pf-type">{{ w.type }}</p>
+          <p class="pf-tags">{% for t in w.tags %}<span>{{ t }}</span>{% endfor %}</p>
+          <a class="pf-link" href="https://{{ w.url }}" target="_blank" rel="noopener">{{ w.url }}</a>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="center"><a class="btn btn-line" href="/example-sites">View the Portfolio ↗</a></p>
+  </div>
+</section>
+
+<!-- 4. HOW I CAN HELP -->
+<section class="band tint">
+  <div class="wrap">
+    <div class="center-head">
+      <div class="eyebrow">A little help, or a fresh start</div>
+      <h2>How I <em>Can Help</em></h2>
+    </div>
+    <ul class="help-grid">
+      <li class="hcard">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+        <h3>Website Design</h3>
+        <p>Whether you’re starting a business or your current website doesn’t feel like you anymore, I can help. Choose a Custom Website for a more involved, collaborative build, or Website in a Day if you have a smaller project and your content ready to go.</p>
+      </li>
+      <li class="hcard">
+        <span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span>
+        <h3>Squarespace SEO</h3>
+        <p>Have a website, but not sure if people are finding it? I’ll review your Squarespace site, help improve the details that matter for search, and explain what you can do going forward. You don’t need to become an SEO expert to understand your own website.</p>
+      </li>
+      <li class="hcard">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1zM14 7l3 3"/></svg></span>
+        <h3>Hourly Squarespace Help</h3>
+        <p>Have a few things you’ve been meaning to fix? You can book me for updates, layout changes, troubleshooting, or help figuring something out. Tell me what’s on your list, and we’ll work out how much time you need.</p>
+      </li>
+      <li class="hcard">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+        <h3>Automation &amp; Workflow Setup</h3>
+        <p>Still copying information between apps, updating the same spreadsheets, or doing the same admin tasks every week? I love figuring out how to make those jobs easier. I can help connect your tools and set up automations, using AI where it makes sense for your business.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5. REVIEW HIGHLIGHTS -->
+<section class="band dark reviews">
+  <div class="wrap">
+    <div class="rev-grid">
+      <div class="rev-main">
+        <h2>She went <em>above and beyond</em> with the design.</h2>
+        <p class="rev-stars"><a href="https://99designs.com/profiles/clementinedesignstudio/about" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 from 100+ reviews on 99designs</a></p>
+        <p>Before reaching out to Mali, I went through several designers who did not pay attention to my design needs and were instead eager to sign a contract. Mali was the exact opposite.</p>
+        <p>She attentively listened to my project goals and developed the best plan moving forward. She went above and beyond with the design and took the time to explain how to manage the site behind the scenes. My small legal team and I are very grateful to her. 10/10! Would recommend!</p>
+      </div>
+      <ul class="rev-quotes">
+        <li><b>“She created my entire website in less than a day.”</b><p>She clearly understands coding in the back end to get real customization, and covered all the bases for when I'll work on the site myself. I will be referring her to my colleagues!</p></li>
+        <li><b>“She truly understood my vision from the start.”</b><p>Despite the challenges I had in expressing my vision, Mali listened attentively and went above and beyond to bring it to life. It's evident that she loves what she does.</p></li>
+        <li><b>“She took the time to explain SEO in a way I could understand.”</b><p>Even when I wasn't sure exactly what I wanted it to look like, she understood the style and feel I was going for and brought it to life perfectly.</p></li>
+      </ul>
+    </div>
+    <p class="rev-more"><a href="https://99designs.com/profiles/clementinedesignstudio/about" target="_blank" rel="noopener">Read All Reviews →</a></p>
+  </div>
+</section>
+
+<!-- 6. HI THERE -->
+<section class="band">
+  <div class="wrap hi-grid">
+    <div class="hi-photo"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
+    <div>
+      <h2>Hi <em>there!</em></h2>
+      <p class="lead">We’re a team of experienced Squarespace experts based in the US. Our primary focus is on your company's success. We take the time to understand your unique goals and vision, crafting tailored websites that capture your brand essence and drive results.</p>
+      <p class="hi-link"><a href="/about">Meet the Team</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. KIND WORDS -->
+<section class="band tint">
+  <div class="wrap">
+    <div class="center-head">
+      <h2>Kind <em>Words</em> 🥹💖</h2>
+    </div>
+    <ul class="kind">
+      <li><p>"Mali really customized the site to my specifications and used her awesome design skills to create an outstanding organic flow for my overview page. She also created a really unique bio page unlike anything I've ever had before. She clearly understands coding in the back end to get real customization to a site. She was so much fun to work with and made this process enjoyable answering any questions I had and covered all the bases for me for when I will need to work on the site myself. She created my entire website in less than a day and turned it into a truly collaborative process taking my suggestions for revisions and making those changes to enhance the site. I really appreciate the video she recorded for me when she walked me through the entire site through our Zoom meeting. I will be referring her to my colleagues!"</p><b>— J.B.</b></li>
+      <li><p>“Before reaching out to Mali, I went through several designers who did not pay attention to my design needs and were instead eager to sign a contract. Mali was the exact opposite. She attentively listened to my project goals and developed the best plan moving forward. She went above and beyond with the design and took the time to explain how to manage the site behind the scenes. My small legal team and I are very grateful to her. 10/10! Would recommend!”</p><b>— A.S.</b></li>
+      <li><p>“I had an incredible experience working with Mali. She truly understood my vision from the start and transformed it into a stunning website. What stood out to me the most was how she made the process very personal. Despite the challenges I had in expressing my vision, Mali listened attentively and went above and beyond to bring it to life. She demonstrated a deep understanding even when my ideas were a bit tricky to communicate. Not only did she assist me with the design, but Mali also showed great empathy and understanding towards my deadlines. It's evident that she loves what she does. I highly recommend Clementine Studio for anyone looking to bring their website dreams to life. Mali made the entire process enjoyable, and I'm looking forward to collaborating with her again!”</p><b>— I.E.</b></li>
+      <li><p>“I can’t say enough wonderful things about Mali at Clementine Studio! She did a beautiful job redesigning my PR and marketing agency website. Her work is impeccable, and she is incredibly talented, responsive, and easy to work with. She works quickly without sacrificing quality and went above and beyond to help me launch my new site. I couldn’t be happier with the results and look forward to working with her on future projects. I highly recommend her!”</p><b>— S.K.</b></li>
+      <li><p>“Mali did an excellent job completing an SEO project for our site resulting in a perfect score (100%) ! It was a real pleasure working with Mali and I highly recommend her!”</p><b>— Dr. B.L.</b></li>
+      <li><p>“I had a fantastic experience working with Mali at Clementine Studio. She was prompt, responsive, and detail-oriented throughout the entire process. My website turned out beautifully. Even when I wasn’t sure exactly what I wanted it to look like, she understood the style and feel I was going for and brought it to life perfectly. Just as importantly, she took the time to explain SEO in a way I could understand and gave me clear guidance on how I can continue boosting my visibility even after our work together. I’m so grateful for her support and would recommend her to anyone looking for a professional, user-friendly website and stronger online presence.”</p><b>— A.G.</b></li>
+      <li><p>“We had an absolutely fantastic experience working with Clementine Studio. From start to finish, she delivered a perfect website design that couldn't have been better . The communication was top-notch—always responsive, clear, and proactive. What really stood out was her amazing support, guiding me through every step. She went above and beyond to ensure I was happy. The entire process was seamless, and the overall experience was exceptional.”</p><b>— T.A.</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8. CTA -->
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-panel">
+      <div class="cta-face"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
+      <h2>Ready to get <em>started?</em></h2>
+      <p style="margin-top: 36px;"><a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a></p>
+    </div>
+  </div>
+</section>

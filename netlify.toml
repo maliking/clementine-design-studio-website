@@ -6,9 +6,8 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Temporary: the home page isn't rebuilt yet, so the preview link opens on the services page.
-# Remove this when src/index.njk exists.
+# The old Squarespace site had a copy of the home page at /home.
 [[redirects]]
-  from = "/"
-  to = "/services/"
-  status = 302
+  from = "/home"
+  to = "/"
+  status = 301
