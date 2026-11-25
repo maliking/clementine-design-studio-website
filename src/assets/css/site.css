@@ -34,6 +34,7 @@ h1 em, h2 em { white-space: nowrap; }
 .band { padding: 112px 0; }
 .band.tint { background: var(--tint); }
 .band.dark { background: var(--dark); color: var(--on-dark); }
+.band.dark .eyebrow { color: #B5D88A; }
 
 .btn { display: inline-block; background: var(--btn-bg); color: var(--btn-fg); font-size: 17px; font-weight: 600; padding: 18.5px 34px 17.5px; border-radius: 999px; line-height: 1.2; }
 
@@ -173,9 +174,9 @@ h1 em, h2 em { white-space: nowrap; }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
 .facts { border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); overflow: hidden; margin-top: 6px; }
 .facts > div { padding: 24px 28px 26px; }
-.facts > div + div { border-top: 1px solid var(--line); background: var(--accent-soft); }
+.facts > div + div { border-top: 0; background: var(--dark); color: var(--on-dark); }
 .facts b { display: block; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
-.facts > div + div b { color: var(--ink); }
+.facts > div + div b { color: var(--accent); }
 .facts .big { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 34px; line-height: 1.1; }
 .setup { margin-top: 34px; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
@@ -191,11 +192,11 @@ h1 em, h2 em { white-space: nowrap; }
 .svc-row > div:nth-child(2) { border-left: 1px solid var(--line); }
 .svc-row h3 { margin-bottom: 10px; }
 .svc-row > div:nth-child(2) .dots { margin-top: 2px; }
-.svc-row .cost { background: var(--accent-soft); }
+.svc-row .cost { background: var(--dark); color: var(--on-dark); }
 .cost p + p { margin-top: 8px; }
 .cost b { display: block; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 30px; line-height: 1.1; }
 .cost p:not(.fine) + p:not(.fine) { margin-top: 16px; }
-.cost .fine { margin-top: 18px !important; padding-top: 14px; border-top: 1px solid rgba(42, 44, 49, .16); font-size: 15px; color: #4f5057; }
+.cost .fine { margin-top: 18px !important; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, .18); font-size: 15px; color: var(--on-dark-muted); }
 .callout { margin: 22px 0 0; padding: 24px 32px; background: var(--dark); color: var(--on-dark); border-radius: var(--radius); font-size: 19px; }
 
 /* Examples */
@@ -346,7 +347,7 @@ h1 em, h2 em { white-space: nowrap; }
   .svc-row > div:nth-child(2) { border-left: 0; border-top: 1px solid var(--line); }
   .svc-row > div:nth-child(2)::before, .svc-row .cost::before { display: block; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 10px; }
   .svc-row > div:nth-child(2)::before { content: "Your part"; color: var(--green); }
-  .svc-row .cost::before { content: "Cost"; }
+  .svc-row .cost::before { content: "Cost"; color: var(--accent); }
   .svc-row > div:nth-child(2) .dots { margin-top: 0; }
   .callout { padding: 20px 22px; font-size: 17.5px; margin-top: 16px; }
 
@@ -455,19 +456,21 @@ h1 em, h2 em { white-space: nowrap; }
 .hcard h3 { margin-bottom: 12px; }
 .hcard p { color: var(--muted); }
 
-.rev-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 72px; align-items: start; }
-.rev-main h2 { margin-bottom: 22px; }
-.rev-main p + p { margin-top: 16px; }
-.rev-stars { margin-bottom: 26px; font-weight: 600; color: var(--on-dark-muted); }
-.rev-stars .stars { color: var(--accent); letter-spacing: .12em; margin-right: 6px; }
-.rev-stars a:hover { text-decoration: underline; text-underline-offset: 3px; }
-.rev-quotes { display: grid; gap: 18px; }
-.rev-quotes li { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--radius); padding: 24px 26px; }
-.rev-quotes b { display: block; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 26px; line-height: 1.2; color: var(--accent); margin-bottom: 10px; }
-.rev-quotes p { font-size: 16px; color: var(--on-dark-muted); }
-.rev-more { margin-top: 44px; text-align: center; font-weight: 600; }
-.rev-more a { color: var(--accent); }
-.rev-more a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Reviews (design 3): big quote on the left with an orange line, three more as a list on the right. */
+.reviews h2 { margin-bottom: 14px; }
+.rev-meta { margin-bottom: 44px; color: var(--on-dark-muted); font-weight: 600; }
+.rev-stars { color: #E9A93C; letter-spacing: .12em; margin-right: 6px; }
+.rev-meta a { color: var(--accent); margin-left: 14px; white-space: nowrap; }
+.rev-meta a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.rev-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+.rev-feature { border-left: 3px solid var(--accent); padding: 4px 0 4px 32px; }
+.rev-feature p { color: var(--on-dark-muted); font-size: 17px; }
+.rev-feature .rev-big { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 34px; line-height: 1.25; color: var(--on-dark); margin-bottom: 18px; }
+.rev-list li { padding: 26px 0; border-top: 1px solid rgba(255, 255, 255, .16); }
+.rev-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
+.rev-list p { font-size: 16px; color: var(--on-dark-muted); }
+.rev-list .rev-head { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 24px; line-height: 1.2; color: var(--on-dark); margin-bottom: 8px; }
+.reviews .rev-who { margin-top: 14px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
 
 .hi-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
 .hi-photo { aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; max-width: 420px; }
@@ -491,7 +494,10 @@ h1 em, h2 em { white-space: nowrap; }
   .help-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .hcard { padding: 26px 22px 28px; }
   .rev-grid, .hi-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-  .rev-quotes b { font-size: 23px; }
+  .rev-feature { padding-left: 22px; }
+  .rev-feature .rev-big { font-size: 26px; }
+  .rev-list .rev-head { font-size: 22px; }
+  .rev-meta a { display: block; margin: 6px 0 0; }
   .hi-photo { max-width: 300px; margin: 0 auto; }
   .kind { columns: 1; }
   .kind li { margin-bottom: 14px; padding: 22px 20px; }
