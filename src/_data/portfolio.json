@@ -21,7 +21,7 @@
       "name": "Tufas Boulder Lounge",
       "type": "Bouldering Gym",
       "group": "fitness",
-      "tags": ["playful", "bold", "illustrated"],
+      "tags": ["playful", "bold", "animated"],
       "about": "A community-first bouldering gym in Philadelphia. The site covers day passes and memberships, events, programs, birthday parties and gift cards, with illustrations throughout.",
       "video": true
     },
@@ -83,6 +83,14 @@
       "group": "events",
       "tags": ["bold", "trustworthy", "clean"],
       "home": true
+    },
+    {
+      "slug": "favarh",
+      "name": "Favarh",
+      "type": "Disability Services Nonprofit",
+      "group": "events",
+      "tags": ["bold", "warm", "colorful"],
+      "about": "A nonprofit in Connecticut’s Farmington Valley that helps people with intellectual and developmental disabilities live as independently as possible. The site covers its programs, inclusive hiring, careers, ways to get involved and its thrift shop."
     },
     {
       "slug": "whisper-group",
