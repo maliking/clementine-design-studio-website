@@ -170,3 +170,9 @@
   from = "/new-page-95"
   to = "/"
   status = 301
+
+# The old Custom Website package page is replaced by the website section of the new Services page (11/25).
+[[redirects]]
+  from = "/custom-website"
+  to = "/services#s-website"
+  status = 301

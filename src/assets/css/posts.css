@@ -141,3 +141,36 @@
 .post-body .note-box > :first-child { margin-top: 0; }
 .post-body .note-box h2 { font-size: 32px; }
 @media (max-width: 900px) { .post-body .note-box h2 { font-size: 26px; } }
+
+/* ---------- Footer pages: FAQs, Icompendium Help, Therapist Websites, Privacy, Cookies ---------- */
+.faq-list .faq-item + .faq-item { margin-top: 0; padding-top: 34px; border-top: 1px solid var(--line); }
+.faq-list .faq-item { padding-bottom: 34px; }
+.faq-list .faq-item h3 { margin-top: 0; font-size: 30px; }
+.faq-list .faq-item > * + * { margin-top: 14px; }
+.post-body.legal { font-size: 16.5px; }
+.post-body.legal h4 { font-size: 24px; }
+.post-body .table-responsive { overflow-x: auto; background: var(--card); border-radius: var(--radius); box-shadow: 0 1px 0 var(--line); }
+.post-body.legal td ul { gap: 2px; }
+.post-body.legal td { font-weight: 400 !important; white-space: normal !important; }
+.post-body .note-box .btn { color: var(--btn-fg); text-decoration: none; margin-top: 6px; }
+
+.split-2 { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; }
+.split-photo { aspect-ratio: 4 / 5; }
+.split-text h2 { margin-bottom: 22px; }
+.split-text p + p { margin-top: 16px; }
+.split-text p:first-of-type { font-size: 21px; line-height: 1.5; }
+.btn-row { margin-top: 30px; }
+.card-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.card-pair .ucard { display: flex; flex-direction: column; padding: 38px 38px 40px; }
+.card-pair h4 { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 27px; line-height: 1.22; margin-bottom: 16px; }
+.card-pair .ucard p br:first-child { display: none; }
+.card-pair .btn-row { margin-top: auto; padding-top: 28px; }
+@media (max-width: 900px) {
+  .split-2, .card-pair { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .split-photo { aspect-ratio: 4 / 3; }
+  .split-text p:first-of-type { font-size: 19px; }
+  .card-pair .ucard { padding: 26px 22px 28px; }
+  .card-pair h4 { font-size: 23px; }
+  .btn-row .btn { display: block; text-align: center; }
+  .faq-list .faq-item h3 { font-size: 25px; }
+}
