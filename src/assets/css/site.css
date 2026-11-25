@@ -754,6 +754,8 @@ html.pf-lock { overflow: hidden; }
   .site-header { position: relative; z-index: 60; }
   html.menu-open, html.menu-open body { overflow: hidden; }
   html.menu-open .site-header { position: fixed; top: 0; left: 0; right: 0; background: transparent; }
+  /* The header leaves the page flow while the menu is open, so hold its space: the page behind stays perfectly still. */
+  html.menu-open body { padding-top: 76px; }
   .mobile-menu { display: flex; flex-direction: column; position: fixed; inset: 0; z-index: 55; background: var(--bg); padding: 100px 28px calc(28px + env(safe-area-inset-bottom)); overflow-y: auto; overscroll-behavior: contain;
     visibility: hidden; clip-path: circle(0 at calc(100% - 44px) 38px); transition: clip-path .65s cubic-bezier(.7, 0, .2, 1), visibility 0s linear .65s; }
   html.menu-open .mobile-menu { visibility: visible; clip-path: circle(150vmax at calc(100% - 44px) 38px); transition: clip-path .75s cubic-bezier(.7, 0, .2, 1); }
