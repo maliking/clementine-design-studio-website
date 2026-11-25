@@ -509,7 +509,6 @@ h1 em, h2 em { white-space: nowrap; }
 .industries { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto; }
 .industries li { background: var(--card); border-radius: 999px; padding: 10.75px 20px 9.25px; font-size: 16px; font-weight: 500; box-shadow: 0 1px 0 var(--line); }
 
-.contact-wrap { max-width: 720px; display: grid; gap: 36px; }
 .form-card { background: var(--card); border-radius: var(--radius); padding: 40px; box-shadow: 0 1px 0 var(--line), 0 14px 34px rgba(30, 25, 15, .07); display: grid; gap: 22px; }
 .form-card .hp { position: absolute; left: -9999px; }
 .field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; font-weight: 600; font-size: 16px; }
@@ -524,7 +523,6 @@ h1 em, h2 em { white-space: nowrap; }
 
 @media (max-width: 900px) {
   .page-hero { padding: 16px 0 48px; }
-  .contact-wrap { gap: 24px; }
   .form-card { padding: 26px 20px; }
   .form-card .btn { justify-self: start; }
   .cal-box { height: 1000px; }
@@ -804,4 +802,52 @@ html.pf-lock { overflow: hidden; }
   .mobile-menu, html.menu-open .mobile-menu { clip-path: none; transition: opacity .2s, visibility 0s linear .2s; opacity: 0; }
   html.menu-open .mobile-menu { opacity: 1; transition: opacity .2s; }
   .mm-links a, .mm-foot, html.menu-open .mm-links a, html.menu-open .mm-foot { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Contact page (redesign 11/25) ---------- */
+.contact-page { padding: 56px 0 120px; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; column-gap: 96px; row-gap: 56px; align-items: start; }
+.contact-intro { grid-column: 1; grid-row: 1; padding-top: 12px; }
+.contact-intro h1 { margin-bottom: 22px; }
+.contact-intro .lead { max-width: 26em; color: var(--muted); }
+.contact-form { grid-column: 2; grid-row: 1 / span 2; background: var(--card); border-radius: 12px; padding: 52px 52px 56px; box-shadow: 0 1px 0 var(--line), 0 24px 60px rgba(30, 25, 15, .08); display: grid; gap: 40px; }
+.contact-form .hp { position: absolute; left: -9999px; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.cf-field { display: grid; gap: 10px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.cf-field > span, .cf-field > legend { font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); padding: 0; margin-bottom: 4px; }
+.cf-field i { font-style: normal; font-weight: 400; letter-spacing: .04em; text-transform: none; color: var(--muted); font-size: 13px; }
+.cf-field input, .cf-field textarea { font: inherit; font-size: 18px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid rgba(42, 44, 49, .28); border-radius: 0; padding: 8px 0 12px; width: 100%; transition: border-color .2s; }
+.cf-field textarea { resize: vertical; min-height: 120px; line-height: 1.55; }
+.cf-field input:focus, .cf-field textarea:focus { outline: none; border-bottom-color: var(--green); box-shadow: 0 1px 0 var(--green); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { position: relative; cursor: pointer; }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span { display: inline-block; padding: 10px 16px 9px; border: 1px solid rgba(42, 44, 49, .2); border-radius: 6px; font-size: 15.5px; line-height: 1.3; color: var(--ink); background: transparent; transition: background .15s, border-color .15s, color .15s; }
+.chip:hover span { border-color: var(--green); }
+.chip input:checked + span { background: var(--dark); border-color: var(--dark); color: #fff; }
+.chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.contact-form .btn { border: 0; cursor: pointer; justify-self: start; font-family: inherit; padding-left: 44px; padding-right: 44px; }
+.contact-aside { grid-column: 1; grid-row: 2; display: grid; gap: 36px; padding-top: 40px; border-top: 1px solid var(--line); max-width: 420px; }
+.ca-label { font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.ca-link { font-family: var(--display); font-weight: var(--h-weight); font-size: 28px; line-height: 1.2; color: var(--ink); border-bottom: 1px solid var(--accent); padding-bottom: 2px; transition: color .15s; }
+.ca-link:hover { color: var(--accent-ink); }
+.ca-quote { margin: 0; }
+.ca-quote .stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.ca-quote .stars svg { width: 14px; height: 14px; fill: var(--accent); }
+.ca-quote blockquote { margin: 0 0 12px; font-family: var(--display); font-weight: var(--h-weight); font-style: italic; font-size: 26px; line-height: 1.25; color: var(--ink); }
+.ca-quote figcaption { font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+.ca-note { font-family: "commuters-sans", "Instrument Sans", system-ui, sans-serif; font-weight: 300; font-size: 12.5px; letter-spacing: .09em; text-transform: uppercase; line-height: 1.9; color: var(--muted); }
+@media (max-width: 1100px) { .contact-layout { column-gap: 56px; } .contact-form { padding: 44px 40px 48px; } }
+@media (max-width: 900px) {
+  .contact-page { padding: 16px 0 64px; }
+  .contact-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 32px; }
+  .contact-intro, .contact-form, .contact-aside { grid-column: 1; grid-row: auto; }
+  .contact-intro { padding-top: 0; }
+  .contact-intro h1 { margin-bottom: 14px; }
+  .contact-form { padding: 32px 22px 36px; gap: 32px; border-radius: 10px; }
+  .cf-row { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .chip span { font-size: 15px; padding: 9px 13px 8px; }
+  .contact-aside { padding-top: 32px; gap: 30px; max-width: none; }
+  .ca-link { font-size: 24px; }
+  .ca-quote blockquote { font-size: 23px; }
 }

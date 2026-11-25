@@ -4,32 +4,60 @@ title: "Contact | Get in Touch Today"
 nav: contact
 permalink: /contact/
 ---
-{#- Words and form fields copied from the live Contact page (11/25). No photo here (Mali, 11/25). Submissions go to Netlify Forms; email notifications get set up in Netlify before launch. -#}
+{#- Words and form fields copied from the live Contact page (11/25). No photo here (Mali, 11/25). Redesigned 11/25: intro + form + a side column with the Zoom call, a client quote and where Mali is based. "How can I help?" choices match the goals on the Services page. Submissions go to Netlify Forms; email notifications get set up in Netlify before launch. -#}
 
-<section class="hero page-hero">
-  <div class="wrap contact-wrap">
-    <h1>Get In <em>Touch!</em></h1>
-    <form class="form-card" name="contact" method="POST" action="/contact/thank-you/" data-netlify="true" netlify-honeypot="company">
+<section class="contact-page">
+  <div class="wrap contact-layout">
+    <div class="contact-intro">
+      <div class="eyebrow">Contact</div>
+      <h1>Get In <em>Touch!</em></h1>
+      <p class="lead">Tell me a little about your business and what you need, and I’ll get back to you.</p>
+    </div>
+
+    <form class="contact-form" name="contact" method="POST" action="/contact/thank-you/" data-netlify="true" netlify-honeypot="company">
       <input type="hidden" name="form-name" value="contact">
       <p class="hp"><label>Leave this empty <input name="company"></label></p>
-      <label class="field"><span>Name <i>(required)</i></span><input name="name" autocomplete="name" required></label>
-      <label class="field"><span>Email <i>(required)</i></span><input type="email" name="email" autocomplete="email" required></label>
-      <fieldset class="field">
+      <div class="cf-row">
+        <label class="cf-field"><span>Name <i>(required)</i></span><input name="name" autocomplete="name" required></label>
+        <label class="cf-field"><span>Email <i>(required)</i></span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <fieldset class="cf-field">
         <legend>How can I help? <i>(required)</i></legend>
-        <label class="opt"><input type="radio" name="how-can-i-help" value="I need a new website" required> I need a new website</label>
-        <label class="opt"><input type="radio" name="how-can-i-help" value="I want to update my current Squarespace website"> I want to update my current Squarespace website</label>
-        <label class="opt"><input type="radio" name="how-can-i-help" value="Something else!"> Something else!</label>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="how-can-i-help" value="I need a new website" required><span>I need a new website</span></label>
+          <label class="chip"><input type="radio" name="how-can-i-help" value="I want to update my website"><span>I want to update my website</span></label>
+          <label class="chip"><input type="radio" name="how-can-i-help" value="I need more customers"><span>I need more customers</span></label>
+          <label class="chip"><input type="radio" name="how-can-i-help" value="I want customers to come back"><span>I want customers to come back</span></label>
+          <label class="chip"><input type="radio" name="how-can-i-help" value="I want to sell a course or products online"><span>I want to sell a course or products online</span></label>
+          <label class="chip"><input type="radio" name="how-can-i-help" value="There has to be an easier way to do this"><span>There has to be an easier way to do this</span></label>
+          <label class="chip"><input type="radio" name="how-can-i-help" value="I'm not sure what I need"><span>I’m not sure what I need</span></label>
+        </div>
       </fieldset>
-      <fieldset class="field">
+      <fieldset class="cf-field">
         <legend>How did you hear about me?</legend>
-        <label class="opt"><input type="radio" name="how-did-you-hear" value="Google"> Google</label>
-        <label class="opt"><input type="radio" name="how-did-you-hear" value="99Designs"> 99Designs</label>
-        <label class="opt"><input type="radio" name="how-did-you-hear" value="Squarespace Marketplace"> Squarespace Marketplace</label>
-        <label class="opt"><input type="radio" name="how-did-you-hear" value="Referral"> Referral</label>
-        <label class="opt"><input type="radio" name="how-did-you-hear" value="Other"> Other</label>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="how-did-you-hear" value="Google"><span>Google</span></label>
+          <label class="chip"><input type="radio" name="how-did-you-hear" value="99Designs"><span>99Designs</span></label>
+          <label class="chip"><input type="radio" name="how-did-you-hear" value="Squarespace Marketplace"><span>Squarespace Marketplace</span></label>
+          <label class="chip"><input type="radio" name="how-did-you-hear" value="Referral"><span>Referral</span></label>
+          <label class="chip"><input type="radio" name="how-did-you-hear" value="Other"><span>Other</span></label>
+        </div>
       </fieldset>
-      <label class="field"><span>Message <i>(required)</i></span><textarea name="message" rows="6" required></textarea></label>
+      <label class="cf-field"><span>Message <i>(required)</i></span><textarea name="message" rows="4" required></textarea></label>
       <button class="btn" type="submit">Send</button>
     </form>
+
+    <aside class="contact-aside">
+      <div class="ca-block">
+        <p class="ca-label">Rather talk it through?</p>
+        <a class="ca-link" href="{{ site.consultUrl }}">Book a free 20-minute Zoom call <span aria-hidden="true">→</span></a>
+      </div>
+      <figure class="ca-quote">
+        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg></span>
+        <blockquote>“She truly understood my vision from the start.”</blockquote>
+        <figcaption>I.E. · Custom website</figcaption>
+      </figure>
+      <p class="ca-note">5.0 from 100+ reviews on 99designs<br>Based in Monterey, CA - working with businesses everywhere</p>
+    </aside>
   </div>
 </section>
