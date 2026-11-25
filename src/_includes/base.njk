@@ -7,7 +7,9 @@
 {% if description %}<meta name="description" content="{{ description }}">{% endif %}
 {% if preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <link rel="canonical" href="{{ site.url }}{{ page.url | replace('/index.html', '') }}">
-<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {# Headings: IvyPresto Display needs an Adobe Fonts web project from Mali's own Adobe account (see README). Until then a free stand-in loads. #}

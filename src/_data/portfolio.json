@@ -2,8 +2,9 @@
   "groups": [
     { "key": "shops", "label": "Shops & products" },
     { "key": "fitness", "label": "Fitness & wellness" },
-    { "key": "events", "label": "Nonprofits & events" },
-    { "key": "experts", "label": "Consultants & speakers" }
+    { "key": "beauty", "label": "Beauty & photography" },
+    { "key": "experts", "label": "Consultants & speakers" },
+    { "key": "events", "label": "Nonprofits & events" }
   ],
   "projects": [
     {
@@ -13,7 +14,7 @@
       "group": "shops",
       "tags": ["minimal", "moody", "refined"],
       "about": "A design studio that works with Kyoto artisans in wood, lacquer, handmade paper, ceramics and glass to make contemporary lighting. The site is mostly large photos of each light, with a short note on how it’s made.",
-      "full": true
+      "video": true
     },
     {
       "slug": "tufas",
@@ -22,7 +23,28 @@
       "group": "fitness",
       "tags": ["playful", "bold", "illustrated"],
       "about": "A community-first bouldering gym in Philadelphia. The site covers day passes and memberships, events, programs, birthday parties and gift cards, with illustrations throughout.",
-      "full": true
+      "video": true
+    },
+    {
+      "slug": "redwoods-greenfields",
+      "name": "Redwoods & Greenfields",
+      "type": "Guided Forest Bathing",
+      "group": "fitness",
+      "tags": ["calm", "natural", "earthy"]
+    },
+    {
+      "slug": "chan-adr",
+      "name": "Chan ADR",
+      "type": "Mediation Services",
+      "group": "experts",
+      "tags": ["grounded", "trustworthy", "calm"]
+    },
+    {
+      "slug": "cfo-beauty",
+      "name": "cfobeauty",
+      "type": "Hair & Makeup Artist",
+      "group": "beauty",
+      "tags": ["warm", "stylish", "personal"]
     },
     {
       "slug": "ruta-del-jefe",
@@ -30,8 +52,29 @@
       "type": "Cycling Festival",
       "group": "events",
       "tags": ["earthy", "adventurous", "bold"],
-      "about": "A four-day bike festival in Patagonia, Arizona, that raises money for organizations working in the borderlands. The site handles registration, scholarships, partners and trip prep.",
-      "full": true
+      "about": "A four-day bike festival in Patagonia, Arizona, that raises money for organizations working in the borderlands. The site handles registration, scholarships, partners and trip prep."
+    },
+    {
+      "slug": "stef-reid",
+      "name": "Stef Reid",
+      "type": "Motivational Speaker & Coach",
+      "group": "experts",
+      "tags": ["bold", "clean", "professional"],
+      "home": true
+    },
+    {
+      "slug": "iza-erkin",
+      "name": "Iza Erkin",
+      "type": "Wedding Photography",
+      "group": "beauty",
+      "tags": ["romantic", "timeless", "elegant"]
+    },
+    {
+      "slug": "cardinal-direction",
+      "name": "Cardinal Direction",
+      "type": "Qualitative Research",
+      "group": "experts",
+      "tags": ["creative", "polished", "modern"]
     },
     {
       "slug": "oakland-chinatown-chamber",
@@ -66,19 +109,12 @@
       "home": true
     },
     {
-      "slug": "stef-reid",
-      "name": "Stef Reid",
-      "type": "Paralympian",
-      "group": "experts",
-      "tags": ["bold", "clean", "professional"],
-      "home": true
-    },
-    {
       "slug": "clementine-promos",
       "name": "Clementine Promos",
       "type": "Branded Corporate Merchandise",
       "group": "shops",
       "tags": ["bright", "modern", "clean"],
+      "card": "/assets/img/portfolio/clementine-promos.jpg",
       "home": true
     }
   ]
