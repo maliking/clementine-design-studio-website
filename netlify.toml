@@ -52,3 +52,121 @@
   from = "/draft"
   to = "/blog"
   status = 301
+
+# Old Squarespace pages Mali no longer uses (she confirmed 11/25), sent to the closest page.
+[[redirects]]
+  from = "/99designs"
+  to = "/consultation"
+  status = 301
+[[redirects]]
+  from = "/99designs-hourly"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/hourly-squarespace-help"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/monthly-maintenance"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/expert-for-a-day"
+  to = "/services#s-update"
+  status = 301
+[[redirects]]
+  from = "/website-in-a-day"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/website-in-a-day-package"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/website-in-a-week"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/squarespace-websites"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/web-designer-san-jose"
+  to = "/services#s-website"
+  status = 301
+[[redirects]]
+  from = "/contract-example"
+  to = "/services"
+  status = 301
+[[redirects]]
+  from = "/services-new"
+  to = "/services"
+  status = 301
+[[redirects]]
+  from = "/holiday-hope"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/holiday-hope-1"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/newsletter"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/home-1"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/home-2"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-1"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-2"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-3"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-4"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-5"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-22"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-29"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-44"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-63"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-93"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-95"
+  to = "/"
+  status = 301
