@@ -1,0 +1,40 @@
+---
+layout: base.njk
+title: "Blog"
+description: "Read about web design tips, tricks, and insights."
+nav: blog
+extraCss: posts.css
+permalink: /blog/
+---
+{#- Posts live in src/_data/blogPosts.json (newest first), copied from the live Squarespace blog on 11/25.
+    Each post page is made by src/blog/post.njk at the same address it had on Squarespace. -#}
+{%- set moreLabel = "Read post" %}
+{%- set lead = blogPosts[0] %}
+
+<section class="hero page-hero">
+  <div class="wrap center-head">
+    <div class="eyebrow">Blog</div>
+    <h1>Web design tips, tricks, and <em>insights</em></h1>
+  </div>
+</section>
+
+<section class="posts-page">
+  <div class="wrap">
+    <a class="post-lead" href="{{ lead.url }}">
+      <div class="post-photo"><img src="{{ lead.image }}" alt="" decoding="async"></div>
+      <div class="post-text">
+        <p class="post-date">Newest post · <time datetime="{{ lead.date }}">{{ lead.dateLabel }}</time></p>
+        <h2>{{ lead.title }}</h2>
+        <p class="post-sum">{{ lead.summary }}</p>
+        <p class="post-more">Read post <span aria-hidden="true">→</span></p>
+      </div>
+    </a>
+    <ul class="post-grid">
+      {%- for p in blogPosts %}{% if not loop.first %}
+      {% include "post-card.njk" %}
+      {%- endif %}{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% include "post-cta.njk" %}

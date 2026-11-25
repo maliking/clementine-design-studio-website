@@ -1,0 +1,15 @@
+---
+layout: base.njk
+nav: plugins
+extraCss: posts.css
+pagination:
+  data: pluginPosts
+  size: 1
+  alias: post
+permalink: "/plugins/{{ post.slug }}/"
+eleventyComputed:
+  title: "{{ post.seoTitle or post.title }}"
+  description: "{{ post.seoDescription or post.summary }}"
+---
+{%- set posts = pluginPosts %}{% set listUrl = "/plugins" %}{% set listLabel = "All plugins" %}
+{% include "post-page.njk" %}
