@@ -1,20 +1,23 @@
 ---
 layout: base.njk
-title: "Expert Squarespace Designer | Custom & 1-Day Websites"
-description: "I design custom Squarespace sites that reflect your business, make it easy for people to book or buy, and are simple for you to update."
+title: "Squarespace Web Designer for Small Businesses"
+description: "I design websites for small businesses on Squarespace, Shopify and WordPress, and help with SEO, Google Ads and newsletters. Free 20-minute consultation."
 nav: home
 permalink: /
 ---
-{#- Words on this page are copied from the live home page (11/25). Change them only when Mali asks. -#}
+{#- Home page words rewritten 11/25 in the Services page voice (thread "Rewrite homepage and audit lead flow"). Prices and lines come from /services; keep them matching. Reviews are copied from the old site. -#}
 
 <!-- 1. HERO -->
 <section class="hero home-hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <h1>Let’s Build a Squarespace Website You’re <em>Proud to Share</em></h1>
-      <p class="lead">Whether you’re starting fresh or your current website needs a little love, I’m here to help. I design custom Squarespace sites that reflect your business, make it easy for people to book or buy, and are simple for you to update.</p>
+      <h1>Web design for <em>small businesses</em></h1>
+      <p class="lead">I design and build websites that look professional and feel like you. Most are on Squarespace, and I also build on Shopify and WordPress.</p>
+      <p>Before I build anything, I research your customers and your competitors, so your site is made for the people you want to reach. I can also help with SEO, Google Ads, email newsletters and custom tools, and I'll tell you what's worth it for your business.</p>
+      <p class="direct">You'll work directly with me.</p>
       <div class="cta-row">
         <a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a>
+        <span class="small">Free 20-minute Zoom call</span>
       </div>
     </div>
     <div class="hero-art">
@@ -44,37 +47,84 @@ permalink: /
   </div>
 </section>
 
-<!-- 4. HOW I CAN HELP -->
-<section class="band tint">
+<!-- 4. SERVICES AND PRICES (every service on /services, same prices and wording) -->
+<section class="band tint home-svc">
   <div class="wrap">
     <div class="center-head">
-      <div class="eyebrow">A little help, or a fresh start</div>
-      <h2>How I <em>Can Help</em></h2>
+      <div class="eyebrow">Services and prices</div>
+      <h2>What I can <em>help with</em></h2>
     </div>
-    <ul class="help-grid">
-      <li class="hcard">
-        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
-        <h3>Website Design</h3>
-        <p>Whether you’re starting a business or your current website doesn’t feel like you anymore, I can help. Choose a Custom Website for a more involved, collaborative build, or Website in a Day if you have a smaller project and your content ready to go.</p>
-      </li>
-      <li class="hcard">
-        <span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span>
-        <h3>Squarespace SEO</h3>
-        <p>Have a website, but not sure if people are finding it? I’ll review your Squarespace site, help improve the details that matter for search, and explain what you can do going forward. You don’t need to become an SEO expert to understand your own website.</p>
-      </li>
-      <li class="hcard">
-        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1zM14 7l3 3"/></svg></span>
-        <h3>Hourly Squarespace Help</h3>
-        <p>Have a few things you’ve been meaning to fix? You can book me for updates, layout changes, troubleshooting, or help figuring something out. Tell me what’s on your list, and I’ll work out how much time you need.</p>
-      </li>
-      <li class="hcard">
-        <span class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
-        <h3>Automation &amp; Workflow Setup</h3>
-        <p>Still copying information between apps, updating the same spreadsheets, or doing the same admin tasks every week? I love figuring out how to make those jobs easier. I can help connect your tools and set up automations, using AI where it makes sense for your business.</p>
-      </li>
+    <div class="plans">
+      <a class="plan" href="/services#s-website">
+        <div class="plan-top">
+          <h3>Website-in-a-Day</h3>
+          <div class="plan-meta"><span class="price">$1,500</span><span class="pages">1 to 5 pages</span></div>
+        </div>
+        <p class="best"><b>Best for:</b> a simple site on a smaller budget</p>
+        <ul class="checks sm">
+          <li>Site up in one day</li>
+          <li>Built on Squarespace</li>
+        </ul>
+        <p class="more">See what's included</p>
+      </a>
+      <a class="plan" href="/services#s-website">
+        <div class="plan-top">
+          <h3>Custom Website</h3>
+          <div class="plan-meta"><span class="price">From $3,000</span><span class="pages">5+ pages</span></div>
+        </div>
+        <p class="best"><b>Best for:</b> a bigger site, or more time on the design</p>
+        <ul class="checks sm">
+          <li>Site up in about 3 to 4 weeks</li>
+          <li>Built on Squarespace, Shopify or WordPress</li>
+        </ul>
+        <p class="more">See what's included</p>
+      </a>
+    </div>
+
+    <h3 class="home-svc-head">Everything else I do</h3>
+    <ul class="svc-list">
+      <li><a href="/services#s-update"><span class="svc-name">Hourly help</span><span class="svc-price">$150/hr</span><span class="svc-line">Updates, layout changes, troubleshooting, or help figuring something out.</span></a></li>
+      <li><a href="/services#q-market"><span class="svc-name">SEO</span><span class="svc-price">$1,200 to $3,000 to set up, from $400/mo</span><span class="svc-line">Reaches people who are searching for what you offer.</span></a></li>
+      <li><a href="/services#s-update"><span class="svc-name">Monthly maintenance</span><span class="svc-price">About $300/mo</span><span class="svc-line">Send me any questions or changes you want made, and if something goes wrong, I'll fix it.</span></a></li>
+      <li><a href="/services#q-market"><span class="svc-name">Google Ads</span><span class="svc-price">From $750 to set up, from $500/mo</span><span class="svc-line">Reaches people who are already searching for what you offer, without waiting months for SEO. Plus your ad budget.</span></a></li>
+      <li><a href="/services#s-update"><span class="svc-name">Logo and branding</span><span class="svc-price">$750 to $3,000</span><span class="svc-line">I also design business cards, flyers, letterhead and labels.</span></a></li>
+      <li><a href="/services#q-market"><span class="svc-name">Facebook and Instagram ads</span><span class="svc-price">From $750 to set up, from $500/mo</span><span class="svc-line">Reaches people who don't know about you yet. Plus your ad budget.</span></a></li>
+      <li><a href="/services#q-sell"><span class="svc-name">Online courses and shops</span><span class="svc-price">Quote after a free consultation</span><span class="svc-line">I set it all up, from sign-up and payment to getting people access to what they bought.</span></a></li>
+      <li><a href="/services#q-market"><span class="svc-name">LinkedIn posts</span><span class="svc-price">$500 to set up, from $500/mo</span><span class="svc-line">Reaches other businesses and professionals, and builds trust over time.</span></a></li>
+      <li><a href="/services#q-admin"><span class="svc-name">Automation and custom tools</span><span class="svc-price">Quote after a free consultation</span><span class="svc-line">If a task is repetitive or feels like busywork, it can probably be automated.</span></a></li>
+      <li><a href="/services#q-email"><span class="svc-name">Email newsletters and follow-ups</span><span class="svc-price">From $300/mo</span><span class="svc-line">The easiest way to stay in touch with people who already know you.</span></a></li>
     </ul>
+    <p class="svc-note">After your <a class="consult" href="{{ site.consultUrl }}">free consultation</a>, I'll send you a quote with exact prices. Nothing starts until you approve it.</p>
+    <p class="center"><a class="btn btn-line" href="/services">See all services</a></p>
   </div>
 </section>
+<style>
+  /* Home services list. Lives here so it doesn't touch site.css; fine to move into site.css later. */
+  .home-svc a.plan { color: inherit; transition: transform .2s ease, box-shadow .2s ease; }
+  .home-svc a.plan:hover { transform: translateY(-2px); box-shadow: 0 24px 50px -28px rgba(40, 30, 10, .35); }
+  .home-svc .plans { margin-top: 0; }
+  .home-svc .plan .more { margin-top: auto; padding-top: 24px; font-weight: 600; color: var(--green); }
+  .home-svc .plan .more::after { content: " \2192"; }
+  .home-svc h3.home-svc-head { display: block; text-align: center; margin: 88px 0 34px; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: calc(var(--h3) + 6px); text-transform: none; color: var(--ink); }
+  .svc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 44px; }
+  .svc-list li { border-bottom: 1px solid var(--line); }
+  .svc-list li:nth-last-child(-n+2) { border-bottom: 0; }
+  .svc-list a { display: block; padding: 24px 0 26px; }
+  .svc-list .svc-name { display: block; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 25px; line-height: 1.2; }
+  .svc-list .svc-price { display: block; margin-top: 6px; font-weight: 700; font-size: 15.5px; color: var(--accent-ink); }
+  .svc-list .svc-line { display: block; margin-top: 6px; font-size: 16px; color: var(--muted); line-height: 1.45; }
+  .svc-list a:hover .svc-name { color: var(--green); }
+  .svc-note { text-align: center; margin: 34px auto 30px; max-width: 40em; }
+  .hi-grid .lead + p { margin-top: 18px; }
+  .svc-note .consult { color: var(--green); box-shadow: 0 2px 0 var(--accent); }
+  @media (max-width: 760px) {
+    .home-svc h3.home-svc-head { margin: 56px 0 22px; font-size: var(--h3); }
+    .svc-list { grid-template-columns: minmax(0, 1fr); padding: 4px 22px; }
+    .svc-list li:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+    .svc-list a { padding: 20px 0 22px; }
+    .svc-list .svc-name { font-size: 23px; }
+  }
+</style>
 
 <!-- 5. REVIEW HIGHLIGHTS (Mali picked design 3, 11/25) -->
 <section class="band dark reviews">
@@ -103,7 +153,8 @@ permalink: /
     <div class="hi-photo"><img src="/assets/img/headshot.jpg" alt="Mali King"></div>
     <div>
       <h2>Hi there!</h2>
-      <p class="lead">I’m an experienced Squarespace expert based in the US. My primary focus is on your company's success. I take the time to understand your unique goals and vision, crafting tailored websites that capture your brand essence and drive results.</p>
+      <p class="lead">I'm Mali, a web designer based in Monterey, California. I've built more than 350 websites in over 7 years, most of them on Squarespace.</p>
+      <p>A lot of business owners are good at what they do but have a hard time explaining why someone should pick them. So before I build or write anything, I work out who your best customers are and what makes you different from your competitors. Once that's clear, your website and your marketing all say the same thing.</p>
       <p class="hi-link"><a href="/about">Meet the Designer</a></p>
     </div>
   </div>
@@ -132,7 +183,8 @@ permalink: /
   <div class="wrap">
     <div class="cta-panel">
       <h2>Ready to get <em>started?</em></h2>
-      <p style="margin-top: 36px;"><a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a></p>
+      <p style="margin-top: 24px;">It's a free 20-minute Zoom call. Tell me about your business. You don't need to have it figured out first.</p>
+      <p style="margin-top: 30px;"><a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a></p>
     </div>
   </div>
 </section>
