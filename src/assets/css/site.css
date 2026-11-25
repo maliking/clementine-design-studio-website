@@ -5,7 +5,7 @@
   --tint: #F3EBDD; --accent: #F89810; --accent-ink: #C96A00; --accent-soft: #FDE9CC;
   --green: #4E7D2B; --green-soft: #E7EFDC; --dark: #22382A; --on-dark: #FBF5EC; --on-dark-muted: #C9D3C4;
   --btn-bg: #4E7D2B; --btn-fg: #FFFFFF; --radius: 20px; --radius-sm: 14px;
-  --display: "ivypresto-display", "Instrument Serif", Georgia, serif; --h-weight: 300; --h-track: -0.012em;
+  --display: "ivymode", Georgia, serif; --h-weight: 400; --h-track: -0.012em;
   --h1: 76px; --h2: 58px; --h3: 31px;
 }
 
@@ -516,3 +516,6 @@ a.trust-item:hover span:last-child { text-decoration: underline; text-underline-
   .form-card .btn { justify-self: stretch; }
   .cal-box { height: 1000px; }
 }
+
+/* Commuters Sans (Adobe kit, light 300 only): same spots as the live site, the trust strip and Kind Words quotes. */
+.trust-row, .kind li p { font-family: "commuters-sans", "Instrument Sans", system-ui, sans-serif; font-weight: 300; }

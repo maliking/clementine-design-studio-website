@@ -22,7 +22,7 @@ npm start       # local preview at http://localhost:8080
 ## Before the site goes live
 
 - **Search engines:** every page has `noindex` while the site is a preview. Set the environment variable `SITE_LIVE=true` on the host when the domain switches over.
-- **Heading font:** the design uses IvyPresto Display (Light and Light Italic), an Adobe font. Squarespace's license doesn't carry over, so it needs a web project from Mali's own Adobe Fonts account. Until then, Instrument Serif (free, Google Fonts) stands in. To switch, add the Adobe embed `<link>` in `base.njk`; the CSS already asks for `ivypresto-display` first.
+- **Fonts (done 11/25):** Mali's Adobe Fonts web project `dfz0hqs` is linked in `base.njk`. Headings use IvyMode Regular and Italic (IvyPresto is no longer available). Commuters Sans Light is used in the trust strip and Kind Words quotes, like the live site. Body text is Instrument Sans (Google Fonts).
 - **Photos:** the stock photos are 1080px copies. Swap in full-size Unsplash+ downloads before launch.
 - **Old URLs:** every live Squarespace URL that's kept needs to keep working (blog posts, plugin posts, /99designs pages). Redirects for anything renamed go in a `_redirects` file.
 - **Email:** clementinedesign.studio has Google Workspace mail records (MX, SPF, DMARC, verification TXT). Only the website records (A and www) change at the switch. The mail records must stay as they are.
