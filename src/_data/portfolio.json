@@ -1,0 +1,85 @@
+{
+  "groups": [
+    { "key": "shops", "label": "Shops & products" },
+    { "key": "fitness", "label": "Fitness & wellness" },
+    { "key": "events", "label": "Nonprofits & events" },
+    { "key": "experts", "label": "Consultants & speakers" }
+  ],
+  "projects": [
+    {
+      "slug": "triptych-kyoto",
+      "name": "Triptych Kyoto",
+      "type": "Artisan Lighting Studio",
+      "group": "shops",
+      "tags": ["minimal", "moody", "refined"],
+      "about": "A design studio that works with Kyoto artisans in wood, lacquer, handmade paper, ceramics and glass to make contemporary lighting. The site is mostly large photos of each light, with a short note on how it’s made.",
+      "full": true
+    },
+    {
+      "slug": "tufas",
+      "name": "Tufas Boulder Lounge",
+      "type": "Bouldering Gym",
+      "group": "fitness",
+      "tags": ["playful", "bold", "illustrated"],
+      "about": "A community-first bouldering gym in Philadelphia. The site covers day passes and memberships, events, programs, birthday parties and gift cards, with illustrations throughout.",
+      "full": true
+    },
+    {
+      "slug": "ruta-del-jefe",
+      "name": "Ruta del Jefe",
+      "type": "Cycling Festival",
+      "group": "events",
+      "tags": ["earthy", "adventurous", "bold"],
+      "about": "A four-day bike festival in Patagonia, Arizona, that raises money for organizations working in the borderlands. The site handles registration, scholarships, partners and trip prep.",
+      "full": true
+    },
+    {
+      "slug": "oakland-chinatown-chamber",
+      "name": "Oakland Chinatown Chamber",
+      "type": "Chamber of Commerce",
+      "group": "events",
+      "tags": ["bold", "trustworthy", "clean"],
+      "home": true
+    },
+    {
+      "slug": "whisper-group",
+      "name": "The Whisper Group",
+      "type": "Advisory Firm",
+      "group": "experts",
+      "tags": ["approachable", "clean", "modern"],
+      "home": true
+    },
+    {
+      "slug": "vibe-pilates",
+      "name": "VIBE Pilates",
+      "type": "Pilates Studio",
+      "group": "fitness",
+      "tags": ["sleek", "moody", "energetic"],
+      "home": true
+    },
+    {
+      "slug": "luretik",
+      "name": "Luretik",
+      "type": "Luxury Olive Oils",
+      "group": "shops",
+      "tags": ["elegant", "calm", "luxurious"],
+      "home": true
+    },
+    {
+      "slug": "stef-reid",
+      "name": "Stef Reid",
+      "type": "Paralympian",
+      "group": "experts",
+      "tags": ["bold", "clean", "professional"],
+      "home": true
+    },
+    {
+      "slug": "clementine-promos",
+      "name": "Clementine Promos",
+      "type": "Branded Corporate Merchandise",
+      "group": "shops",
+      "tags": ["bright", "modern", "clean"],
+      "home": true
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+---
+layout: base.njk
+title: "Portfolio | Websites I’ve Built"
+description: "A few of the websites Mali King has designed for small businesses, studios, nonprofits and speakers. Scroll through each one on a computer and a phone."
+nav: portfolio
+permalink: /example-sites/
+---
+{#- Projects live in src/_data/portfolio.json. Cards: /assets/img/portfolio/<slug>.jpg.
+    Projects with "full": true also have full-page screenshots in /assets/img/portfolio/full/ (<slug>-desktop.jpg, <slug>-phone.jpg),
+    which only load when someone opens that project. No links to live sites, on purpose: client sites change. -#}
+
+<section class="hero page-hero pf-hero">
+  <div class="wrap center-head">
+    <div class="eyebrow">Portfolio</div>
+    <h1>A few websites I’m <em>proud of</em></h1>
+    <p class="lead">Click any project to take a closer look.</p>
+  </div>
+</section>
+
+<section class="pf-page">
+  <div class="wrap">
+    <div class="pf-filters" role="group" aria-label="Show projects by type of business">
+      <button type="button" aria-pressed="true" data-filter="all">All</button>
+      {%- for g in portfolio.groups %}
+      <button type="button" aria-pressed="false" data-filter="{{ g.key }}">{{ g.label }}</button>
+      {%- endfor %}
+    </div>
+    <ul class="pf-grid" id="pf-grid">
+      {%- set pfHref = "" %}
+      {%- for p in portfolio.projects %}
+      {% include "pf-card.njk" %}
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-panel">
+      <h2>Let’s collaborate &amp; create a website you can’t wait to <em>show your friends and family!</em></h2>
+      <p style="margin-top: 36px;"><a class="btn" href="{{ site.consultUrl }}">Book a Free Consultation</a></p>
+    </div>
+  </div>
+</section>
+
+{#- The project viewer. Filled in by the script below from the data in #pf-data. -#}
+<dialog class="pf-view" id="pf-view" aria-labelledby="pf-view-name">
+  <div class="pf-view-inner">
+    <div class="pf-view-head">
+      <div>
+        <h2 id="pf-view-name"></h2>
+        <p class="pf-view-type"></p>
+        <p class="pf-tags"></p>
+      </div>
+      <p class="pf-about"></p>
+      <button type="button" class="pf-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="pf-switch" role="group" aria-label="Choose a screen size">
+      <button type="button" aria-pressed="true" data-screen="desktop">Computer</button>
+      <button type="button" aria-pressed="false" data-screen="phone">Phone</button>
+    </div>
+
+    <div class="pf-stage">
+      <div class="pf-desktop">
+        <div class="pf-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pf-scroll" tabindex="0" aria-label="Full page on a computer. Scroll to see more."><img alt=""></div>
+      </div>
+      <div class="pf-mock"><img alt=""></div>
+      <aside class="pf-side">
+        <div class="pf-phone">
+          <div class="pf-scroll" tabindex="0" aria-label="Full page on a phone. Scroll to see more."><img alt=""></div>
+        </div>
+        <p class="pf-hint">Scroll inside each screen to see the whole page.</p>
+      </aside>
+    </div>
+
+    <div class="pf-view-foot">
+      <button type="button" class="pf-step" data-step="-1"><span aria-hidden="true">←</span> Previous</button>
+      <button type="button" class="pf-step" data-step="1">Next project <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</dialog>
+
+<script type="application/json" id="pf-data">{{ portfolio.projects | dump | safe }}</script>
+<script>
+(function () {
+  var data = JSON.parse(document.getElementById('pf-data').textContent);
+  var bySlug = {};
+  data.forEach(function (p) { bySlug[p.slug] = p; });
+  var grid = document.getElementById('pf-grid');
+  var view = document.getElementById('pf-view');
+  var root = document.documentElement;
+  var img = function (p, kind) { return '/assets/img/portfolio/' + (kind ? 'full/' + p.slug + '-' + kind : p.slug) + '.jpg'; };
+  var current = null;
+
+  // Filters
+  var filterBtns = document.querySelectorAll('.pf-filters button');
+  filterBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      filterBtns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      grid.querySelectorAll('.pf-card').forEach(function (c) {
+        c.hidden = f !== 'all' && c.getAttribute('data-group') !== f;
+      });
+    });
+  });
+
+  // Start loading the big screenshots as soon as someone hovers or focuses a card
+  var warmed = {};
+  function warm(p) {
+    if (!p || !p.full || warmed[p.slug]) return;
+    warmed[p.slug] = true;
+    (new Image()).src = img(p, 'desktop');
+    (new Image()).src = img(p, 'phone');
+  }
+
+  // Phone screens start on the phone view; bigger screens show both
+  var narrow = window.matchMedia('(max-width: 900px)');
+  function setScreen(which) {
+    view.setAttribute('data-screen', which);
+    view.querySelectorAll('.pf-switch button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-screen') === which ? 'true' : 'false');
+    });
+  }
+  view.querySelectorAll('.pf-switch button').forEach(function (b) {
+    b.addEventListener('click', function () { setScreen(b.getAttribute('data-screen')); });
+  });
+
+  function setImg(el, src, alt) {
+    el.classList.remove('ready');
+    el.onload = function () { el.classList.add('ready'); };
+    el.alt = alt;
+    el.src = src;
+    if (el.complete && el.naturalWidth) el.classList.add('ready');
+  }
+
+  function fill(p) {
+    current = p;
+    view.classList.toggle('is-full', !!p.full);
+    view.querySelector('#pf-view-name').textContent = p.name;
+    view.querySelector('.pf-view-type').textContent = p.type;
+    view.querySelector('.pf-about').textContent = p.about || '';
+    view.querySelector('.pf-about').hidden = !p.about;
+    view.querySelector('.pf-view-head .pf-tags').innerHTML = p.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('');
+    view.querySelectorAll('.pf-scroll').forEach(function (s) { s.scrollTop = 0; });
+    if (p.full) {
+      setImg(view.querySelector('.pf-desktop img'), img(p, 'desktop'), 'The whole ' + p.name + ' home page on a computer');
+      setImg(view.querySelector('.pf-phone img'), img(p, 'phone'), 'The whole ' + p.name + ' home page on a phone');
+    } else {
+      setImg(view.querySelector('.pf-mock img'), img(p), 'The ' + p.name + ' website');
+    }
+    setScreen(narrow.matches && p.full ? 'phone' : 'desktop');
+  }
+
+  function visible() {
+    return Array.prototype.filter.call(grid.querySelectorAll('.pf-card'), function (c) { return !c.hidden; })
+      .map(function (c) { return bySlug[c.querySelector('.pf-open').getAttribute('data-slug')]; });
+  }
+
+  function open(slug, push) {
+    var p = bySlug[slug];
+    if (!p) return;
+    fill(p);
+    if (!view.open) { view.showModal(); root.classList.add('pf-lock'); }
+    var url = location.pathname + '#' + slug;
+    if (push) history.pushState({ pf: slug }, '', url); else history.replaceState({ pf: slug }, '', url);
+    view.querySelector('.pf-close').focus({ preventScroll: true });
+  }
+
+  function close(fromHistory) {
+    if (!view.open) return;
+    var slug = current && current.slug;
+    view.close();
+    root.classList.remove('pf-lock');
+    if (!fromHistory) history.replaceState(null, '', location.pathname);
+    var card = slug && grid.querySelector('[data-slug="' + slug + '"]');
+    if (card) card.focus({ preventScroll: true });
+  }
+
+  grid.addEventListener('click', function (e) {
+    var a = e.target.closest('.pf-open');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    open(a.getAttribute('data-slug'), true);
+  });
+  ['mouseover', 'focusin', 'touchstart'].forEach(function (ev) {
+    grid.addEventListener(ev, function (e) {
+      var a = e.target.closest && e.target.closest('.pf-open');
+      if (a) warm(bySlug[a.getAttribute('data-slug')]);
+    }, { passive: true });
+  });
+
+  view.querySelector('.pf-close').addEventListener('click', function () { close(false); });
+  view.addEventListener('cancel', function (e) { e.preventDefault(); close(false); });
+  view.addEventListener('click', function (e) { if (e.target === view) close(false); });
+  view.querySelectorAll('.pf-step').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var list = visible();
+      var i = list.indexOf(current);
+      var next = list[(i + Number(b.getAttribute('data-step')) + list.length) % list.length];
+      open(next.slug, false);
+      warm(list[(list.indexOf(next) + 1) % list.length]);
+    });
+  });
+  view.addEventListener('keydown', function (e) {
+    if (e.target.closest('.pf-scroll')) return;
+    if (e.key === 'ArrowRight') view.querySelector('.pf-step[data-step="1"]').click();
+    if (e.key === 'ArrowLeft') view.querySelector('.pf-step[data-step="-1"]').click();
+  });
+
+  window.addEventListener('popstate', function () {
+    var slug = location.hash.slice(1);
+    if (bySlug[slug]) open(slug, false); else close(true);
+  });
+
+  // Links from the home page (/example-sites/#luretik) open that project
+  var start = location.hash.slice(1);
+  if (bySlug[start]) open(start, false);
+})();
+</script>

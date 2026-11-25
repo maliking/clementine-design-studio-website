@@ -1,0 +1,12 @@
+{#- One portfolio card. Needs `p` (a project from _data/portfolio.json) and `pfHref` ("" on the portfolio page, "/example-sites/" elsewhere). -#}
+<li class="pf-card" data-group="{{ p.group }}">
+  <a class="pf-open" href="{{ pfHref }}#{{ p.slug }}" data-slug="{{ p.slug }}">
+    <div class="pf-photo"><img src="/assets/img/portfolio/{{ p.slug }}.jpg" alt="Home page of the {{ p.name }} website" loading="lazy" decoding="async"></div>
+    <div class="pf-body">
+      <h3>{{ p.name }}</h3>
+      <p class="pf-type">{{ p.type }}</p>
+      <p class="pf-tags">{% for t in p.tags %}<span>{{ t }}</span>{% endfor %}</p>
+      <p class="pf-more">{% if p.full %}See the whole site{% else %}Take a closer look{% endif %} <span aria-hidden="true">→</span></p>
+    </div>
+  </a>
+</li>
