@@ -570,6 +570,7 @@ h1 em, h2 em { white-space: nowrap; }
 .cross { margin: 18px 0 0; font-size: 17px; line-height: 1.5; color: var(--muted); }
 .cross a { color: var(--green); font-weight: 500; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .cross a:hover { color: var(--ink); }
+.cross.tight { margin-top: 6px; }
 @media (max-width: 760px) { .cross { font-size: 16px; } }
 
 /* Where I start: intro line inside the panel with its list (11/25). */
@@ -580,4 +581,14 @@ h1 em, h2 em { white-space: nowrap; }
   .start-panel { padding: 22px 22px 4px; }
   .start-grid .start-panel .list-intro { font-size: 17px; }
   .start-panel .tiles { padding: 0; }
+/* Help cards grouped (11/25): website cards first, then everything beyond the website. */
+.jgroup + .jgroup { margin-top: 44px; }
+.jump-grid.jlast { margin-top: 44px; }
+.jlabel { display: flex; align-items: center; gap: 18px; margin: 0 0 18px; font-family: "Instrument Sans", system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); line-height: 1.2; }
+.jlabel::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.jump-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .jump-grid.two { grid-template-columns: minmax(0, 1fr); }
+  .jgroup + .jgroup, .jump-grid.jlast { margin-top: 32px; }
+  .jlabel { margin-bottom: 12px; gap: 14px; }
 }
