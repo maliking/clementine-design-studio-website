@@ -511,9 +511,7 @@ h1 em, h2 em { white-space: nowrap; }
 .industries { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto; }
 .industries li { background: var(--card); border-radius: 999px; padding: 10.75px 20px 9.25px; font-size: 16px; font-weight: 500; box-shadow: 0 1px 0 var(--line); }
 
-.contact-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 72px; align-items: start; }
-.contact-photo { margin-top: 40px; width: 300px; aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; }
-.contact-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.contact-wrap { max-width: 720px; display: grid; gap: 36px; }
 .form-card { background: var(--card); border-radius: var(--radius); padding: 40px; box-shadow: 0 1px 0 var(--line), 0 14px 34px rgba(30, 25, 15, .07); display: grid; gap: 22px; }
 .form-card .hp { position: absolute; left: -9999px; }
 .field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; font-weight: 600; font-size: 16px; }
@@ -522,14 +520,13 @@ h1 em, h2 em { white-space: nowrap; }
 .field input:not([type="radio"]), .field textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; width: 100%; }
 .field input:focus, .field textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
 .opt { display: flex; align-items: center; gap: 10px; font-weight: 400; padding: 4px 0; }
-.opt input { accent-color: var(--green); width: 18px; height: 18px; }
+.opt input { accent-color: var(--green); width: 18px; height: 18px; flex-shrink: 0; margin: 0 2px; }
 .form-card .btn { border: 0; cursor: pointer; justify-self: start; font-family: inherit; }
 .cal-box { min-width: 320px; height: 760px; margin-top: 24px; background: var(--card); border-radius: var(--radius); overflow: hidden; }
 
 @media (max-width: 900px) {
   .page-hero { padding: 16px 0 48px; }
-  .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .contact-photo { display: none; }
+  .contact-wrap { gap: 24px; }
   .form-card { padding: 26px 20px; }
   .form-card .btn { justify-self: stretch; }
   .cal-box { height: 1000px; }
