@@ -22,12 +22,14 @@ canonicalPath: /blog
 <section class="posts-page">
   <div class="wrap">
     <a class="post-lead" href="{{ lead.url }}">
-      <div class="post-photo"><img src="{{ lead.image }}" alt="" decoding="async"></div>
+      <div class="lead-shot">
+        <div class="lead-frame"><span class="lead-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="{{ lead.image }}" alt="" decoding="async"></div>
+      </div>
       <div class="post-text">
-        <p class="post-date">Newest post · <time datetime="{{ lead.date }}">{{ lead.dateLabel }}</time></p>
+        <p class="lead-label">Newest post</p>
         <h2>{{ lead.title }}</h2>
         <p class="post-sum">{{ lead.summary }}</p>
-        <p class="post-more">Read post <span aria-hidden="true">→</span></p>
+        <p class="lead-foot"><span class="lead-btn">Read post <span aria-hidden="true">→</span></span><time datetime="{{ lead.date }}">{{ lead.dateLabel }}</time></p>
       </div>
     </a>
     <ul class="post-grid">
