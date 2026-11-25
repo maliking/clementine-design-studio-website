@@ -695,7 +695,6 @@ html.pf-lock { overflow: hidden; }
 .pf-close:hover { background: var(--dark); color: var(--on-dark); }
 .pf-controls { display: none; flex-wrap: wrap; gap: 10px 14px; padding: 0 32px 18px; }
 .pf-controls .pf-switch { justify-content: flex-start; }
-.pf-view.has-video .pf-controls { display: flex; }
 .pf-screen { display: none; }
 .pf-stage { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 300px; grid-template-rows: minmax(0, 1fr); gap: 32px; padding: 0 32px; }
 .pf-desktop { display: flex; flex-direction: column; min-height: 0; border-radius: 10px; overflow: hidden; background: var(--card); box-shadow: 0 18px 44px -18px rgba(30, 25, 15, .4); }
@@ -710,12 +709,10 @@ html.pf-lock { overflow: hidden; }
 .pf-phone .pf-scroll { border-radius: 28px; scrollbar-width: none; }
 .pf-phone .pf-scroll::-webkit-scrollbar { display: none; }
 .pf-hint { margin-top: 14px; font-size: 13.5px; color: var(--muted); text-align: center; }
-.pf-video { display: none; min-width: 0; min-height: 0; background: var(--tint); object-fit: cover; object-position: 50% 0; }
-.pf-view.has-video[data-mode="video"] .pf-scroll { display: none; }
-.pf-view.has-video[data-mode="video"] .pf-video { display: block; }
-.pf-view.has-video[data-mode="video"] .pf-desktop { align-self: start; max-height: 100%; }
-.pf-desktop .pf-video { flex: 0 1 auto; width: 100%; height: auto; aspect-ratio: 1440 / 900; }
-.pf-phone .pf-video { flex: 1; width: 100%; height: auto; border-radius: 28px; }
+/* Tufas + Triptych: a scroll-driven recording. The video stays put while the empty spacer under it gives the screen its scroll length. */
+.pf-scrub-video { position: sticky; top: 0; display: block; width: 100%; object-fit: cover; object-position: 50% 0; background: var(--tint); }
+.pf-view.has-scrub .pf-desktop { align-self: start; max-height: 100%; }
+.pf-desktop .pf-scroll.is-scrub { flex: 0 1 auto; aspect-ratio: 1440 / 900; }
 .pf-view.is-full:not(.has-phone) .pf-stage { grid-template-columns: minmax(0, 1fr); }
 .pf-view.is-full:not(.has-phone) .pf-side { display: none; }
 .pf-mock { display: none; }
@@ -748,7 +745,7 @@ html.pf-lock { overflow: hidden; }
   .pf-stage, .pf-view.is-full .pf-stage { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 20px; }
   .pf-view.is-full[data-screen="phone"] .pf-desktop, .pf-view.is-full[data-screen="desktop"] .pf-side { display: none; }
   .pf-phone { flex: 1; max-width: none; padding: 0; border-radius: 10px; background: none; box-shadow: 0 18px 44px -18px rgba(30, 25, 15, .4); }
-  .pf-phone .pf-scroll, .pf-phone .pf-video { border-radius: 10px; }
+  .pf-phone .pf-scroll { border-radius: 10px; }
   .pf-hint { display: none; }
   .pf-bar { height: 26px; padding: 0 12px; }
   .pf-bar i { width: 8px; height: 8px; }

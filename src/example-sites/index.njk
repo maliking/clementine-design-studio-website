@@ -60,10 +60,6 @@ permalink: /example-sites/
     </div>
 
     <div class="pf-controls">
-      <div class="pf-switch pf-mode" role="group" aria-label="Video or still page">
-        <button type="button" aria-pressed="true" data-mode="video">Watch it move</button>
-        <button type="button" aria-pressed="false" data-mode="still">Scroll it yourself</button>
-      </div>
       <div class="pf-switch pf-screen" role="group" aria-label="Choose a screen size">
         <button type="button" aria-pressed="true" data-screen="desktop">Computer</button>
         <button type="button" aria-pressed="false" data-screen="phone">Phone</button>
@@ -74,13 +70,11 @@ permalink: /example-sites/
       <div class="pf-desktop">
         <div class="pf-bar" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="pf-scroll" tabindex="0" aria-label="Full page on a computer. Scroll to see more."></div>
-        <video class="pf-video" muted loop playsinline preload="none" aria-label="Video of the home page scrolling on a computer"></video>
       </div>
       <div class="pf-mock"><img alt=""></div>
       <aside class="pf-side">
         <div class="pf-phone">
           <div class="pf-scroll" tabindex="0" aria-label="Full page on a phone. Scroll to see more."></div>
-          <video class="pf-video" muted loop playsinline preload="none" aria-label="Video of the home page scrolling on a phone"></video>
         </div>
         <p class="pf-hint"></p>
       </aside>
@@ -95,12 +89,14 @@ permalink: /example-sites/
 
 <script type="application/json" id="pf-data">{{ portfolio.projects | dump | safe }}</script>
 <script type="application/json" id="pf-images">{{ portfolioImages | dump | safe }}</script>
+<script type="application/json" id="pf-scrub">{{ portfolioScrub | dump | safe }}</script>
 <script>
 (function () {
   var data = JSON.parse(document.getElementById('pf-data').textContent);
   var images = JSON.parse(document.getElementById('pf-images').textContent);
+  var scrubs = JSON.parse(document.getElementById('pf-scrub').textContent);
   var bySlug = {};
-  data.forEach(function (p) { p.img = images[p.slug] || null; bySlug[p.slug] = p; });
+  data.forEach(function (p) { p.img = images[p.slug] || null; p.scrub = (p.video && scrubs[p.slug]) || null; bySlug[p.slug] = p; });
   var grid = document.getElementById('pf-grid');
   var view = document.getElementById('pf-view');
   var root = document.documentElement;
@@ -108,7 +104,6 @@ permalink: /example-sites/
   var vid = function (p, kind) { return '/assets/video/portfolio/' + p.slug + '-' + kind + '.mp4'; };
   var current = null;
   var narrow = window.matchMedia('(max-width: 900px)');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Filters
   var filterBtns = document.querySelectorAll('.pf-filters button');
@@ -147,6 +142,53 @@ permalink: /example-sites/
     });
   }
 
+  // Sites with scroll animations: a recording of the real page, one small scroll step per frame.
+  // Scrolling inside the screen moves the recording to the matching frame, so pinned text and
+  // slide-ins move with your scrolling, the way they do on the real site.
+  var scrubbers = [];
+  function buildScrub(scroller, p, kind) {
+    var m = p.scrub[kind];
+    scroller.innerHTML = '';
+    scroller.classList.add('is-scrub');
+    var v = document.createElement('video');
+    v.className = 'pf-scrub-video';
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('aria-label', 'The ' + p.name + ' home page on a ' + (kind === 'desktop' ? 'computer' : 'phone') + '. Scroll to move through it.');
+    v.poster = vid(p, kind).replace('.mp4', '.jpg');
+    v.src = vid(p, kind);
+    var spacer = document.createElement('div');
+    spacer.className = 'pf-scrub-space';
+    scroller.appendChild(v); scroller.appendChild(spacer);
+    var want = null, ticking = false;
+    function frameAt(y) {
+      if (y <= 0) return m.hold - 1;
+      if (y >= m.max) return m.frames - 1;
+      return m.hold - 1 + y / m.step;
+    }
+    function seek() {
+      ticking = false;
+      if (!scroller.clientWidth) return;
+      var y = scroller.scrollTop * m.vw / scroller.clientWidth;
+      var t = (Math.round(frameAt(y)) + 0.5) / m.fps;
+      if (v.readyState < 1) { want = t; return; }
+      if (v.seeking) { want = t; return; }
+      if (Math.abs(v.currentTime - t) > 0.001) v.currentTime = t;
+    }
+    v.addEventListener('seeked', function () { if (want !== null) { var t = want; want = null; if (Math.abs(v.currentTime - t) > 0.001) v.currentTime = t; } });
+    v.addEventListener('loadedmetadata', function () { if (want === null) seek(); else { var t = want; want = null; v.currentTime = t; } });
+    function size() {
+      v.style.height = scroller.clientHeight + 'px';
+      spacer.style.height = Math.round(m.max * scroller.clientWidth / m.vw) + 'px';
+      seek();
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(seek); } }
+    scroller.addEventListener('scroll', onScroll, { passive: true });
+    var ro = new ResizeObserver(size); ro.observe(scroller);
+    // Phones (iPhone Safari) only load a video once it has played, so start it muted and pause it right away.
+    var pr = v.play(); if (pr && pr.then) pr.then(function () { v.pause(); seek(); }).catch(function () {});
+    scrubbers.push(function () { ro.disconnect(); scroller.removeEventListener('scroll', onScroll); v.removeAttribute('src'); v.load(); });
+  }
+
   // Start loading the first slices as soon as someone hovers or focuses a card
   var warmed = {};
   function warm(p) {
@@ -162,45 +204,28 @@ permalink: /example-sites/
       b.setAttribute('aria-pressed', b.getAttribute(attr) === val ? 'true' : 'false');
     });
   }
-  function setScreen(which) { view.setAttribute('data-screen', which); pressed('.pf-screen', 'data-screen', which); playVisible(); }
-  function setMode(mode) {
-    view.setAttribute('data-mode', mode); pressed('.pf-mode', 'data-mode', mode);
-    view.querySelector('.pf-hint').textContent = mode === 'video' ? 'A recording of the real site, so you can see it move.' : 'Scroll inside each screen to see the whole page.';
-    playVisible();
-  }
+  function setScreen(which) { view.setAttribute('data-screen', which); pressed('.pf-screen', 'data-screen', which); }
   view.querySelectorAll('.pf-screen button').forEach(function (b) { b.addEventListener('click', function () { setScreen(b.getAttribute('data-screen')); }); });
-  view.querySelectorAll('.pf-mode button').forEach(function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); }); });
-
-  function videos() { return Array.prototype.slice.call(view.querySelectorAll('video')); }
-  function playVisible() {
-    videos().forEach(function (v) {
-      var show = view.open && current && current.video && view.getAttribute('data-mode') === 'video' && v.offsetParent !== null;
-      if (show) { if (!v.getAttribute('src')) { v.src = v.getAttribute('data-src'); } if (!reduce) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } }
-      else if (!v.paused) v.pause();
-    });
-  }
 
   function fill(p) {
     current = p;
     observers.forEach(function (o) { o.disconnect(); }); observers = [];
+    scrubbers.forEach(function (f) { f(); }); scrubbers = [];
+    view.querySelectorAll('.pf-scroll').forEach(function (s) { s.classList.remove('is-scrub'); s.scrollTop = 0; });
     var full = !!p.img, phone = !!(p.img && p.img.phone);
     view.classList.toggle('is-full', full);
     view.classList.toggle('has-phone', phone);
-    view.classList.toggle('has-video', !!p.video);
+    view.classList.toggle('has-scrub', !!p.scrub);
     view.querySelector('#pf-view-name').textContent = p.name;
     view.querySelector('.pf-view-type').textContent = p.type;
     view.querySelector('.pf-about').textContent = p.about || '';
     view.querySelector('.pf-about').hidden = !p.about;
     view.querySelector('.pf-view-head .pf-tags').innerHTML = p.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('');
-    fillTiles(view.querySelector('.pf-desktop .pf-scroll'), p, 'desktop');
-    fillTiles(view.querySelector('.pf-phone .pf-scroll'), p, 'phone');
-    view.querySelectorAll('.pf-scroll').forEach(function (s) { s.scrollTop = 0; });
-    videos().forEach(function (v) {
-      v.pause(); v.removeAttribute('src'); v.load();
-      var kind = v.closest('.pf-desktop') ? 'desktop' : 'phone';
-      if (p.video) { v.setAttribute('data-src', vid(p, kind)); v.poster = vid(p, kind).replace('.mp4', '.jpg'); }
-      else { v.removeAttribute('data-src'); v.removeAttribute('poster'); }
+    ['desktop', 'phone'].forEach(function (kind) {
+      var sc = view.querySelector(kind === 'desktop' ? '.pf-desktop .pf-scroll' : '.pf-phone .pf-scroll');
+      if (p.scrub && p.scrub[kind]) buildScrub(sc, p, kind); else fillTiles(sc, p, kind);
     });
+    view.querySelector('.pf-hint').textContent = p.scrub ? 'Scroll inside each screen. It moves just like the real site.' : 'Scroll inside each screen to see the whole page.';
     if (!full) {
       var m = view.querySelector('.pf-mock img');
       m.classList.remove('ready'); m.onload = function () { m.classList.add('ready'); };
@@ -208,7 +233,6 @@ permalink: /example-sites/
     }
     view.setAttribute('data-screen', narrow.matches && phone ? 'phone' : 'desktop');
     pressed('.pf-screen', 'data-screen', view.getAttribute('data-screen'));
-    setMode(p.video && !reduce ? 'video' : 'still');
   }
 
   function visible() {
@@ -221,7 +245,6 @@ permalink: /example-sites/
     if (!p) return;
     if (!view.open) { view.showModal(); root.classList.add('pf-lock'); }
     fill(p);
-    playVisible();
     var url = location.pathname + '#' + slug;
     if (push) history.pushState({ pf: slug }, '', url); else history.replaceState({ pf: slug }, '', url);
     view.querySelector('.pf-close').focus({ preventScroll: true });
@@ -230,7 +253,7 @@ permalink: /example-sites/
   function close(fromHistory) {
     if (!view.open) return;
     var slug = current && current.slug;
-    videos().forEach(function (v) { v.pause(); });
+    scrubbers.forEach(function (f) { f(); }); scrubbers = [];
     view.close();
     root.classList.remove('pf-lock');
     if (!fromHistory) history.replaceState(null, '', location.pathname);
@@ -268,7 +291,6 @@ permalink: /example-sites/
     if (e.key === 'ArrowRight') view.querySelector('.pf-step[data-step="1"]').click();
     if (e.key === 'ArrowLeft') view.querySelector('.pf-step[data-step="-1"]').click();
   });
-  narrow.addEventListener && narrow.addEventListener('change', playVisible);
 
   window.addEventListener('popstate', function () {
     var slug = location.hash.slice(1);

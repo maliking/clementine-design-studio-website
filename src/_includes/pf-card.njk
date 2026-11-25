@@ -7,7 +7,7 @@
       <h3>{{ p.name }}</h3>
       <p class="pf-type">{{ p.type }}</p>
       <p class="pf-tags">{% for t in p.tags %}<span>{{ t }}</span>{% endfor %}</p>
-      <p class="pf-more">{% if p.video %}Watch it move{% elif pImg %}See the whole site{% else %}Take a closer look{% endif %} <span aria-hidden="true">→</span></p>
+      <p class="pf-more">{% if pImg %}See the whole site{% else %}Take a closer look{% endif %} <span aria-hidden="true">→</span></p>
     </div>
   </a>
 </li>
