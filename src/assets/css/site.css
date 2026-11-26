@@ -498,7 +498,7 @@ h1 em, h2 em { white-space: nowrap; }
 .rev-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
 .rev-list p { font-size: 16px; color: var(--on-dark-muted); }
 .rev-list .rev-head { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 24px; line-height: 1.2; color: var(--on-dark); margin-bottom: 8px; }
-.reviews .rev-who { margin-top: 14px; font-size: 15.5px; font-weight: 500; color: #D4B489; }
+.reviews .rev-who { margin-top: 18px; font-size: 15.5px; font-weight: 500; letter-spacing: .01em; color: #D4B489; }
 
 .hi-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
 .hi-photo { aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; max-width: 420px; }
