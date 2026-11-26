@@ -102,6 +102,7 @@
   // Scrolling inside the screen moves the recording to the matching frame, so pinned text and
   // slide-ins move with your scrolling, the way they do on the real site.
   var scrubbers = [];
+  var narrow = window.matchMedia('(max-width: 900px)');
   function buildScrub(scroller, p, kind) {
     var m = p.scrub[kind];
     scroller.innerHTML = '';
@@ -171,7 +172,10 @@
     var full = !!p.img, phone = !!(p.img && p.img.phone);
     view.classList.toggle('is-full', full);
     view.classList.toggle('has-phone', phone);
-    view.classList.toggle('has-scrub', !!p.scrub);
+    // Phones and tablets get the full-page pictures instead of the scroll recordings: the computer recording is
+    // 2880px wide, so jumping frame to frame made scrolling laggy, and its wide frame left the screen short (Mali 11/26).
+    var scrub = (p.scrub && !narrow.matches) ? p.scrub : null;
+    view.classList.toggle('has-scrub', !!scrub);
     view.querySelector('#pf-view-name').textContent = p.name;
     view.querySelector('.pf-view-type').textContent = p.type;
     view.querySelector('.pf-about').textContent = p.about || '';
@@ -179,9 +183,9 @@
     view.querySelector('.pf-view-head .pf-tags').innerHTML = p.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('');
     ['desktop', 'phone'].forEach(function (kind) {
       var sc = view.querySelector(kind === 'desktop' ? '.pf-desktop .pf-scroll' : '.pf-phone .pf-scroll');
-      if (p.scrub && p.scrub[kind]) buildScrub(sc, p, kind); else fillTiles(sc, p, kind);
+      if (scrub && scrub[kind]) buildScrub(sc, p, kind); else fillTiles(sc, p, kind);
     });
-    view.querySelector('.pf-hint').textContent = p.scrub ? 'Scroll inside each screen. It moves just like the real site.' : 'Scroll inside each screen to see the whole page.';
+    view.querySelector('.pf-hint').textContent = scrub ? 'Scroll inside each screen. It moves just like the real site.' : 'Scroll inside each screen to see the whole page.';
     if (!full) {
       var m = view.querySelector('.pf-mock img');
       m.classList.remove('ready'); m.onload = function () { m.classList.add('ready'); };
