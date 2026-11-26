@@ -963,3 +963,18 @@ html.pf-lock { overflow: hidden; }
   .about-art .ab-card b { font-size: 36px; }
   .svc-art .dv-phone { top: 42%; }
 }
+
+/* ---------- Page tops v2 (11/26): Services words only on linen; About photo only on linen ---------- */
+.svc-top { padding: 64px 0 88px; }
+.svc-top-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 80px; align-items: start; }
+.svc-top-text { padding-top: 54px; }
+.svc-top-head h1 { margin: 0; }
+.svc-top-text p { max-width: 32em; }
+.svc-top + .trust { background: var(--tint); }
+.about-hero .hero-art.about-art { aspect-ratio: 4 / 5; }
+.about-art .ab-photo { width: 100%; }
+@media (max-width: 900px) {
+  .svc-top { padding: 16px 0 56px; }
+  .svc-top-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .svc-top-text { padding-top: 0; }
+}
