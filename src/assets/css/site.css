@@ -927,3 +927,39 @@ html.pf-lock { overflow: hidden; }
 /* Centered labels: the leaf hangs to the left so the word itself sits on the center line */
 .center-head .eyebrow { padding-right: 27px; }
 .steps p { text-wrap: pretty; }
+
+/* ---------- Page tops (11/26): every page top follows the home page ---------- */
+/* Services: the studio desk photo in the same rounded panel as home, with a different client site on a phone in front. */
+.svc-art .dv-wall { width: 86%; height: 100%; }
+.svc-art .dv-wall img { object-position: 50% 70%; }
+.svc-art .dv-phone { width: 28%; left: 0; top: 40%; }
+.svc-art .dv-phone .scr { aspect-ratio: 9 / 17.2; }
+
+/* About: Mali's photo in the same rounded panel, with one small card in front of it. */
+.about-hero .hero-text .hi-name { font-size: var(--h1); line-height: 1.06; margin-bottom: 18px; }
+.hero-art.about-art { height: auto; aspect-ratio: 460 / 520; }
+.about-art .ab-photo { position: absolute; right: 0; top: 0; width: 84%; height: 100%; border-radius: var(--radius); overflow: hidden; }
+.about-art .ab-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 30%; }
+.about-art .ab-card { position: absolute; left: 0; bottom: 9%; display: grid; gap: 2px; background: var(--card); border-radius: var(--radius); padding: 22px 30px 20px; box-shadow: 0 24px 50px -18px rgba(30, 25, 15, .32); }
+.about-art .ab-card b { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 46px; line-height: 1; color: var(--accent-ink); }
+.about-art .ab-card span { font-size: 15.5px; color: var(--muted); }
+
+/* Linen band at the top of list pages and Contact. It runs behind the header, and the first cards overlap its bottom edge. */
+.top-band { position: relative; }
+.top-band::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: -108px; bottom: -150px; background: var(--tint); }
+.pf-hero.top-band::before { bottom: -200px; }
+.contact-page.top-band::before { display: none; }
+.top-band.band-only::before { bottom: 0; }
+/* Contact: the band covers the words and the quote on the left; the form card sits half on it, half below. */
+.contact-aside { position: relative; }
+.contact-aside::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: -2000px; bottom: -72px; background: var(--tint); box-shadow: 0 0 0 100vmax var(--tint); clip-path: inset(0 -100vmax); }
+@media (max-width: 900px) {
+  .top-band::before { top: -76px; bottom: -110px; }
+  .pf-hero.top-band::before { bottom: -150px; }
+  .contact-aside::before { display: none; }
+  .contact-intro { position: relative; }
+  .contact-intro::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: -92px; bottom: -96px; background: var(--tint); box-shadow: 0 0 0 100vmax var(--tint); clip-path: inset(0 -100vmax); }
+  .about-art .ab-card { padding: 16px 22px 14px; bottom: 7%; }
+  .about-art .ab-card b { font-size: 36px; }
+  .svc-art .dv-phone { top: 42%; }
+}
