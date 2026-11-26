@@ -1,7 +1,8 @@
 /* Industry pages (11/26): law firm websites, Google Ads for therapists, therapist websites.
    Everything else on these pages comes from site.css (hero, trust strip, plans, cards, cost rows). */
 
-.niche-list { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 80px; align-items: start; }
+/* Mali 11/26: the box sits level with the middle of the heading and text, not up at the top. */
+.niche-list { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 80px; align-items: center; }
 .niche-list h2 { font-size: var(--h1); margin-bottom: 24px; }
 .niche-list .sense .checks { margin-top: 18px; }
 
@@ -20,6 +21,16 @@
 .niche-work-text h2 { margin-bottom: 24px; }
 .niche-work-text .more { margin-top: 26px; font-weight: 600; }
 .niche-work-text .more a { box-shadow: 0 2px 0 var(--accent); padding-bottom: 2px; }
+
+/* Small round photo of Mali beside her intro line (dentists page, Mali 11/26). No ring or frame. */
+.hero-text .meet { display: flex; align-items: center; gap: 18px; margin-top: 16px; }
+.hero-text .meet img { flex: none; width: 68px; height: 68px; border-radius: 50%; object-fit: cover; }
+
+/* A booking strip in the middle of the page, right after the prices. */
+.book-strip { margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 38px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.book-strip h3 { font-size: calc(var(--h3) + 1px); margin-bottom: 6px; }
+.book-strip p { font-size: 17.5px; }
+.book-strip .btn { flex: none; }
 
 /* Privacy note on the ads page */
 .niche-note { margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px 38px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
@@ -50,11 +61,22 @@
 
 /* Questions and answers */
 .niche-faq-grid { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: 80px; align-items: start; }
-.faq-items { display: grid; }
-.faq-q { padding: 30px 0; border-top: 1px solid var(--line); }
-.faq-q:first-child { padding-top: 0; border-top: 0; }
-.faq-q h3 { font-size: calc(var(--h3) - 2px); margin-bottom: 10px; }
-.faq-q p { font-size: 17.5px; max-width: 40em; }
+/* Mali 11/26: each question opens and closes, so the page is shorter. The answers stay in the page for Google. */
+.faq-items { display: grid; border-bottom: 1px solid var(--line); }
+.faq-q { border-top: 1px solid var(--line); }
+.faq-q:first-child { border-top: 0; }
+.faq-q summary { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding: 24px 0; cursor: pointer; list-style: none; }
+.faq-q summary::-webkit-details-marker { display: none; }
+.faq-q:first-child summary { padding-top: 0; }
+.faq-q h3 { font-size: calc(var(--h3) - 2px); }
+.faq-q summary::after { content: ""; flex: none; width: 18px; height: 18px; margin-top: 7px; background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none' stroke='%232F5443' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M9 2.5v13M2.5 9h13'/%3E%3C/svg%3E"); transition: transform .25s ease; }
+.faq-q[open] summary::after { transform: rotate(45deg); }
+.faq-q p { font-size: 17.5px; max-width: 40em; padding: 0 46px 28px 0; margin-top: -8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-q { interpolate-size: allow-keywords; }
+  .faq-q::details-content { block-size: 0; overflow: clip; transition: block-size .28s ease, content-visibility .28s allow-discrete; }
+  .faq-q[open]::details-content { block-size: auto; }
+}
 .faq-q a, .niche-list a, .niche-note a { box-shadow: 0 1px 0 var(--accent); }
 
 @media (max-width: 900px) {
@@ -64,8 +86,12 @@
   .niche-note { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 26px 22px 28px; }
   .link-card { padding: 30px 22px 32px; }
   .link-strip { flex-direction: column; align-items: flex-start; gap: 22px; padding: 30px 22px 32px; }
+  .book-strip { flex-direction: column; align-items: flex-start; gap: 20px; padding: 26px 22px 28px; }
+  .hero-text .meet { gap: 14px; }
+  .hero-text .meet img { width: 60px; height: 60px; }
   .tip { padding: 26px 22px 28px; }
   .tips { margin-top: 36px; }
   .tips-photo { aspect-ratio: 16 / 10; }
-  .faq-q { padding: 24px 0; }
+  .faq-q summary { padding: 20px 0; gap: 18px; }
+  .faq-q p { padding: 0 0 24px; }
 }
