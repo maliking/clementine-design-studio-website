@@ -29,8 +29,20 @@ permalink: /about/
   </div>
 </section>
 
+<!-- A few places I've worked from (Mali 11/26, her own photos; laptop screens blurred so no client info shows). Kept small, About page only. -->
+<section class="band ab-places">
+  <div class="wrap">
+    <h2>A few places I’ve <em>worked from</em></h2>
+    <ul>
+      {%- for pl in [["bolivia", "Bolivia"], ["hawaii", "Hawaii"], ["monterey", "Monterey, California"], ["macedonia", "North Macedonia"]] %}
+      <li><img src="/assets/img/places-{{ pl[0] }}.webp" alt="Mali's laptop set up to work in {{ pl[1] }}" width="640" height="800" loading="lazy" decoding="async"><span>{{ pl[1] }}</span></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
 <!-- Numbers (11/26): the facts from her bio, pulled out so they're easy to spot. -->
-<section class="band dark ab-stats">
+<section class="band dark ab-stats m-still">{# m-still: no slide-up, the band is too short to hold the movement #}
   <div class="wrap">
     <ul>
       <li><b>350+</b><span>websites built</span></li>
