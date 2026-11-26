@@ -39,7 +39,7 @@ permalink: /
       <h2>Different businesses. The same <em>thoughtful care.</em></h2>
     </div>
     <ul class="pf-grid">
-      {%- set pfHref = "/example-sites/" %}
+      {%- set pfHref = "" %}
       {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if p.home %}
       {% include "pf-card.njk" %}
       {%- endif %}{% endfor %}
@@ -47,6 +47,8 @@ permalink: /
     <p class="center"><a class="btn btn-line" href="/example-sites/">View the Portfolio</a></p>
   </div>
 </section>
+
+{% include "pf-viewer.njk" %}
 
 <!-- 4. SERVICES AND PRICES (every service on /services, same prices and wording) -->
 <section class="band tint home-svc">
