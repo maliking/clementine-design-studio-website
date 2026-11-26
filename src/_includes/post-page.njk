@@ -5,7 +5,7 @@
 <section class="post-head">
   <div class="wrap post-wrap">
     <a class="post-back" href="{{ listUrl }}"><span aria-hidden="true">←</span> {{ listLabel }}</a>
-    <p class="post-date"><time datetime="{{ post.date }}">{{ post.dateLabel }}</time> · Written by Clementine Design Studio</p>
+    <p class="post-date"><time datetime="{{ post.date }}">{{ post.dateLabel }}</time> · Written by {% if post.author == "mali" %}<a href="/about">Mali King</a>{% else %}Clementine Design Studio{% endif %}</p>
     <h1>{{ post.title }}</h1>
   </div>
 </section>
