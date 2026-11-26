@@ -1,11 +1,11 @@
-{#- Shared layout for one blog post or plugin page. Needs `post`, `posts` (the whole list, newest first), `listUrl` and `listLabel`. -#}
+{#- Shared layout for one blog post or plugin page. Every post is by Mali King (her name helps Google trust the post, Mali 11/26). Needs `post`, `posts` (the whole list, newest first), `listUrl` and `listLabel`. -#}
 {%- set i = posts.indexOf(post) %}
 {%- set newer = posts[i - 1] if i > 0 else null %}
 {%- set older = posts[i + 1] if i + 1 < posts.length else null %}
 <section class="post-head">
   <div class="wrap post-wrap">
     <a class="post-back" href="{{ listUrl }}"><span aria-hidden="true">←</span> {{ listLabel }}</a>
-    <p class="post-date"><time datetime="{{ post.date }}">{{ post.dateLabel }}</time> · Written by {% if post.author == "mali" %}<a href="/about">Mali King</a>{% else %}Clementine Design Studio{% endif %}</p>
+    <p class="post-date"><time datetime="{{ post.date }}">{{ post.dateLabel }}</time> · Written by <a href="/about">Mali King</a></p>
     <h1>{{ post.title }}</h1>
   </div>
 </section>
@@ -17,6 +17,7 @@
     </article>
     <aside class="author">
       <p class="eyebrow">About the author</p>
+      <p class="author-name"><a href="/about">Mali King</a></p>
       <p>I’m a Squarespace expert with a BA in Communication Design (with an emphasis in web design), and I’ve designed hundreds of websites over the past 7+ years. I love working with small businesses and entrepreneurs to create beautiful, functional websites that stand out from the competition and attract the right clients.</p>
     </aside>
   </div>

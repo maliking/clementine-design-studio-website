@@ -105,6 +105,9 @@
 
 .author { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
 .author .eyebrow { margin-bottom: 12px; }
+.author-name { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 28px; line-height: 1.2; color: var(--ink); margin-bottom: 10px; }
+.author-name a { color: inherit; text-decoration: none; }
+.author-name a:hover { color: var(--accent-ink); }
 
 .post-pager { padding: 0 0 96px; }
 .post-pager-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
