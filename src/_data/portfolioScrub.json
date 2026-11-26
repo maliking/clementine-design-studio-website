@@ -3,7 +3,7 @@
   "desktop": {
    "vw": 1440,
    "vh": 900,
-   "max": 5337,
+   "max": 5338,
    "hold": 45,
    "step": 8,
    "frames": 736,
@@ -15,7 +15,7 @@
    "max": 8224,
    "hold": 23,
    "step": 16,
-   "frames": 548,
+   "frames": 560,
    "fps": 30
   }
  },
@@ -35,7 +35,7 @@
    "max": 6052,
    "hold": 23,
    "step": 16,
-   "frames": 413,
+   "frames": 425,
    "fps": 30
   }
  }
