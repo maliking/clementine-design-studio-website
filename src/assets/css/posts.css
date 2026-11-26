@@ -103,6 +103,11 @@
 .post-body tbody td:first-child { font-weight: 600; white-space: nowrap; }
 .post-body [class$="__header"] { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-weight: 600; font-size: 19px; }
 
+/* Plugin pages: offer to set the plugin up (Mali 11/26). Linen card, same as the services "makes sense if" box. */
+.setup-help { margin-top: 56px; padding: 32px 36px 34px; background: var(--tint); border-radius: var(--radius); }
+.setup-help h2 { font-size: 32px; line-height: 1.15; margin-bottom: 10px; }
+.setup-help p { font-size: 17px; margin-bottom: 22px; }
+@media (max-width: 900px) { .setup-help { margin-top: 44px; padding: 24px 22px 26px; } .setup-help h2 { font-size: 26px; } }
 .author { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
 .author .eyebrow { margin-bottom: 12px; }
 .author-name { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 28px; line-height: 1.2; color: var(--ink); margin-bottom: 10px; }

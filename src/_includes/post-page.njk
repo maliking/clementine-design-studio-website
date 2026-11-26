@@ -15,6 +15,13 @@
     <article class="post-body">
 {{ post.body | safe }}
     </article>
+    {%- if listUrl == "/plugins" %}
+    <aside class="setup-help">
+      <h2>Want me to set this up for you?</h2>
+      <p>I can add it to your site for you. Hourly help is $150/hr and covers updates, layout changes, troubleshooting, or help figuring something out.</p>
+      <a class="btn" href="/services#s-update">See hourly help</a>
+    </aside>
+    {%- endif %}
     <aside class="author">
       <p class="eyebrow">About the author</p>
       <p class="author-name"><a href="/about">Mali King</a></p>
