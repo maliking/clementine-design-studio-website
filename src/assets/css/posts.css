@@ -110,7 +110,13 @@
 .setup-help .setup-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-bottom: 0; }
 .setup-alt { font-size: 15.5px; font-weight: 600; color: var(--green); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .setup-alt:hover { color: var(--ink); }
-.plugins-custom { margin-top: 14px; }
+.custom-strip { display: inline-flex; align-items: center; gap: 22px; margin-top: 26px; padding: 12px 12px 12px 26px; background: var(--card); border-radius: 10px; box-shadow: 0 1px 0 var(--line), 0 10px 26px rgba(30, 25, 15, .08); color: var(--ink); text-decoration: none; font-size: 16.5px; text-align: left; white-space: nowrap; }
+.custom-strip b { font-weight: 600; }
+.custom-strip .cs-btn { flex: none; background: var(--dark); color: #fff; font-weight: 600; font-size: 15px; padding: 12px 18px; border-radius: 6px; transition: opacity .2s; }
+.custom-strip:hover .cs-btn { opacity: .88; }
+@media (max-width: 900px) {
+  .custom-strip { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 18px 18px 20px; margin-top: 22px; white-space: normal; }
+}
 .setup-wide { margin-top: 48px; text-align: center; padding: 44px 40px 46px; }
 .setup-wide p { max-width: 40em; margin-left: auto; margin-right: auto; }
 .setup-wide .setup-actions { justify-content: center; }
