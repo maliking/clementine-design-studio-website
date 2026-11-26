@@ -9,7 +9,7 @@
   "projects": [
     {
       "slug": "plants-with-krystal",
-      "home": 5,
+      "home": 1,
       "name": "Plants with Krystal",
       "type": "Plant Educator & Author",
       "group": "experts",
@@ -18,6 +18,7 @@
     },
     {
       "slug": "triptych-kyoto",
+      "home": 3,
       "name": "Triptych Kyoto",
       "type": "Artisan Lighting Studio",
       "group": "shops",
@@ -53,7 +54,7 @@
     },
     {
       "slug": "chan-adr",
-      "home": 1,
+      "home": 4,
       "name": "Chan ADR",
       "type": "Mediation Services",
       "group": "experts",
@@ -78,7 +79,7 @@
     },
     {
       "slug": "stef-reid",
-      "home": 3,
+      "home": 5,
       "name": "Stef Reid",
       "type": "Motivational Speaker & Coach",
       "group": "experts",
@@ -111,7 +112,6 @@
     },
     {
       "slug": "favarh",
-      "home": 6,
       "name": "Favarh",
       "type": "Disability Services Nonprofit",
       "group": "events",
@@ -128,7 +128,7 @@
     },
     {
       "slug": "vibe-pilates",
-      "home": 4,
+      "home": 6,
       "name": "VIBE Pilates",
       "type": "Pilates Studio",
       "group": "fitness",
