@@ -1,0 +1,29 @@
+{#- Questions and answers for the industry pages (law firms, therapists). Reads `faqs` from the page's front matter
+    and writes both the visible list and the FAQPage schema Google and AI tools read, so the two always match. -#}
+<section class="band niche-faq" id="questions">
+  <div class="wrap niche-faq-grid">
+    <div>
+      <div class="eyebrow">Questions</div>
+      <h2>Common <em>questions</em></h2>
+    </div>
+    <div class="faq-items">
+      {%- for f in faqs %}
+      <div class="faq-q">
+        <h3>{{ f.q }}</h3>
+        <p>{{ f.a | safe }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in faqs %}
+    { "@type": "Question", "name": {{ f.q | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | striptags | dump | safe }} } }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
+</script>
