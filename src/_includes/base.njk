@@ -48,6 +48,9 @@
   });
 </script>
 {% endif %}
+<link rel="stylesheet" href="/assets/css/motion.css">
+{#- Motion (Mali picked these five 11/26): switch each idea on with a class, before the page paints. All off for "reduce motion", except hovers, which calm themselves in the CSS. ?m=reveal,hover picks ideas for testing. -#}
+<script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('m'),on=q===null?['reveal','hover','pin','layer','depth']:q.split(','),r=matchMedia('(prefers-reduced-motion: reduce)').matches;on.forEach(function(k){if(k&&(k==='hover'||!r))d.classList.add('m-'+k)})})();</script>
 </head>
 <body>
 
@@ -199,7 +202,7 @@
       });
     }
 
-    if (reduce || !('IntersectionObserver' in window)) return;
+    if (reduce || !('IntersectionObserver' in window) || root.classList.contains('m-reveal')) return;
     var groups = /(^|\s)(jgroup|jump-grid|pf-grid|help-grid|update-grid|rev-list|steps|kind|plan-grid|hi-grid|start-grid)(\s|$)/;
     function expand(el) {
       if (!groups.test(el.className || '')) return [el];
@@ -269,5 +272,6 @@
     });
   })();
 </script>
+{% include "motion.njk" %}
 </body>
 </html>

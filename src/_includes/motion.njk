@@ -1,0 +1,187 @@
+{#- Motion (11/26). Styles are in assets/css/motion.css. Each idea runs only when its class is on <html> (set by the small script in the <head>). -#}
+<script>
+(function () {
+  var root = document.documentElement;
+  var has = function (k) { return root.classList.contains('m-' + k); };
+  var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
+  var PHOTO = '.hi-photo, .photo, .ab-photo, .tips-photo';
+  var onScroll = function (fn) {
+    var busy = false;
+    var run = function () { busy = false; fn(); };
+    window.addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(run); } }, { passive: true });
+    window.addEventListener('resize', run);
+    fn();
+  };
+
+  // Run once, at the first sign of a real visitor (a scroll, touch, click or key press). Nothing below the top of the page is hidden before that,
+  // so search engines and link previews, which never scroll, always get the whole page fully visible.
+  var waiting = [], awake = false, SIGNS = ['scroll', 'wheel', 'touchstart', 'pointerdown', 'keydown'];
+  var wake = function (e) {
+    if (awake || (e && e.type === 'scroll' && e.target !== document)) return;   // a box scrolling inside the page doesn't count
+    awake = true;
+    SIGNS.forEach(function (ev) { window.removeEventListener(ev, wake, true); });
+    waiting.forEach(function (fn) { fn(); });
+  };
+  SIGNS.forEach(function (ev) { window.addEventListener(ev, wake, { passive: true, capture: true }); });
+  var human = function (fn) { if (awake) fn(); else waiting.push(fn); };
+
+  /* 3. Pinned "Where I start": on a computer the section holds still while its four points tick in, then the closing line. On phones the points tick in one after another. */
+  var start = document.getElementById('s-start');
+  if (has('pin') && start && start.querySelector('.tiles')) {
+    var lis = start.querySelectorAll('.tiles li'), closing = start.querySelector('.closing'), sw = start.querySelector('.wrap');
+    if (window.innerWidth > 900 && window.innerHeight <= 1400 && sw.offsetHeight + 110 < window.innerHeight) {
+      start.classList.add('m-pin-on');
+      human(function () {
+        start.classList.add('m-tick');
+        onScroll(function () {
+          var r = start.getBoundingClientRect(), p = Math.max(0, Math.min(1, -r.top / (r.height - window.innerHeight)));
+          each(lis, function (li, i) { li.classList.toggle('on', i === 0 ? r.top < window.innerHeight * 0.3 : p > i * 0.2); });
+          closing.classList.toggle('on', p > 0.8);
+        });
+      });
+    } else if ('IntersectionObserver' in window) human(function () {
+      if (start.getBoundingClientRect().top < window.innerHeight) return;
+      start.classList.add('m-tick');
+      var tio = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        tio.disconnect();
+        each(lis, function (li, i) { setTimeout(function () { li.classList.add('on'); }, 250 + i * 420); });
+        setTimeout(function () { closing.classList.add('on'); }, 250 + lis.length * 420 + 200);
+      }, { threshold: 0.45 });
+      tio.observe(start.querySelector('.tiles'));
+    });
+  }
+
+  /* 1. Reveal: headings rise line by line, photos uncover, everything else fades up. Long blocks (like the privacy policy) are never hidden. */
+  if (has('reveal') && 'IntersectionObserver' in window) {
+    var GROUPS = /(^|\s)(jgroup|jump-grid|pf-grid|help-grid|update-grid|rev-list|rev-grid|steps|kind|plan-grid|plans|hi-grid|start-grid|center-head|hero-grid|hero-text|intro-split|q-head)(\s|$)/;
+    var isHead = function (el) { return /^H[12]$/.test(el.tagName); };
+    var expand = function (el, depth) {
+      var kids = el.children;
+      var group = GROUPS.test(el.className || '') || (depth < 2 && el.tagName === 'DIV' && kids.length > 1 && kids.length <= 8 && Array.prototype.some.call(kids, function (c) { return isHead(c) || c.matches(PHOTO); }));
+      if (!group) return [el];
+      var out = [];
+      each(kids, function (c) { out = out.concat(expand(c, depth + 1)); });
+      return out;
+    };
+    var split = function (h) {
+      var orig = h.innerHTML, words = [];
+      (function walk(node) {
+        each(Array.prototype.slice.call(node.childNodes), function (n) {
+          if (n.nodeType === 3) {
+            if (!n.nodeValue.trim()) return;
+            var frag = document.createDocumentFragment();
+            n.nodeValue.split(/([ \n\t]+)/).forEach(function (t) {
+              if (!t) return;
+              if (/^[ \n\t]+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; }
+              var w = document.createElement('span'), i = document.createElement('span');
+              w.className = 'm-w'; i.textContent = t; w.appendChild(i); frag.appendChild(w); words.push(w);
+            });
+            node.replaceChild(frag, n);
+          } else if (n.nodeType === 1 && !/^(svg|img|br)$/i.test(n.tagName)) walk(n);
+        });
+      })(h);
+      var line = -1, last = null;
+      words.forEach(function (w) { var t = w.getBoundingClientRect().top; if (last === null || Math.abs(t - last) > 6) { line++; last = t; } w.style.setProperty('--m-l', line); });
+      h._lines = line + 1;
+      h._restore = function () { h.innerHTML = orig; h._restore = null; };
+    };
+    var prep = function (el, delay) {
+      if (el.offsetHeight > window.innerHeight * 1.5) return false;
+      if (delay) el.style.setProperty('--m-d', delay + 's');
+      if (isHead(el)) { el.classList.add('m-hh'); el._kind = 'h'; }
+      else if (el.matches(PHOTO) && el.querySelector('img')) { el.classList.add('m-img'); el._kind = 'img'; }
+      else { el.classList.add('m-up'); el._kind = 'up'; }
+      return true;
+    };
+    var show = function (el) {
+      if (el._kind === 'h') {
+        // Wrap the words only now, when the heading is about to play, so the page never sits in a wrapped state.
+        // If wrapping changes how the heading breaks into lines, leave it alone and fade it up instead.
+        var h0 = el.offsetHeight; split(el);
+        if (el.offsetHeight !== h0) { el._restore(); el.classList.add('m-up'); el._kind = 'up'; }
+        el.classList.remove('m-hh');
+        void el.offsetWidth;
+      }
+      el.classList.add('in');
+      var d = (parseFloat(el.style.getPropertyValue('--m-d')) || 0) * 1000;
+      var len = el._kind === 'h' ? 1300 + (el._lines || 1) * 90 : el._kind === 'img' ? 1800 : 1400;
+      setTimeout(function () {
+        if (el._restore) el._restore();
+        el.classList.remove('m-up', 'm-img', 'in');
+        el.style.removeProperty('--m-d');
+      }, len + d + 100);
+    };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var el = en.target, r = en.boundingClientRect;
+        // Skipped past (a jump link, or the page opened lower down): show it without waiting.
+        var passed = !en.isIntersecting && r.bottom < 0;
+        if (!passed && (!en.isIntersecting || (en.intersectionRatio < 0.08 && en.intersectionRect.height < window.innerHeight * 0.25))) return;
+        io.unobserve(el);
+        show(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: [0, 0.02, 0.04, 0.08] });
+
+    // Everything below the first screen plays once as it scrolls into view. (The top of the page is never hidden; the home page devices glide in with plain CSS.)
+    human(function () {
+      each(document.querySelectorAll('main > section:not(:first-of-type):not(.trust):not(.m-pin-on), main > .m-stack > section'), function (sec) {
+        var items = [];
+        each(sec.querySelectorAll(':scope > .wrap, :scope > div > .wrap, :scope > .wrap-wide'), function (w) {
+          each(w.children, function (c) { items = items.concat(expand(c, 0)); });
+        });
+        if (!items.length) items = [sec];
+        var lastTop = null, n = 0, lastParent = null, k = 0;
+        items.forEach(function (el) {
+          if (sec.classList.contains('m-tick') && el.classList.contains('closing')) return;
+          var t = Math.round(el.getBoundingClientRect().top);
+          n = t === lastTop ? n + 1 : 0;
+          k = el.parentNode === lastParent && !n ? k + 1 : 0;
+          lastTop = t; lastParent = el.parentNode;
+          // Already on screen (or about to be): leave it as it is.
+          if (t < window.innerHeight + 40) return;
+          if (prep(el, n ? Math.min(n, 4) * 0.09 : Math.min(k, 3) * 0.07)) io.observe(el);
+        });
+      });
+    });
+  }
+
+  /* 4. Layers: the section before a dark band stays put while the dark band slides up over it. */
+  if (has('layer')) {
+    each(document.querySelectorAll('main > section.band.dark'), function (dark) {
+      var prev = dark.previousElementSibling;
+      while (prev && /^(STYLE|SCRIPT)$/.test(prev.tagName)) prev = prev.previousElementSibling;
+      if (!prev || prev.tagName !== 'SECTION' || prev === document.querySelector('main > section') || prev.classList.contains('trust') || dark.classList.contains('m-pin-on')) return;
+      var st = document.createElement('div');
+      st.className = 'm-stack';
+      prev.parentNode.insertBefore(st, prev);
+      st.appendChild(prev); st.appendChild(dark);
+      var set = function () { st.style.setProperty('--m-h', prev.offsetHeight + 'px'); };
+      set();
+      if ('ResizeObserver' in window) new ResizeObserver(set).observe(prev); else window.addEventListener('resize', set);
+    });
+  }
+
+  /* 5. Depth: the home page devices drift apart a little, and photos move a touch slower than the page. */
+  if (has('depth')) {
+    var drift = [], dv = document.querySelector('.home-hero .devices');
+    var small = window.innerWidth <= 760;
+    if (dv) [['.dv-wall', 0.055], ['.dv-laptop', -0.025], ['.dv-phone', -0.08]].forEach(function (a) {
+      var el = dv.querySelector(a[0]);
+      if (el) { el.classList.add('m-par'); drift.push({ el: el, k: a[1] * (small ? 0.6 : 1) }); }
+    });
+    var pics = [];
+    each(document.querySelectorAll('.hi-photo img, .ab-photo img, main .photo img, .tips-photo img'), function (img) { img.classList.add('m-par-img'); pics.push(img); });
+    if (drift.length || pics.length) onScroll(function () {
+      var y = Math.min(window.scrollY, 1100), h = window.innerHeight;
+      drift.forEach(function (d) { d.el.style.translate = '0 ' + (y * d.k).toFixed(1) + 'px'; });
+      pics.forEach(function (img) {
+        var r = img.parentNode.getBoundingClientRect();
+        if (r.bottom < -80 || r.top > h + 80) return;
+        var c = Math.max(-1, Math.min(1, (r.top + r.height / 2 - h / 2) / (h / 2 + r.height / 2)));
+        img.style.translate = '0 ' + (-c * 4.5).toFixed(2) + '%';
+      });
+    });
+  }
+})();
+</script>
