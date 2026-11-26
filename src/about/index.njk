@@ -21,7 +21,6 @@ permalink: /about/
         <li><b>Countries visited:</b> 34</li>
       </ul>
       <p class="lead">I grew up in the SF Bay Area and now live in Monterey, CA. I'm a total tech nerd. I could happily stay up all night setting up automations and making a workflow run smoother. I have a BA in web design and over 7 years of experience, and I've built more than 350 websites. I'm a Squarespace Circle Platinum Partner with a 5.0 rating from 115 client reviews.</p>
-      <p class="about-more">When I’m not designing websites, you can find me at the park with my senior pug Sydney, reading books on psychology, listening to comedy podcasts, and traveling to countries with good food!</p>
     </div>
     <div class="hero-art about-art">
       <div class="ab-photo"><img src="/assets/img/headshot.jpg" alt="Mali King" width="1010" height="1010" fetchpriority="high"></div>
@@ -29,15 +28,14 @@ permalink: /about/
   </div>
 </section>
 
-<!-- A few places I've worked from (Mali 11/26, her own photos; laptop screens blurred so no client info shows). Kept small, About page only. -->
-<section class="band ab-places">
-  <div class="wrap">
-    <h2>A few places I’ve <em>worked from</em></h2>
-    <ul>
-      {%- for pl in [["montenegro", "Montenegro"], ["bolivia", "Bolivia"], ["malang", "Malang, Indonesia"], ["hawaii", "Hawaii"], ["buenos-aires", "Buenos Aires, Argentina"], ["kuala-lumpur", "Kuala Lumpur, Malaysia"], ["monterey", "Monterey, California"], ["macedonia", "North Macedonia"]] %}
-      <li><img src="/assets/img/places-{{ pl[0] }}.webp" alt="Mali's laptop set up to work in {{ pl[1] }}" width="640" height="800" loading="lazy" decoding="async"><span>{{ pl[1] }}</span></li>
-      {%- endfor %}
-    </ul>
+<!-- Mali 11/26: one photo of her on Zoom by the water in Monterey, instead of eight travel photos. Her "when I'm not designing" line moved here from the top. -->
+<section class="band ab-life">
+  <div class="wrap ab-life-grid">
+    <div class="ab-life-photo"><img src="/assets/img/about-zoom-monterey.webp" alt="Mali on a Zoom call on her laptop, with the ocean in Monterey behind it" width="900" height="1048" loading="lazy" decoding="async"></div>
+    <div class="ab-life-text">
+      <h2>Outside of <em>work</em></h2>
+      <p class="lead">When I’m not designing websites, you can find me at the park with my senior pug Sydney, reading books on psychology, listening to comedy podcasts, and traveling to countries with good food!</p>
+    </div>
   </div>
 </section>
 
