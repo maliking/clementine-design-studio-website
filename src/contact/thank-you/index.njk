@@ -31,7 +31,7 @@ eleventyExcludeFromCollections: true
       <h2>A few recent <em>favorites</em></h2>
     </div>
     <ul class="pf-grid">
-      {%- set pfHref = "/example-sites/" %}
+      {%- set pfHref = "" %}
       {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if p.home and p.home <= 3 %}
       {% include "pf-card.njk" %}
       {%- endif %}{% endfor %}
@@ -39,3 +39,5 @@ eleventyExcludeFromCollections: true
     <p class="center"><a class="text-link" href="/example-sites/">See the full portfolio <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
+
+{% include "pf-viewer.njk" %}

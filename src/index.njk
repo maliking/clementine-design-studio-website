@@ -39,7 +39,7 @@ permalink: /
       <h2>Different businesses. The same <em>thoughtful care.</em></h2>
     </div>
     <ul class="pf-grid">
-      {%- set pfHref = "/example-sites/" %}
+      {%- set pfHref = "" %}
       {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if p.home %}
       {% include "pf-card.njk" %}
       {%- endif %}{% endfor %}
@@ -47,6 +47,8 @@ permalink: /
     <p class="center"><a class="btn btn-line" href="/example-sites/">View the Portfolio</a></p>
   </div>
 </section>
+
+{% include "pf-viewer.njk" %}
 
 <!-- 4. SERVICES AND PRICES (every service on /services, same prices and wording) -->
 <section class="band tint home-svc">
@@ -82,18 +84,20 @@ permalink: /
     </div>
 
     <h3 class="home-svc-head">Everything else I do</h3>
-    <ul class="svc-list">
-      <li><a href="/services#s-update"><span class="svc-name">Hourly help</span><span class="svc-price">$150/hr</span><span class="svc-line">Updates, layout changes, troubleshooting, or help figuring something out.</span></a></li>
-      <li><a href="/services#q-market"><span class="svc-name">SEO</span><span class="svc-price">$1,200 to $3,000 to set up, from $400/mo</span><span class="svc-line">Reaches people who are searching for what you offer.</span></a></li>
-      <li><a href="/services#s-update"><span class="svc-name">Monthly maintenance</span><span class="svc-price">About $300/mo</span><span class="svc-line">Send me any questions or changes you want made, and if something goes wrong, I'll fix it.</span></a></li>
-      <li><a href="/services#q-market"><span class="svc-name">Google Ads</span><span class="svc-price">From $750 to set up, from $500/mo</span><span class="svc-line">Reaches people who are already searching for what you offer, without waiting months for SEO. Plus your ad budget.</span></a></li>
-      <li><a href="/services#s-update"><span class="svc-name">Logo and branding</span><span class="svc-price">$750 to $3,000</span><span class="svc-line">I also design business cards, flyers, letterhead and labels.</span></a></li>
-      <li><a href="/services#q-market"><span class="svc-name">Facebook and Instagram ads</span><span class="svc-price">From $750 to set up, from $500/mo</span><span class="svc-line">Reaches people who don't know about you yet. Plus your ad budget.</span></a></li>
-      <li><a href="/services#q-sell"><span class="svc-name">Online courses and shops</span><span class="svc-price">Quote after a free consultation</span><span class="svc-line">I set it all up, from sign-up and payment to getting people access to what they bought.</span></a></li>
-      <li><a href="/services#q-market"><span class="svc-name">LinkedIn posts</span><span class="svc-price">$500 to set up, from $500/mo</span><span class="svc-line">Reaches other businesses and professionals, and builds trust over time.</span></a></li>
-      <li><a href="/services#q-admin"><span class="svc-name">Automation and custom tools</span><span class="svc-price">Quote after a free consultation</span><span class="svc-line">If a task is repetitive or feels like busywork, it can probably be automated.</span></a></li>
-      <li><a href="/services#q-email"><span class="svc-name">Email newsletters and follow-ups</span><span class="svc-price">From $300/mo</span><span class="svc-line">The easiest way to stay in touch with people who already know you.</span></a></li>
-    </ul>
+    <div class="hs-table">
+      <h4 class="hs-group">Your website</h4>
+      <a class="hs-row" href="/services#s-update"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l.9-4.2L16.6 4.1a1.6 1.6 0 0 1 2.3 0l1 1a1.6 1.6 0 0 1 0 2.3L8.2 19.1 4 20zM14.6 6.1l3.3 3.3"/></svg>Hourly Help</span><span class="hs-line">Updates, layout changes, troubleshooting, or help figuring something out.</span><span class="hs-price"><span class="nw">$150/hr</span></span></a>
+      <a class="hs-row" href="/services#s-update"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M3.5 10.5h17M8 3.5v4M16 3.5v4"/></svg>Monthly Maintenance</span><span class="hs-line">Send me any questions or changes you want made, and if something goes wrong, I'll fix it.</span><span class="hs-price"><span class="nw">About $300/mo</span></span></a>
+      <a class="hs-row" href="/services#s-update"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="10" width="10.5" height="10.5" rx="1.5"/><circle cx="14.25" cy="9.75" r="6.25"/></svg>Logo &amp; Branding</span><span class="hs-line">I also design business cards, flyers, letterhead and labels.</span><span class="hs-price"><span class="nw">$750 to $3,000</span></span></a>
+      <h4 class="hs-group">Growing your business</h4>
+      <a class="hs-row" href="/services#q-market"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="7"/><path d="M20.5 20.5l-5-5"/></svg>SEO</span><span class="hs-line">Reaches people who are searching for what you offer.</span><span class="hs-price"><span class="nw">$1,200 to $3,000 to set up,</span> <span class="nw">from $400/mo</span></span></a>
+      <a class="hs-row" href="/services#q-market"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9v6H7l8.5 5V4L7 9H3.5zM18.8 8.3a5.4 5.4 0 0 1 0 7.4"/></svg>Google Ads</span><span class="hs-line">Reaches people who are already searching for what you offer, without waiting months for SEO. Plus your ad budget.</span><span class="hs-price"><span class="nw">From $750 to set up,</span> <span class="nw">from $500/mo</span></span></a>
+      <a class="hs-row" href="/services#q-market"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.5s-8.5-5-8.5-11A4.7 4.7 0 0 1 12 6.6a4.7 4.7 0 0 1 8.5 2.9c0 6-8.5 11-8.5 11z"/></svg>Facebook &amp; Instagram Ads</span><span class="hs-line">Reaches people who don't know about you yet. Plus your ad budget.</span><span class="hs-price"><span class="nw">From $750 to set up,</span> <span class="nw">from $500/mo</span></span></a>
+      <a class="hs-row" href="/services#q-market"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 4.5h17V17H9.5l-6 4V4.5z"/></svg>LinkedIn Posts</span><span class="hs-line">Reaches other businesses and professionals, and builds trust over time.</span><span class="hs-price"><span class="nw">$500 to set up,</span> <span class="nw">from $500/mo</span></span></a>
+      <a class="hs-row" href="/services#q-email"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg>Email Newsletters &amp; Follow-Ups</span><span class="hs-line">The easiest way to stay in touch with people who already know you.</span><span class="hs-price"><span class="nw">From $300/mo</span></span></a>
+      <a class="hs-row" href="/services#q-sell"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8.5h14l1 12H4l1-12zM8.5 8.5v-1a3.5 3.5 0 0 1 7 0v1"/></svg>Online Courses &amp; Shops</span><span class="hs-line">I set it all up, from sign-up and payment to getting people access to what they bought.</span><span class="hs-price"><span class="nw">Quote after a free consultation</span></span></a>
+      <a class="hs-row" href="/services#q-admin"><span class="hs-name"><svg class="hs-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 3L5 13.5h6.5l-1 7.5L19 10.5h-6.5L13 3z"/></svg>Automation &amp; Custom Tools</span><span class="hs-line">If a task is repetitive or feels like busywork, it can probably be automated.</span><span class="hs-price"><span class="nw">Quote after a free consultation</span></span></a>
+    </div>
     <p class="svc-note">After your <a class="consult" href="{{ site.consultUrl }}">free consultation</a>, I'll send you a quote with exact prices. Nothing starts until you approve it.</p>
     <p class="center"><a class="btn btn-line" href="/services">See all services</a></p>
   </div>
@@ -107,23 +111,28 @@ permalink: /
   .home-svc .plan .more { margin-top: auto; padding-top: 24px; font-weight: 600; color: var(--green); }
   .home-svc .plan .more::after { content: " \2192"; }
   .home-svc h3.home-svc-head { display: block; text-align: center; margin: 88px 0 34px; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: calc(var(--h3) + 6px); text-transform: none; color: var(--ink); }
-  .svc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 44px; }
-  .svc-list li { border-bottom: 1px solid var(--line); }
-  .svc-list li:nth-last-child(-n+2) { border-bottom: 0; }
-  .svc-list a { display: block; padding: 24px 0 26px; }
-  .svc-list .svc-name { display: block; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 25px; line-height: 1.2; }
-  .svc-list .svc-price { display: block; margin-top: 6px; font-weight: 700; font-size: 15.5px; color: var(--accent-ink); }
-  .svc-list .svc-line { display: block; margin-top: 6px; font-size: 16px; color: var(--muted); line-height: 1.45; }
-  .svc-list a:hover .svc-name { color: var(--green); }
+  /* Price list (11/26): one column; name, what it is and price each line up in their own column. */
+  .hs-table { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 48px 14px; }
+  .hs-group { font-family: "Instrument Sans", system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0; color: var(--green); padding: 30px 0 12px; line-height: 1.2; margin: 0; }
+  .hs-row { display: grid; grid-template-columns: 326px minmax(0, 1fr) 236px; column-gap: 40px; align-items: baseline; padding: 19px 0 20px; border-top: 1px solid var(--line); }
+  .hs-name { position: relative; padding-left: 27px; font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 24px; line-height: 1.2; }
+  .hs-ic { position: absolute; left: 0; top: 6px; width: 17px; height: 17px; fill: none; stroke: var(--green); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .hs-line { font-size: 16px; color: var(--muted); line-height: 1.5; }
+  .hs-price { text-align: right; font-size: 15.5px; font-weight: 600; color: var(--ink); line-height: 1.45; }
+  .hs-row:hover .hs-name { color: var(--green); }
+  .hs-table .nw { white-space: nowrap; }
   .svc-note { text-align: center; margin: 34px auto 30px; max-width: 40em; }
   .hi-grid .lead + p { margin-top: 18px; }
   .svc-note .consult { color: var(--green); box-shadow: 0 2px 0 var(--accent); }
   @media (max-width: 760px) {
     .home-svc h3.home-svc-head { margin: 56px 0 22px; font-size: var(--h3); }
-    .svc-list { grid-template-columns: minmax(0, 1fr); padding: 4px 22px; }
-    .svc-list li:nth-last-child(2) { border-bottom: 1px solid var(--line); }
-    .svc-list a { padding: 20px 0 22px; }
-    .svc-list .svc-name { font-size: 23px; }
+    .hs-table { padding: 2px 22px 8px; }
+    .hs-group { padding: 24px 0 10px; }
+    .hs-row { grid-template-columns: minmax(0, 1fr); row-gap: 4px; padding: 17px 0 18px; }
+    .hs-name { font-size: 22px; padding-left: 25px; }
+    .hs-ic { top: 5.5px; width: 16px; height: 16px; }
+    .hs-price { text-align: left; order: 2; font-size: 15px; }
+    .hs-line { order: 3; margin-top: 2px; }
   }
 </style>
 
