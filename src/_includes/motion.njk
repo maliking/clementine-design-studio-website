@@ -148,7 +148,7 @@
           lastTop = t; lastParent = el.parentNode;
           // Already on screen (or about to be): leave it as it is.
           if (t < window.innerHeight + 40) return;
-          if (SL) { if (el.offsetHeight <= window.innerHeight * 1.5) el.classList.add(el.matches(PHOTO) && el.querySelector('img') ? 'sl-img' : 'sl-up'); return; }
+          if (SL) { if (!el.classList.contains('tree') && el.offsetHeight <= window.innerHeight * 1.5) el.classList.add(el.matches(PHOTO) && el.querySelector('img') ? 'sl-img' : 'sl-up'); return; }
           if (prep(el, n ? Math.min(n, 4) * 0.09 : Math.min(k, 3) * 0.07)) io.observe(el);
         });
       });
@@ -199,7 +199,11 @@
       var parts = [tree.querySelector('.stem')].concat(Array.prototype.slice.call(tree.querySelectorAll('.branch')));
       if (!parts[0]) return;
       var h = window.innerHeight, waiting = [];
-      if (SL) { if (tree.querySelector('.branch:last-child').getBoundingClientRect().top > h * 0.6) tree.classList.add('m-grow-sl'); return; }
+      if (SL) {
+        if (tree.querySelector('.branch:last-child').getBoundingClientRect().top <= h * 0.6) return;
+        tree.classList.add('m-grow-sl');
+        return;
+      }
       parts.forEach(function (el) { if (el.getBoundingClientRect().top > h * 0.86) waiting.push(el); else el.classList.add('g-on'); });
       if (!waiting.length) return;
       tree.classList.add('m-grow');
