@@ -26,3 +26,9 @@
   "author": { "@type": "Organization", "name": site.name, "url": site.url },
   "publisher": { "@type": "Organization", "name": site.name, "url": site.url, "logo": { "@type": "ImageObject", "url": site.url + "/assets/img/logo.png" } }
 } | dump | safe }}</script>
+{%- if post.faq and post.faq.length %}
+{#- Optional: a post can list its visible FAQ as `faq: [{q, a}]` in the data file. Keep it word-for-word the same as the FAQ on the page. -#}
+{%- set faqItems = [] %}
+{%- for f in post.faq %}{% set faqItems = (faqItems.push({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }), faqItems) %}{% endfor %}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqItems } | dump | safe }}</script>
+{%- endif %}
