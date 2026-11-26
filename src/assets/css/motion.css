@@ -111,28 +111,28 @@
    Only where the browser supports scroll-linked animations (the script adds .m-sl). Scroll back up and they rewind.
    Each range ends by the time the item is fully on screen, so nothing is left half-faded while you read. */
 @supports (animation-timeline: view()) {
-  .m-sl .sl-up { animation: sl-up linear both; animation-timeline: view(); animation-range: entry 5% entry 95%; }
-  .m-sl .sl-img img { animation: sl-img linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
-  @keyframes sl-up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-  @keyframes sl-img { from { clip-path: inset(0 0 100% 0); scale: 1.16; } to { clip-path: inset(0 0 0 0); scale: var(--m-s, 1); } }
+  .m-sl .sl-up { animation: sl-up linear both; animation-timeline: view(); animation-range: entry 0% entry 260px; }
+  .m-sl .sl-img img { animation: sl-img linear both; animation-timeline: view(); animation-range: entry 0% entry 320px; }
+  /* Mali 11/26: no fading on phones. Everything is always there and just slides up into place. */
+  @keyframes sl-up { from { transform: translateY(34px); } to { transform: none; } }
+  @keyframes sl-img { from { scale: 1.1; translate: 0 24px; } to { scale: var(--m-s, 1); translate: none; } }
 
   /* "Where I start": each point's orange check fills in as it scrolls up the screen */
-  .m-sl .m-tick .tiles li { view-timeline-name: --tk; animation: sl-tick linear both; animation-timeline: --tk; animation-range: entry 60% cover 42%; }
+  .m-sl .m-tick .tiles li { view-timeline-name: --tk; opacity: 1; }  /* the words stay fully visible; only the orange check fills in */
   .m-sl .m-tick .tiles li::before { animation: sl-pop linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
   .m-sl .m-tick .tiles li::after { animation: sl-ring linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
-  .m-sl .m-tick .closing { animation: sl-up linear both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
-  @keyframes sl-tick { from { opacity: .34; } to { opacity: 1; } }
+  .m-sl .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(); animation-range: entry 0% entry 260px; }
   @keyframes sl-pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
   @keyframes sl-ring { from { opacity: 1; } to { opacity: 0; } }
 
   /* The business tree: the line draws down, the dot lights up, the card rises, "Your website" fills in orange, all with the scroll */
   .m-grow-sl .stem { transform-origin: top; animation: sl-draw linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
-  .m-grow-sl .branch { view-timeline-name: --br; animation: sl-card linear both; animation-timeline: --br; animation-range: entry 0% entry 75%; }
-  .m-grow-sl .branch h3::before { animation: sl-dot linear both; animation-timeline: --br; animation-range: entry 25% entry 70%; }
+  .m-grow-sl .branch { view-timeline-name: --br; animation: sl-card linear both; animation-timeline: --br; animation-range: entry 0% entry 280px; }
+  .m-grow-sl .branch h3::before { animation: sl-dot linear both; animation-timeline: --br; animation-range: entry 60px entry 240px; }
   .m-grow-sl .branch::after { transform-origin: top; animation: sl-draw linear both; animation-timeline: --br; animation-range: entry 100% cover 62%; }
   .m-grow-sl .branch li.hl { animation: sl-mark linear both; animation-timeline: view(); animation-range: entry 100% cover 48%; }
   @keyframes sl-draw { from { transform: scaleY(0); } to { transform: none; } }
-  @keyframes sl-card { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: none; } }
+  @keyframes sl-card { from { translate: 0 40px; } to { translate: none; } }
   @keyframes sl-dot { from { transform: scale(0); } 70% { transform: scale(1.25); } to { transform: none; } }
   @keyframes sl-mark { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
 }
