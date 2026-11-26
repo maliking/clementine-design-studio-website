@@ -119,6 +119,23 @@ faqs:
   </div>
 </section>
 
+<section class="band" id="work">
+  <div class="wrap niche-work">
+    <ul class="pf-one">
+      {%- for p in portfolio.projects %}{% if p.slug == "cooc-associates" %}
+      {%- set pfHref = "/example-sites/" %}
+      {% include "pf-card.njk" %}
+      {%- endif %}{% endfor %}
+    </ul>
+    <div class="niche-work-text">
+      <div class="eyebrow">From my portfolio</div>
+      <h2>A website for a <em>law firm</em></h2>
+      <p>Cooc &amp; Associates is a law firm with offices in Oakland and San Francisco. Its site covers general civil cases, family law and personal injury, with attorney bios, a blog, legal resources and a client portal. Visitors can switch languages and request a consultation from any page.</p>
+      <p class="more"><a href="/example-sites/#cooc-associates">See the whole site</a></p>
+    </div>
+  </div>
+</section>
+
 {% include "niche-faq.njk" %}
 
 {% include "niche-cta.njk" %}

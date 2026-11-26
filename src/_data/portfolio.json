@@ -142,6 +142,14 @@
       "group": "shops",
       "tags": ["bright", "modern", "clean"],
       "about": "A company that makes branded merchandise and corporate gifts, from new hire kits and apparel to event giveaways. The site covers its services, past work, lookbooks and trends, with a shop and a form to start a project."
+    },
+    {
+      "slug": "cooc-associates",
+      "name": "Cooc & Associates",
+      "type": "Law Firm",
+      "group": "experts",
+      "tags": ["classic", "trustworthy", "clear"],
+      "about": "A law firm with offices in Oakland and San Francisco that handles general civil cases, family law and personal injury. The site covers its practice areas, attorneys, a blog and legal resources, with a client portal, a language switcher and a way to request a consultation."
     }
   ]
 }
