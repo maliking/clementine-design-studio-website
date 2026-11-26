@@ -23,7 +23,7 @@
   "image": (site.url + post.image) if post.image else undefined,
   "datePublished": post.published,
   "dateModified": post.modified,
-  "author": { "@type": "Organization", "name": site.name, "url": site.url },
+  "author": ({ "@type": "Person", "@id": site.url + "/#mali", "name": "Mali King", "url": site.url + "/about" } if post.author == "mali" else { "@type": "Organization", "name": site.name, "url": site.url }),
   "publisher": { "@type": "Organization", "name": site.name, "url": site.url, "logo": { "@type": "ImageObject", "url": site.url + "/assets/img/logo.png" } }
 } | dump | safe }}</script>
 {%- if post.faq and post.faq.length %}
