@@ -100,6 +100,19 @@
   from = "/blog/squarespace-professional-website-cost-breakdown"
   to = "/blog/squarespace-website-cost-breakdown"
   status = 301
+# Old posts Mali removed 11/26 (outdated prices, a fined product, no visitors), sent to the closest page.
+[[redirects]]
+  from = "/blog/how-much-should-it-cost-to-build-a-website-sgzpd"
+  to = "/blog/squarespace-website-cost-breakdown"
+  status = 301
+[[redirects]]
+  from = "/blog/making-websites-accessible-a-review-of-accessibe-x2h7p"
+  to = "/blog"
+  status = 301
+[[redirects]]
+  from = "/blog/how-often-should-you-update-your-website-fw4gd"
+  to = "/monthly-plans"
+  status = 301
 # Squarespace extras that have no page here: blog categories/tags, the RSS feed, and the template's sample blogs.
 [[redirects]]
   from = "/blog/category/*"
@@ -220,7 +233,15 @@
   to = "/"
   status = 301
 [[redirects]]
+  from = "/new-page-12"
+  to = "/"
+  status = 301
+[[redirects]]
   from = "/new-page-22"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/new-page-28"
   to = "/"
   status = 301
 [[redirects]]
