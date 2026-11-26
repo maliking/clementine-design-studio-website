@@ -1,4 +1,4 @@
-{#- One portfolio card. Needs `p` (a project from _data/portfolio.json) and `pfHref` ("" on the portfolio page, "/example-sites/" elsewhere). -#}
+{#- One portfolio card. Needs `p` (a project from _data/portfolio.json) and `pfHref` ("" when the page includes pf-viewer.njk, so the card opens in place; "/example-sites/" otherwise). -#}
 {%- set pImg = portfolioImages[p.slug] %}
 <li class="pf-card" data-group="{{ p.group }}">
   <a class="pf-open" href="{{ pfHref }}#{{ p.slug }}" data-slug="{{ p.slug }}">
