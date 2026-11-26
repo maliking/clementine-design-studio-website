@@ -239,6 +239,9 @@ h1 em, h2 em { white-space: nowrap; }
 .cta .wrap { max-width: none; padding: 0; }
 .cta-panel { background: var(--dark); color: var(--on-dark); border-radius: 12px; text-align: center; padding: 88px 40px; }
 .cta-panel p:has(> .btn:only-child) { display: flex; justify-content: center; }
+/* A tinted section above the CTA runs behind the top of the green card, so the card overlaps it instead of touching it (Mali 11/25, all screen sizes). */
+.tint + .cta { background: linear-gradient(var(--tint) 0 96px, transparent 96px); }
+.tint:has(+ .cta) { padding-bottom: 72px; }
 .cta .lead { max-width: 30em; margin: 20px auto 36px; }
 .cta .btn { background: var(--accent); color: #1c1d20; }
 .cta em { color: var(--accent-on-dark); }
