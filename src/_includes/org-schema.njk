@@ -1,3 +1,4 @@
+{#- Prices in hasOfferCatalog must match /services (added 11/26 because Google's AI mixed up old and new prices). -#}
 {#- Who runs this site, for search engines and AI tools. "Clementine Studio" is the name on her Squarespace Marketplace profile (character limit there). Add new profile links to sameAs. -#}
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org",
@@ -12,6 +13,21 @@
       "image": site.url + "/assets/img/logo.png",
       "description": "Squarespace web design for small businesses by Mali King, a Squarespace Circle Platinum Partner.",
       "founder": { "@id": site.url + "/#mali" },
+      "priceRange": "$150 to $3,000+",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services and prices",
+        "url": site.url + "/services/",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Website-in-a-Day", "description": "A 1 to 5 page Squarespace website, built in one day.", "url": site.url + "/website-in-a-day", "price": "1500", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "Custom Website", "description": "A custom website of 5+ pages on Squarespace, Shopify or WordPress.", "url": site.url + "/services/#s-website", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "3000", "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "Hourly Help", "description": "Updates, layout changes and troubleshooting on an existing website.", "url": site.url + "/services/#s-update", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "150", "priceCurrency": "USD", "unitCode": "HUR", "unitText": "hour" } },
+          { "@type": "Offer", "name": "Monthly Maintenance", "description": "Ongoing website updates and fixes, billed monthly.", "url": site.url + "/monthly-plans", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "300", "priceCurrency": "USD", "unitText": "month" } },
+          { "@type": "Offer", "name": "Logo and Branding", "url": site.url + "/services/#s-update", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "maxPrice": "3000", "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "SEO", "description": "$1,200 to $3,000 to set up, then from $400 a month.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "1200", "maxPrice": "3000", "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "Google Ads Management", "description": "From $750 to set up, then from $500 a month, plus the ad budget paid to Google.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } }
+        ]
+      },
       "sameAs": [
         "https://www.squarespace.com/designer/profile/5240211",
         "https://99designs.com/profiles/clementinedesignstudio"

@@ -59,9 +59,9 @@ h1 em, h2 em { white-space: nowrap; }
 .hero-text h1 { margin-bottom: 30px; }
 .hero-text p { max-width: 34em; }
 .hero-text p + p { margin-top: 16px; }
-/* Mali 11/26: a small drawn wave instead of the green dot. Absolutely placed so the line keeps its height. */
-.hero-text .direct { position: relative; margin-top: 22px; padding-left: 35px; font-weight: 600; }
-.hero-text .direct::before { content: ""; position: absolute; left: 0; top: 50%; width: 26px; height: 26px; margin-top: -13px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28' fill='none' stroke='%232F5443' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(3.4 3.6) rotate(-14 12 12) scale(.88)'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2'/%3E%3Cpath d='M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2'/%3E%3Cpath d='M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3Cpath d='M23.2 3.200c1.500.9 2.500 2.200 3 3.900' stroke='%23EE8524'/%3E%3Cpath d='M2 16.500c.3 1.900 1.200 3.400 2.600 4.600' stroke='%23EE8524'/%3E%3C/svg%3E") center / contain no-repeat; }
+/* Mali 11/26: a small drawn wave instead of the green dot. Absolutely placed so the line keeps its height. The orange lines sit clear of the hand (she caught one touching). */
+.hero-text .direct { position: relative; margin-top: 22px; padding-left: 38px; font-weight: 600; }
+.hero-text .direct::before { content: ""; position: absolute; left: 0; top: 50%; width: 29px; height: 26px; margin-top: -13px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 28' fill='none' stroke='%232F5443' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(6.1 3.6) rotate(-14 12 12) scale(.88)'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2'/%3E%3Cpath d='M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2'/%3E%3Cpath d='M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/g%3E%3Cpath d='M25.8 3.4c1.5.9 2.5 2.2 3 3.9' stroke='%23EE8524'/%3E%3Cpath d='M1.7 17.3c.3 1.9 1.2 3.4 2.6 4.6' stroke='%23EE8524'/%3E%3C/svg%3E") center / contain no-repeat; }
 .cta-row { display: flex; align-items: center; gap: 22px; margin-top: 34px; }
 .hero-art { position: relative; height: 560px; }
 .hero-art .portrait { position: absolute; right: 0; top: 0; width: 400px; height: 520px; overflow: hidden; }
@@ -95,6 +95,12 @@ h1 em, h2 em { white-space: nowrap; }
   .home-hero .devices .dv-wall { top: calc(var(--h1) * .16); height: auto; bottom: 10%; }
   .home-hero .devices .dv-laptop { top: auto; bottom: 3.5%; }
   .home-hero .devices .dv-phone { top: auto; bottom: 0; }
+}
+/* Phones and tablets (Mali 11/26, "too close to the left"): the laptop's base stuck out past the text edge. Laptop and phone move right so the base lines up with the words. */
+@media (max-width: 900px) {
+  .devices .dv-laptop { left: 5.04%; }
+  .devices .dv-phone { left: 69%; }
+  .svc-art .dv-phone { left: 0; }
 }
 
 /* 2. Jump cards */
