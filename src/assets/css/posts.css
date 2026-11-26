@@ -14,7 +14,7 @@
 .lead-bar i:first-child { background: var(--accent); }
 .lead-frame img { display: block; width: 100%; height: auto; }
 .post-lead .post-text { padding: 8px 8px 8px 40px; }
-.lead-label { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.lead-label { font-size: 16px; font-weight: 600; color: var(--accent); margin-bottom: 14px; }
 .post-lead h2 { font-size: 40px; line-height: 1.1; color: var(--on-dark); }
 .post-lead .post-sum { -webkit-line-clamp: 4; font-size: 18px; color: var(--on-dark-muted); margin-top: 14px; }
 .lead-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px; margin-top: 28px; font-size: 15px; color: var(--on-dark-muted); }
