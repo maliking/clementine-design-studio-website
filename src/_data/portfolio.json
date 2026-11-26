@@ -9,6 +9,7 @@
   "projects": [
     {
       "slug": "plants-with-krystal",
+      "home": 5,
       "name": "Plants with Krystal",
       "type": "Plant Educator & Author",
       "group": "experts",
@@ -94,7 +95,6 @@
     },
     {
       "slug": "cardinal-direction",
-      "home": 5,
       "name": "Cardinal Direction",
       "type": "Qualitative Research",
       "group": "experts",

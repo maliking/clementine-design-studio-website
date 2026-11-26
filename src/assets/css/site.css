@@ -956,6 +956,10 @@ html.pf-lock { overflow: hidden; }
 /* Mali 11/26 08:34: center the leaf and the words together as one unit (replaces hanging the leaf). The negative margin cancels the trailing letter-space after the last letter. */
 .center-head .eyebrow { padding-right: 0; margin-right: -.22em; }
 .steps p { text-wrap: pretty; }
+/* Kind Words heading: a small drawn heart instead of emoji (Mali 11/26), centered on the capital letters */
+.kw-heart { display: inline-block; width: .74em; height: .63em; vertical-align: .08em; overflow: visible; }
+/* Mali 11/26: "How it works" bigger and lined up on the left with the numbered steps on phones */
+@media (max-width: 760px) { .how h2.center { text-align: left; font-size: 38px; } }
 
 /* ---------- Page tops (11/26): every page top follows the home page ---------- */
 /* Services: the studio desk photo in the same rounded panel as home, with a different client site on a phone in front. */
