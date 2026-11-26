@@ -43,13 +43,14 @@
 # The demo stays on Mali's Squarespace site until it has a new home. After clementinedesign.studio
 # points to Netlify, these send the demo's old addresses to the same pages on the Squarespace built-in address.
 # 302 (temporary) because the demo will move again.
+# 11/26: /optionkit-demo moved to Mali's friend's site (candeaux.squarespace.com); the other demo pages still point to the old address.
 [[redirects]]
   from = "/optionkit-demo"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-demo"
+  to = "https://candeaux.squarespace.com/optionkit-demo"
   status = 302
 [[redirects]]
   from = "/optionkit-demo/*"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-demo/:splat"
+  to = "https://candeaux.squarespace.com/optionkit-demo/:splat"
   status = 302
 [[redirects]]
   from = "/optionkit-test"
