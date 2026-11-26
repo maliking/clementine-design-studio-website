@@ -26,6 +26,11 @@
   var human = function (fn) { if (awake) fn(); else waiting.push(fn); };
 
   /* 3. Pinned "Where I start": on a computer the section holds still while its four points tick in, then the closing line. On phones the points tick in one after another. */
+  // Phones (Mali 11/26): animations follow the scroll itself (scroll back up and they rewind), using the browser's own scroll-linked
+  // animations, so nothing runs in script while scrolling. Phones whose browser can't do that keep the play-once version.
+  var SL = window.matchMedia('(max-width: 900px)').matches && !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
+  if (SL) root.classList.add('m-sl');
+
   var start = document.getElementById('s-start');
   if (has('pin') && start && start.querySelector('.tiles')) {
     var lis = start.querySelectorAll('.tiles li'), closing = start.querySelector('.closing'), sw = start.querySelector('.wrap');
@@ -39,7 +44,10 @@
           closing.classList.toggle('on', p > 0.8);
         });
       });
-    } else if ('IntersectionObserver' in window) human(function () {
+    } else if (SL) human(function () {
+      if (start.getBoundingClientRect().top < window.innerHeight) return;
+      start.classList.add('m-tick');
+    }); else if ('IntersectionObserver' in window) human(function () {
       if (start.getBoundingClientRect().top < window.innerHeight) return;
       start.classList.add('m-tick');
       var tio = new IntersectionObserver(function (es) {
@@ -140,6 +148,7 @@
           lastTop = t; lastParent = el.parentNode;
           // Already on screen (or about to be): leave it as it is.
           if (t < window.innerHeight + 40) return;
+          if (SL) { if (el.offsetHeight <= window.innerHeight * 1.5) el.classList.add(el.matches(PHOTO) && el.querySelector('img') ? 'sl-img' : 'sl-up'); return; }
           if (prep(el, n ? Math.min(n, 4) * 0.09 : Math.min(k, 3) * 0.07)) io.observe(el);
         });
       });
@@ -184,12 +193,13 @@
     });
   }
   /* 6. Grow (Mali 11/26): on phones, the "one part of your business" tree grows as you scroll. The stem draws down from
-     "Your business", "Your website" lights up first, then each card hangs off the line one by one. Only classes change, no scroll work. */
+     "Your business", "Your website" lights up first, then each card hangs off the line one by one. On phones that can, it follows the scroll (CSS only). */
   if (has('reveal') && 'IntersectionObserver' in window && window.matchMedia('(max-width: 900px)').matches) {
-    each(document.querySelectorAll('.tree'), function (tree) {
+    human(function () { each(document.querySelectorAll('.tree'), function (tree) {
       var parts = [tree.querySelector('.stem')].concat(Array.prototype.slice.call(tree.querySelectorAll('.branch')));
       if (!parts[0]) return;
       var h = window.innerHeight, waiting = [];
+      if (SL) { if (tree.querySelector('.branch:last-child').getBoundingClientRect().top > h * 0.6) tree.classList.add('m-grow-sl'); return; }
       parts.forEach(function (el) { if (el.getBoundingClientRect().top > h * 0.86) waiting.push(el); else el.classList.add('g-on'); });
       if (!waiting.length) return;
       tree.classList.add('m-grow');
@@ -201,7 +211,7 @@
         });
       }, { rootMargin: '0px 0px -16% 0px' });
       waiting.forEach(function (el) { gio.observe(el); });
-    });
+    }); });
   }
 })();
 </script>
