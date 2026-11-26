@@ -109,19 +109,20 @@
 
 /* ---------- 7. Phones: animations follow the scroll (Mali 11/26: "controlled on how far down you're going") ----------
    Only where the browser supports scroll-linked animations (the script adds .m-sl). Scroll back up and they rewind.
-   Mali 11/26: they play in the lower-middle of the screen, not at the very bottom: every timeline counts from 32% above the bottom edge. */
+   Mali 11/26: they play in the lower-middle of the screen, not at the very bottom: every timeline counts from 32% above the bottom edge.
+   Mali 11/26 later: "still feels too subtle", so things travel farther (cards 100px, blocks 72px) over a longer stretch of scrolling. */
 @supports (animation-timeline: view()) {
-  .m-sl .sl-up { animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 260px; }
-  .m-sl .sl-img img { animation: sl-img linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 320px; }
+  .m-sl .sl-up { animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 380px; }
+  .m-sl .sl-img img { animation: sl-img linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 440px; }
   /* Mali 11/26: no fading on phones. Everything is always there and just slides up into place. */
-  @keyframes sl-up { from { transform: translateY(34px); } to { transform: none; } }
-  @keyframes sl-img { from { scale: 1.1; translate: 0 24px; } to { scale: var(--m-s, 1); translate: none; } }
+  @keyframes sl-up { from { transform: translateY(72px); } to { transform: none; } }
+  @keyframes sl-img { from { scale: 1.16; translate: 0 50px; } to { scale: var(--m-s, 1); translate: none; } }
 
   /* "Where I start": each point's orange check fills in as it scrolls up the screen */
   .m-sl .m-tick .tiles li { view-timeline-name: --tk; view-timeline-inset: 0 32%; opacity: 1; }  /* the words stay fully visible; only the orange check fills in */
   .m-sl .m-tick .tiles li::before { animation: sl-pop linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
   .m-sl .m-tick .tiles li::after { animation: sl-ring linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
-  .m-sl .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 260px; }
+  .m-sl .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 380px; }
   @keyframes sl-pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
   @keyframes sl-ring { from { opacity: 1; } to { opacity: 0; } }
 
@@ -138,21 +139,21 @@
   .m-grow-sl .branch:nth-child(4) { view-timeline-name: --b4; view-timeline-inset: 0 32%; }
   .m-grow-sl .branch:nth-child(5) { view-timeline-name: --b5; view-timeline-inset: 0 32%; }
   .m-grow-sl .branch:nth-child(6) { view-timeline-name: --b6; view-timeline-inset: 0 32%; }
-  .m-grow-sl .stem, .m-grow-sl .branch::after { transform-origin: top; animation: sl-draw linear both; animation-range: entry 0px entry 70px; }
+  .m-grow-sl .stem, .m-grow-sl .branch::after { transform-origin: top; animation: sl-draw linear both; animation-range: entry 0px entry 110px; }
   .m-grow-sl .stem { animation-timeline: --b1; }
   .m-grow-sl .branch:nth-child(1)::after { animation-timeline: --b2; }
   .m-grow-sl .branch:nth-child(2)::after { animation-timeline: --b3; }
   .m-grow-sl .branch:nth-child(3)::after { animation-timeline: --b4; }
   .m-grow-sl .branch:nth-child(4)::after { animation-timeline: --b5; }
   .m-grow-sl .branch:nth-child(5)::after { animation-timeline: --b6; }
-  .m-grow-sl .branch { animation: sl-pop-card linear both; animation-range: entry 50px entry 170px; }
+  .m-grow-sl .branch { animation: sl-pop-card linear both; animation-range: entry 60px entry 260px; }
   .m-grow-sl .branch:nth-child(1) { animation-timeline: --b1; }
   .m-grow-sl .branch:nth-child(2) { animation-timeline: --b2; }
   .m-grow-sl .branch:nth-child(3) { animation-timeline: --b3; }
   .m-grow-sl .branch:nth-child(4) { animation-timeline: --b4; }
   .m-grow-sl .branch:nth-child(5) { animation-timeline: --b5; }
   .m-grow-sl .branch:nth-child(6) { animation-timeline: --b6; }
-  .m-grow-sl .branch h3::before { animation: sl-dot linear both; animation-range: entry 70px entry 160px; }
+  .m-grow-sl .branch h3::before { animation: sl-dot linear both; animation-range: entry 120px entry 220px; }
   .m-grow-sl .branch:nth-child(1) h3::before { animation-timeline: --b1; }
   .m-grow-sl .branch:nth-child(2) h3::before { animation-timeline: --b2; }
   .m-grow-sl .branch:nth-child(3) h3::before { animation-timeline: --b3; }
@@ -160,13 +161,13 @@
   .m-grow-sl .branch:nth-child(5) h3::before { animation-timeline: --b5; }
   .m-grow-sl .branch:nth-child(6) h3::before { animation-timeline: --b6; }
   .m-grow-sl .branch:nth-child(1) li { transform-origin: 0 50%; animation: sl-item linear both; animation-timeline: --b1; }
-  .m-grow-sl .branch:nth-child(1) li.hl { animation: sl-item linear both, sl-mark linear both; animation-timeline: --b1, --b1; animation-range: entry 90px entry 160px, entry 150px entry 230px; }
-  .m-grow-sl .branch:nth-child(1) li:nth-child(2) { animation-range: entry 150px entry 195px; }
-  .m-grow-sl .branch:nth-child(1) li:nth-child(3) { animation-range: entry 175px entry 220px; }
-  .m-grow-sl .branch:nth-child(1) li:nth-child(4) { animation-range: entry 200px entry 245px; }
+  .m-grow-sl .branch:nth-child(1) li.hl { animation: sl-item linear both, sl-mark linear both; animation-timeline: --b1, --b1; animation-range: entry 140px entry 220px, entry 200px entry 290px; }
+  .m-grow-sl .branch:nth-child(1) li:nth-child(2) { animation-range: entry 220px entry 270px; }
+  .m-grow-sl .branch:nth-child(1) li:nth-child(3) { animation-range: entry 250px entry 300px; }
+  .m-grow-sl .branch:nth-child(1) li:nth-child(4) { animation-range: entry 280px entry 330px; }
   @keyframes sl-draw { from { transform: scaleY(0); } to { transform: none; } }
-  @keyframes sl-pop-card { from { translate: 0 40px; scale: .96; } 70% { translate: 0 -4px; scale: 1.01; } to { translate: none; scale: none; } }
-  @keyframes sl-item { from { scale: 0; } 70% { scale: 1.06; } to { scale: none; } }
+  @keyframes sl-pop-card { from { translate: 0 100px; scale: .9; } 70% { translate: 0 -8px; scale: 1.02; } to { translate: none; scale: none; } }
+  @keyframes sl-item { from { scale: 0; } 70% { scale: 1.12; } to { scale: none; } }
   @keyframes sl-dot { from { transform: scale(0); } 70% { transform: scale(1.3); } to { transform: none; } }
   @keyframes sl-mark { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
 }
