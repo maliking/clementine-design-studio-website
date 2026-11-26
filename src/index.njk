@@ -124,6 +124,13 @@ permalink: /
   .svc-note { text-align: center; margin: 34px auto 30px; max-width: 40em; }
   .hi-grid .lead + p { margin-top: 18px; }
   .svc-note .consult { color: var(--green); box-shadow: 0 2px 0 var(--accent); }
+  /* Tablets and small laptops: name and price share the first line, the description sits below. Three columns don't fit here. */
+  @media (min-width: 761px) and (max-width: 1100px) {
+    .hs-table { padding: 8px 36px 14px; }
+    .hs-row { grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; row-gap: 6px; }
+    .hs-price { grid-column: 2; grid-row: 1; }
+    .hs-line { grid-column: 1 / -1; grid-row: 2; max-width: 44em; }
+  }
   @media (max-width: 760px) {
     .home-svc h3.home-svc-head { margin: 56px 0 22px; font-size: var(--h3); }
     .hs-table { padding: 2px 22px 8px; }
