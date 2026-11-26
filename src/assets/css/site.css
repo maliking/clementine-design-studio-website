@@ -537,6 +537,13 @@ h1 em, h2 em { white-space: nowrap; }
 .facts-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
 .facts-list li { font-size: 15px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6.4px 14px 5.6px; }
 .facts-list b { font-weight: 600; color: var(--accent-ink); }
+.facts-list li { white-space: nowrap; }
+/* Phones: slightly smaller pills so two fit per line and none break in the middle. */
+@media (max-width: 760px) {
+  .facts-list { gap: 7px; }
+  .facts-list li { font-size: 13.5px; padding: 5.6px 11px 5px; }
+}
+@media (max-width: 370px) { .facts-list li { white-space: normal; } }
 .about-more { margin-top: 18px; color: var(--muted); }
 .industries { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto; }
 .industries li { background: var(--card); border-radius: 999px; padding: 10.75px 20px 9.25px; font-size: 16px; font-weight: 500; box-shadow: 0 1px 0 var(--line); }
