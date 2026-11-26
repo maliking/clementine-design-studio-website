@@ -4,7 +4,7 @@ title: "Contact | Get in Touch Today"
 nav: contact
 permalink: /contact/
 ---
-{#- Words and form fields copied from the live Contact page (11/25). No photo here (Mali, 11/25). Redesigned 11/25: intro + form + a side column with the Zoom call, a client quote and where Mali is based. "How can I help?" choices match the goals on the Services page. Submissions go to Netlify Forms; email notifications get set up in Netlify before launch. -#}
+{#- Words and form fields copied from the live Contact page (11/25). No photo here (Mali, 11/25). Redesigned 11/25, reworked 11/26 (Mali: no all caps, no stack of small labels): intro with the Zoom call line, form on the right, one quiet client quote under it (Mali: don't draw too much attention to it). "How can I help?" choices match the goals on the Services page. Submissions go to Netlify Forms; email notifications get set up in Netlify before launch. -#}
 
 <section class="contact-page">
   <div class="wrap contact-layout">
@@ -12,6 +12,7 @@ permalink: /contact/
       <div class="eyebrow">Contact</div>
       <h1>Get In <em>Touch!</em></h1>
       <p class="lead">Tell me a little about your business and what you need, and I’ll get back to you.</p>
+      <p class="ci-call">Rather talk it through? <a href="{{ site.consultUrl }}">Book a free 20-minute Zoom call</a></p>
     </div>
 
     <form class="contact-form" name="contact" method="POST" action="/contact/thank-you/" data-netlify="true" netlify-honeypot="company">
@@ -48,16 +49,10 @@ permalink: /contact/
     </form>
 
     <aside class="contact-aside">
-      <div class="ca-block">
-        <p class="ca-label">Rather talk it through?</p>
-        <a class="ca-link" href="{{ site.consultUrl }}">Book a free 20-minute Zoom call <span aria-hidden="true">→</span></a>
-      </div>
       <figure class="ca-quote">
-        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6Z"/></svg></span>
         <blockquote>“She truly understood my vision from the start.”</blockquote>
         <figcaption>I.E. · Custom website</figcaption>
       </figure>
-      <p class="ca-note">5.0 from 100+ reviews on 99designs<br>Based in Monterey, CA - working with businesses everywhere</p>
     </aside>
   </div>
 </section>

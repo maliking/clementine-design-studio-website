@@ -46,14 +46,26 @@
 </main>
 
 <footer class="site-footer">
-  <div class="wrap foot-grid">
-    <div>
-      <p class="links">{% for l in site.footerLinks %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
-      <p class="legal"><a href="/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/cookie-policy">Cookie Policy</a></p>
-      <p class="disc">Disclaimer: Clementine Design Studio is not affiliated, sponsored, or endorsed by Squarespace. The term "Squarespace" is the registered trademark and property of Squarespace, Inc.</p>
-      <p class="copy">© {{ year }} {{ site.name }}</p>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="foot-logo" href="/"><img src="/assets/img/logo.png" alt="{{ site.name }}" width="379" height="88" loading="lazy"></a>
+        <a class="circle-badge" href="https://www.squarespace.com/circle" target="_blank" rel="noopener"><img src="/assets/img/squarespace-circle-platinum-2026.webp" alt="Squarespace Circle Platinum Partner 2026" width="640" height="219" loading="lazy"></a>
+      </div>
+      <nav class="foot-col" aria-label="Pages">
+        <p class="foot-h">Pages</p>
+        {%- for item in site.nav %}{% if item.key != "home" %}<a href="{{ item.url }}">{{ item.label }}</a>{% endif %}{% endfor %}
+      </nav>
+      <nav class="foot-col" aria-label="More help">
+        <p class="foot-h">More help</p>
+        {%- for l in site.footerLinks %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+      </nav>
     </div>
-    <a class="circle-badge" href="https://www.squarespace.com/circle" target="_blank" rel="noopener"><img src="/assets/img/squarespace-circle-platinum-2026.webp" alt="Squarespace Circle Platinum Partner 2026" width="640" height="219" loading="lazy"></a>
+    <div class="foot-bottom">
+      <p class="copy">© {{ year }} {{ site.name }}</p>
+      <p class="legal"><a href="/privacy-policy">Privacy Policy</a><a href="/cookie-policy">Cookie Policy</a></p>
+    </div>
+    <p class="disc">Clementine Design Studio is not affiliated, sponsored, or endorsed by Squarespace. The term "Squarespace" is the registered trademark and property of Squarespace, Inc.</p>
   </div>
 </footer>
 
