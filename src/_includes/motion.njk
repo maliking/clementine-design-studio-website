@@ -199,7 +199,19 @@
       var parts = [tree.querySelector('.stem')].concat(Array.prototype.slice.call(tree.querySelectorAll('.branch')));
       if (!parts[0]) return;
       var h = window.innerHeight, waiting = [];
-      if (SL) { if (tree.querySelector('.branch:last-child').getBoundingClientRect().top > h * 0.6) tree.classList.add('m-grow-sl'); return; }
+      if (SL) {
+        if (tree.querySelector('.branch:last-child').getBoundingClientRect().top <= h * 0.6) return;
+        // How much of the first card starts tucked away below "Your website" (it unfolds like a drawer).
+        var first = tree.querySelector('.branch'), hl = first.querySelector('li.hl');
+        var measure = function () {
+          if (!hl) return;
+          first.style.setProperty('--fold', Math.max(0, first.offsetHeight - (hl.offsetTop + hl.offsetHeight) - 6) + 'px');
+        };
+        measure();
+        if ('ResizeObserver' in window) new ResizeObserver(measure).observe(first);
+        tree.classList.add('m-grow-sl');
+        return;
+      }
       parts.forEach(function (el) { if (el.getBoundingClientRect().top > h * 0.86) waiting.push(el); else el.classList.add('g-on'); });
       if (!waiting.length) return;
       tree.classList.add('m-grow');
