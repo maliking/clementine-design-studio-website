@@ -102,7 +102,6 @@
   // Scrolling inside the screen moves the recording to the matching frame, so pinned text and
   // slide-ins move with your scrolling, the way they do on the real site.
   var scrubbers = [];
-  var narrow = window.matchMedia('(max-width: 900px)');
   function buildScrub(scroller, p, kind) {
     var m = p.scrub[kind];
     scroller.innerHTML = '';
@@ -112,7 +111,7 @@
     v.muted = true; v.playsInline = true; v.preload = 'auto';
     v.setAttribute('aria-label', 'The ' + p.name + ' home page on a ' + (kind === 'desktop' ? 'computer' : 'phone') + '. Scroll to move through it.');
     v.poster = vid(p, kind).replace('.mp4', '.jpg');
-    v.src = vid(p, kind);
+    v.src = narrow.matches ? vid(p, kind).replace('.mp4', '-sm.mp4') : vid(p, kind);
     var spacer = document.createElement('div');
     spacer.className = 'pf-scrub-space';
     scroller.appendChild(v); scroller.appendChild(spacer);
@@ -172,10 +171,12 @@
     var full = !!p.img, phone = !!(p.img && p.img.phone);
     view.classList.toggle('is-full', full);
     view.classList.toggle('has-phone', phone);
-    // Phones and tablets get the full-page pictures instead of the scroll recordings: the computer recording is
-    // 2880px wide, so jumping frame to frame made scrolling laggy, and its wide frame left the screen short (Mali 11/26).
-    var scrub = (p.scrub && !narrow.matches) ? p.scrub : null;
-    view.classList.toggle('has-scrub', !!scrub);
+    // Phones and tablets (Mali 11/26): the Computer screen shows the full-page pictures (tall and smooth, like every other site),
+    // and the Phone screen plays a lighter copy of its scroll recording (the -sm file: smaller frames and a full picture every
+    // 4 frames, so jumping to any spot is quick). The full-size computer recording was laggy on phones and left the screen short.
+    var scrub = p.scrub || null;
+    var useScrub = function (kind) { return !!(scrub && scrub[kind]) && (!narrow.matches || kind === 'phone'); };
+    view.classList.toggle('has-scrub', useScrub('desktop'));
     view.querySelector('#pf-view-name').textContent = p.name;
     view.querySelector('.pf-view-type').textContent = p.type;
     view.querySelector('.pf-about').textContent = p.about || '';
@@ -183,16 +184,18 @@
     view.querySelector('.pf-view-head .pf-tags').innerHTML = p.tags.map(function (t) { return '<span>' + t + '</span>'; }).join('');
     ['desktop', 'phone'].forEach(function (kind) {
       var sc = view.querySelector(kind === 'desktop' ? '.pf-desktop .pf-scroll' : '.pf-phone .pf-scroll');
-      if (scrub && scrub[kind]) buildScrub(sc, p, kind); else fillTiles(sc, p, kind);
+      if (useScrub(kind)) buildScrub(sc, p, kind); else fillTiles(sc, p, kind);
     });
-    view.querySelector('.pf-hint').textContent = scrub ? 'Scroll inside each screen. It moves just like the real site.' : 'Scroll inside each screen to see the whole page.';
+    var phoneFirst = narrow.matches && phone && useScrub('phone');
+    view.querySelector('.pf-hint').textContent = phoneFirst ? 'Scroll inside the screen. The phone view moves just like the real site.' : useScrub('desktop') ? 'Scroll inside each screen. It moves just like the real site.' : 'Scroll inside each screen to see the whole page.';
     if (!full) {
       var m = view.querySelector('.pf-mock img');
       m.classList.remove('ready'); m.onload = function () { m.classList.add('ready'); };
       m.alt = 'The ' + p.name + ' website'; m.src = p.card;
     }
     view.querySelector('.pf-view-foot').style.display = visible().length < 2 ? 'none' : '';
-    view.setAttribute('data-screen', 'desktop');
+    // On a phone, sites with scroll effects open on the Phone screen, where the effects play.
+    view.setAttribute('data-screen', phoneFirst ? 'phone' : 'desktop');
     pressed('.pf-screen', 'data-screen', view.getAttribute('data-screen'));
   }
 
