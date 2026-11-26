@@ -74,6 +74,20 @@ h1 em, h2 em { white-space: nowrap; }
 .hero-art .portrait { border-radius: 200px 200px var(--radius) var(--radius); }
 
 
+/* Home hero (11/25): a client site on a laptop and phone in front of a sunlit wall photo. Everything stays inside the picture column. Sizes scale with the column (cqw). */
+.hero-art.devices { position: relative; height: auto; aspect-ratio: 460 / 520; width: 100%; max-width: none; margin: 0; container-type: inline-size; }
+.devices > div { position: absolute; }
+.devices img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.devices .dv-wall { right: 0; top: 0; width: 86%; height: 84%; border-radius: var(--radius); overflow: hidden; }
+.devices .dv-laptop { width: 72%; left: 3%; top: 47%; }
+.devices .lid { background: #16181a; border-radius: 2.6cqw 2.6cqw .8cqw .8cqw; padding: 1.9cqw 1.9cqw 2.3cqw; box-shadow: 0 30px 60px rgba(30, 25, 15, .25); }
+.devices .dv-laptop .scr { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 2px; background: #000; }
+.devices .base { position: relative; height: 2.6cqw; margin: 0 -7%; background: linear-gradient(#e2e2e5, #a9aaae 60%, #8d8e92); border-radius: 2px 2px 2.6cqw 2.6cqw; box-shadow: 0 18px 30px rgba(30, 25, 15, .22); }
+.devices .base::before { content: ""; position: absolute; left: 42%; width: 16%; top: 0; height: 30%; background: #9a9b9f; border-radius: 0 0 8px 8px; }
+.devices .dv-phone { width: 21%; right: 5%; top: 50%; background: #121314; border-radius: 6.6cqw; padding: 1.5cqw; box-shadow: 0 28px 50px rgba(30, 25, 15, .3), 0 0 0 1.5px #3a3b3e inset; }
+.devices .dv-phone .scr { position: relative; aspect-ratio: 9 / 19.5; overflow: hidden; border-radius: 5.2cqw; background: #000; }
+.devices .dv-phone .scr::after { content: ""; position: absolute; top: 2.2%; left: 35%; width: 30%; height: 3.4%; border-radius: 12px; background: #0b0b0c; }
+
 /* 2. Jump cards */
 .jump-sec { padding-top: 104px; }
 .jump-sec { background: var(--tint); }
