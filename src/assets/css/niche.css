@@ -14,6 +14,8 @@
 /* One portfolio card next to a few lines of text */
 .niche-work { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
 .niche-work .pf-card { list-style: none; }
+/* A smaller card (dentists page): Mali didn't want that example shown big. */
+@media (min-width: 901px) { .niche-work.small { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); } }
 .niche-work-text p + p { margin-top: 16px; }
 .niche-work-text h2 { margin-bottom: 24px; }
 .niche-work-text .more { margin-top: 26px; font-weight: 600; }

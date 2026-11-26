@@ -8,7 +8,8 @@ permalink: /example-sites/
 {#- Projects live in src/_data/portfolio.json. Images: /assets/img/portfolio/<slug>/ (card.webp, then the full page cut into
     d-01.webp, d-02.webp... for computer and p-01.webp... for phone; sizes in src/_data/portfolioImages.json).
     Tiles only load when someone opens that project and scrolls near them. "video": true projects also have
-    /assets/video/portfolio/<slug>-desktop.mp4 and -phone.mp4. No links to live sites, on purpose: client sites change. -#}
+    /assets/video/portfolio/<slug>-desktop.mp4 and -phone.mp4. No links to live sites, on purpose: client sites change.
+    "unlisted": true projects (Honest Family Dental, 11/26) only show on their own industry page, not in this grid. -#}
 
 <section class="hero page-hero top-band pf-hero">
   <div class="wrap center-head">
@@ -28,9 +29,9 @@ permalink: /example-sites/
     </div>
     <ul class="pf-grid" id="pf-grid">
       {%- set pfHref = "" %}
-      {%- for p in portfolio.projects %}
+      {%- for p in portfolio.projects %}{% if not p.unlisted %}
       {% include "pf-card.njk" %}
-      {%- endfor %}
+      {%- endif %}{% endfor %}
     </ul>
   </div>
 </section>
