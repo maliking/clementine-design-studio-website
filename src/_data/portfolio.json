@@ -8,6 +8,14 @@
   ],
   "projects": [
     {
+      "slug": "plants-with-krystal",
+      "name": "Plants with Krystal",
+      "type": "Plant Educator & Author",
+      "group": "experts",
+      "tags": ["warm", "earthy", "friendly"],
+      "about": "A plant educator and speaker whose debut book, More Than Just a Plant, is about how caring for plants can help us through grief and change. The site features the book and her tour dates, plus speaking, workshops, plant consultations and a store."
+    },
+    {
       "slug": "triptych-kyoto",
       "name": "Triptych Kyoto",
       "type": "Artisan Lighting Studio",
@@ -31,7 +39,8 @@
       "name": "Redwoods & Greenfields",
       "type": "Guided Forest Bathing",
       "group": "fitness",
-      "tags": ["calm", "natural", "earthy"]
+      "tags": ["calm", "natural", "earthy"],
+      "about": "A guide who leads forest bathing walks, based on the Japanese practice of shinrin-yoku. The site explains what forest bathing is and covers group, private and corporate walks, with an easy way to sign up for the next one."
     },
     {
       "slug": "chan-adr",
@@ -39,14 +48,16 @@
       "name": "Chan ADR",
       "type": "Mediation Services",
       "group": "experts",
-      "tags": ["grounded", "trustworthy", "calm"]
+      "tags": ["grounded", "trustworthy", "calm"],
+      "about": "A mediation practice in the Seattle area led by Priscilla Chan, a Cantonese-speaking mediator and former Assistant U.S. Attorney. The site covers her background, how the mediation process works, testimonials and a blog, with a way to schedule a mediation."
     },
     {
       "slug": "cfo-beauty",
       "name": "cfobeauty",
       "type": "Hair & Makeup Artist",
       "group": "beauty",
-      "tags": ["warm", "stylish", "personal"]
+      "tags": ["warm", "stylish", "personal"],
+      "about": "A hairstylist and makeup artist in Downers Grove, Illinois, who does color, cuts, extensions, bridal and theatrical makeup. The site covers services and pricing, a portfolio for each type of work, new client forms, online booking and a small shop."
     },
     {
       "slug": "ruta-del-jefe",
@@ -62,14 +73,16 @@
       "name": "Stef Reid",
       "type": "Motivational Speaker & Coach",
       "group": "experts",
-      "tags": ["bold", "clean", "professional"]
+      "tags": ["bold", "clean", "professional"],
+      "about": "A Paralympian and keynote speaker in London who talks to companies about resilience and performing under pressure. The site covers her speaking, past clients, press and her Hail Mary Friday Club, with a way to book her for an event."
     },
     {
       "slug": "iza-erkin",
       "name": "Iza Erkin",
       "type": "Wedding Photography",
       "group": "beauty",
-      "tags": ["romantic", "timeless", "elegant"]
+      "tags": ["romantic", "timeless", "elegant"],
+      "about": "A San Francisco Bay Area wedding photographer who focuses on intimate weddings, elopements and San Francisco City Hall weddings. The site shows her wedding, City Hall, and couples and family work, with a blog and a way to book a consultation."
     },
     {
       "slug": "cardinal-direction",
@@ -77,14 +90,16 @@
       "name": "Cardinal Direction",
       "type": "Qualitative Research",
       "group": "experts",
-      "tags": ["creative", "polished", "modern"]
+      "tags": ["creative", "polished", "modern"],
+      "about": "A qualitative research firm led by Kyle Bower that uses creative methods like visual storytelling and journaling. The site covers services, consulting and training, past projects, resources and a blog, with a way to book a free consultation."
     },
     {
       "slug": "oakland-chinatown-chamber",
       "name": "Oakland Chinatown Chamber",
       "type": "Chamber of Commerce",
       "group": "events",
-      "tags": ["bold", "trustworthy", "clean"]
+      "tags": ["bold", "trustworthy", "clean"],
+      "about": "The chamber of commerce for Oakland Chinatown, serving the Asian business community since 1985. The site covers membership, events like the Lunar New Year Bazaar, resources and donations, in English, Chinese and Vietnamese."
     },
     {
       "slug": "favarh",
@@ -100,7 +115,8 @@
       "name": "The Whisper Group",
       "type": "Advisory Firm",
       "group": "experts",
-      "tags": ["approachable", "clean", "modern"]
+      "tags": ["approachable", "clean", "modern"],
+      "about": "An advisory firm that helps women business owners get their companies ready to sell. The site covers its exit readiness program, buying and selling a business, and a community for women who have sold, with a quiz that gives each owner a readiness score."
     },
     {
       "slug": "vibe-pilates",
@@ -108,21 +124,24 @@
       "name": "VIBE Pilates",
       "type": "Pilates Studio",
       "group": "fitness",
-      "tags": ["sleek", "moody", "energetic"]
+      "tags": ["sleek", "moody", "energetic"],
+      "about": "A Pilates studio with 40-minute, rhythm-based classes on Xformer machines in an infrared-heated room. The site covers the VIBE Method, pricing and packages, the instructors and job openings, with online booking."
     },
     {
       "slug": "luretik",
       "name": "Luretik",
       "type": "Luxury Olive Oils",
       "group": "shops",
-      "tags": ["elegant", "calm", "luxurious"]
+      "tags": ["elegant", "calm", "luxurious"],
+      "about": "A small certified organic olive oil producer in California’s Santa Ynez Valley, with 900 trees in nine Italian varieties. The site is an online shop for its oils and gift sets, plus pages on how the oil is made, where to buy it and a blog."
     },
     {
       "slug": "clementine-promos",
       "name": "Clementine Promos",
       "type": "Branded Corporate Merchandise",
       "group": "shops",
-      "tags": ["bright", "modern", "clean"]
+      "tags": ["bright", "modern", "clean"],
+      "about": "A company that makes branded merchandise and corporate gifts, from new hire kits and apparel to event giveaways. The site covers its services, past work, lookbooks and trends, with a shop and a form to start a project."
     }
   ]
 }

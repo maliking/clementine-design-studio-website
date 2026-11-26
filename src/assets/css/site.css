@@ -879,3 +879,51 @@ html.pf-lock { overflow: hidden; }
   .ca-quote { padding-left: 18px; }
   .ca-quote blockquote { font-size: 21px; }
 }
+
+/* Phone polish (11/26, from Mali's phone screenshots) */
+.svc-nav .svc-arrow { display: none; }
+.trust .tr-dot { padding: 0 .35em; color: var(--muted); }
+.steps h3 a.consult { text-decoration: none; }
+.steps h3 a.consult:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+@media (max-width: 900px) {
+  /* Proof strip: a small tangerine dot instead of the short dashes; the place line on two lines */
+  .trust-item + .trust-item::before { top: -2px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border: 0; border-radius: 50%; background: var(--accent); opacity: .85; }
+  .trust-item, .trust-item + .trust-item { padding: 18px 8px; }
+  .trust .tr-dot { display: none; }
+  .trust .tr-2 { display: block; }
+  /* Photo labels: sentence case, so no wide letter-spacing */
+  .tag { font-size: 13px; letter-spacing: 0; font-weight: 600; padding: 6px 12px 7px; border-radius: 999px; }
+  /* Menu: numbers centered on each link */
+  .mm-links a { align-items: center; }
+  .mm-num { line-height: 1; letter-spacing: .04em; padding-top: 3px; }
+  /* Portfolio filters wrap onto centered lines instead of running off the edge */
+  .pf-filters { flex-wrap: wrap; justify-content: center; overflow: visible; margin: 0 0 28px; padding: 0; gap: 8px; }
+  /* Services section bar: arrows at the edges show there's more to scroll */
+  .svc-nav .svc-arrow { position: sticky; z-index: 1; flex: none; display: grid; place-items: center; align-self: stretch; width: 40px; padding: 0; border: 0; color: var(--ink); cursor: pointer; transition: opacity .2s; }
+  .svc-nav .svc-arrow svg { width: 16px; height: 16px; }
+  .svc-nav .svc-arrow.prev { left: -6px; margin: -6px -40px -6px -6px; padding-left: 6px; justify-items: start; background: linear-gradient(90deg, var(--card) 55%, rgba(255, 253, 249, 0)); border-radius: 999px 0 0 999px; }
+  .svc-nav .svc-arrow.next { right: -6px; margin: -6px -6px -6px -40px; padding-right: 6px; justify-items: end; background: linear-gradient(270deg, var(--card) 55%, rgba(255, 253, 249, 0)); border-radius: 0 999px 999px 0; }
+  .svc-nav .wrap.at-start .svc-arrow.prev, .svc-nav .wrap.at-end .svc-arrow.next { opacity: 0; pointer-events: none; }
+  /* "Your business" diagram: one column, even padding, no empty space */
+  .branches { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .branch { padding: 20px 22px 22px; }
+  .branch h3 { min-height: 0; margin-bottom: 12px; font-size: 23px; }
+  .branch ul { gap: 6px; }
+  .stem { height: 22px; }
+  /* How it works: smaller numbers, lined up with each title, text left-aligned under it */
+  .steps { gap: 26px; }
+  .steps li { grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; }
+  .steps .n { width: 44px; height: 44px; font-size: 23px; padding-bottom: 3px; }
+  .steps h3 { margin: 5px 0 6px; line-height: 1.15; }
+  .steps p { max-width: none; margin: 0; text-align: left; }
+}
+@media (max-width: 900px) {
+  /* Portfolio viewer: a clear Computer / Phone switch right above the preview; opens on Computer */
+  .pf-view.has-phone .pf-screen { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 100%; max-width: 380px; padding: 4px; background: var(--card); border-radius: 999px; box-shadow: 0 1px 0 var(--line), 0 10px 24px -14px rgba(30, 25, 15, .3); }
+  .pf-screen button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px 9px; font-size: 15px; font-weight: 600; background: transparent; box-shadow: none; }
+  .pf-screen button svg { width: 19px; height: 19px; flex: none; margin-top: -1px; }
+  .pf-controls { justify-content: center; }
+}
+/* Centered labels: the leaf hangs to the left so the word itself sits on the center line */
+.center-head .eyebrow { padding-right: 27px; }
+.steps p { text-wrap: pretty; }

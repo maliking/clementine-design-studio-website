@@ -153,6 +153,21 @@
       window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
       window.addEventListener('resize', update);
       update();
+      // Arrows at the bar's edges (phone): show which way there's more, and scroll on tap.
+      var w = nav.querySelector('.wrap');
+      var edges = function () {
+        w.classList.toggle('at-start', w.scrollLeft <= 4);
+        w.classList.toggle('at-end', w.scrollLeft + w.clientWidth >= w.scrollWidth - 4);
+      };
+      w.addEventListener('scroll', edges, { passive: true });
+      window.addEventListener('resize', edges);
+      edges();
+      Array.prototype.forEach.call(nav.querySelectorAll('.svc-arrow'), function (btn) {
+        btn.addEventListener('click', function () {
+          var dir = btn.classList.contains('next') ? 1 : -1;
+          w.scrollBy({ left: dir * w.clientWidth * 0.6, behavior: reduce ? 'auto' : 'smooth' });
+        });
+      });
     }
 
     if (reduce || !('IntersectionObserver' in window)) return;
@@ -189,6 +204,38 @@
         el.classList.add('reveal');
         io.observe(el);
       });
+    });
+  })();
+  // Wide tables in posts: round arrow buttons show there's more to the side, and scroll on tap.
+  (function () {
+    var wraps = document.querySelectorAll('.post-body [class$="table-wrap"]');
+    if (!wraps.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var chev = function (d) { return '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="' + (d > 0 ? 'm6 3 5 5-5 5' : 'M10 3 5 8l5 5') + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; };
+    Array.prototype.forEach.call(wraps, function (w) {
+      var box = document.createElement('div');
+      box.className = 'scroll-hint at-start';
+      w.parentNode.insertBefore(box, w);
+      box.appendChild(w);
+      [-1, 1].forEach(function (d) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.tabIndex = -1;
+        b.className = 'sh-btn ' + (d > 0 ? 'next' : 'prev');
+        b.setAttribute('aria-label', d > 0 ? 'Scroll the table right' : 'Scroll the table left');
+        b.innerHTML = chev(d);
+        b.addEventListener('click', function () { w.scrollBy({ left: d * w.clientWidth * 0.7, behavior: reduce ? 'auto' : 'smooth' }); });
+        box.appendChild(b);
+      });
+      var upd = function () {
+        var max = w.scrollWidth - w.clientWidth;
+        box.classList.toggle('no-scroll', max <= 4);
+        box.classList.toggle('at-start', w.scrollLeft <= 4);
+        box.classList.toggle('at-end', w.scrollLeft >= max - 4);
+      };
+      w.addEventListener('scroll', upd, { passive: true });
+      window.addEventListener('resize', upd);
+      upd();
     });
   })();
 </script>

@@ -191,3 +191,15 @@
   .btn-row .btn { display: block; text-align: center; }
   .faq-list .faq-item h3 { font-size: 25px; }
 }
+/* Wide tables: round arrows at the edges when there's more to see (11/26) */
+.scroll-hint { position: relative; }
+.scroll-hint .sh-btn { position: absolute; top: 50%; z-index: 2; display: grid; place-items: center; width: 38px; height: 38px; margin-top: -19px; padding: 0; border: 0; border-radius: 50%; color: var(--ink); background: var(--card); box-shadow: 0 1px 0 var(--line), 0 8px 20px -8px rgba(30, 25, 15, .35); cursor: pointer; transition: opacity .2s; }
+.scroll-hint .sh-btn svg { width: 16px; height: 16px; }
+.scroll-hint .sh-btn.prev { left: -10px; }
+.scroll-hint .sh-btn.next { right: -10px; }
+.scroll-hint.no-scroll .sh-btn, .scroll-hint.at-start .sh-btn.prev, .scroll-hint.at-end .sh-btn.next { opacity: 0; pointer-events: none; }
+@media (max-width: 900px) {
+  .post-body .code pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .scroll-hint .sh-btn.prev { left: -6px; }
+  .scroll-hint .sh-btn.next { right: -6px; }
+}
