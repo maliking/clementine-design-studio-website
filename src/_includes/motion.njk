@@ -183,5 +183,25 @@
       });
     });
   }
+  /* 6. Grow (Mali 11/26): on phones, the "one part of your business" tree grows as you scroll. The stem draws down from
+     "Your business", "Your website" lights up first, then each card hangs off the line one by one. Only classes change, no scroll work. */
+  if (has('reveal') && 'IntersectionObserver' in window && window.matchMedia('(max-width: 900px)').matches) {
+    each(document.querySelectorAll('.tree'), function (tree) {
+      var parts = [tree.querySelector('.stem')].concat(Array.prototype.slice.call(tree.querySelectorAll('.branch')));
+      if (!parts[0]) return;
+      var h = window.innerHeight, waiting = [];
+      parts.forEach(function (el) { if (el.getBoundingClientRect().top > h * 0.86) waiting.push(el); else el.classList.add('g-on'); });
+      if (!waiting.length) return;
+      tree.classList.add('m-grow');
+      var gio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          gio.unobserve(en.target);
+          en.target.classList.add('g-on');
+        });
+      }, { rootMargin: '0px 0px -16% 0px' });
+      waiting.forEach(function (el) { gio.observe(el); });
+    });
+  }
 })();
 </script>
