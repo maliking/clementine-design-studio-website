@@ -1021,3 +1021,7 @@ html.pf-lock { overflow: hidden; }
   .pf-view.has-phone .pf-screen { width: auto; max-width: none; }
   .pf-screen button { padding: 9px 18px 8px; font-size: 14.5px; min-width: 0; }
 }
+
+/* About heading rainbow (11/26): small line-drawn rainbow in the site's muted colors instead of the emoji */
+.hi-rainbow { display: inline-block; width: .92em; height: .49em; margin-left: .2em; vertical-align: baseline; }
+.hi-rainbow svg { display: block; width: 100%; height: 100%; }
