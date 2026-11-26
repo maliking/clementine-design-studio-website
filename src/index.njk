@@ -40,7 +40,7 @@ permalink: /
     </div>
     <ul class="pf-grid">
       {%- set pfHref = "/example-sites/" %}
-      {%- for p in portfolio.projects %}{% if p.home %}
+      {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if p.home %}
       {% include "pf-card.njk" %}
       {%- endif %}{% endfor %}
     </ul>
