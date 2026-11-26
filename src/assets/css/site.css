@@ -247,7 +247,7 @@ h1 em, h2 em { white-space: nowrap; }
    policies and a quiet one-line Squarespace disclaimer (it used to be bold all caps). */
 .site-footer { padding: 64px 0 40px; font-size: 16px; }
 .foot-top { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr) minmax(0, 1fr); gap: 48px; align-items: start; }
-.foot-brand { display: grid; gap: 28px; justify-items: start; }
+.foot-brand { display: flex; align-items: center; }   /* logo and Circle badge side by side, thin line between (Mali 11/26) */
 .foot-logo img { display: block; width: 190px; height: auto; }
 .foot-col { display: grid; gap: 10px; justify-items: start; }
 .foot-h { font-size: 15px; font-weight: 600; color: var(--green); margin-bottom: 4px; }
@@ -662,14 +662,15 @@ p, li { text-wrap: pretty; }
 a.consult { color: inherit; font-weight: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; text-decoration-color: var(--accent); }
 a.consult:hover { text-decoration-thickness: 2px; }
 
-/* Squarespace Circle Platinum badge (official black version, 2026), under the logo in the footer. */
-.site-footer a.circle-badge { display: block; text-decoration: none; }
-.circle-badge img { display: block; width: 170px; height: auto; }
+/* Squarespace Circle Platinum badge (official black version, 2026), beside the logo in the footer. */
+.site-footer a.circle-badge { display: block; text-decoration: none; margin-left: 28px; padding-left: 28px; border-left: 1px solid var(--line); }
+.circle-badge img { display: block; width: 150px; height: auto; }
 @media (max-width: 900px) {
   .foot-top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
-  .foot-brand { grid-column: 1 / -1; gap: 22px; }
-  .foot-logo img { width: 170px; }
-  .circle-badge img { width: 150px; }
+  .foot-brand { grid-column: 1 / -1; }
+  .foot-logo img { width: 150px; }
+  .site-footer a.circle-badge { margin-left: 20px; padding-left: 20px; }
+  .circle-badge img { width: 128px; }
   .foot-bottom { flex-direction: column; align-items: flex-start; margin-top: 40px; }
 }
 
