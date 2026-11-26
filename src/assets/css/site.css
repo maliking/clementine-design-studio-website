@@ -96,6 +96,12 @@ h1 em, h2 em { white-space: nowrap; }
   .home-hero .devices .dv-laptop { top: auto; bottom: 3.5%; }
   .home-hero .devices .dv-phone { top: auto; bottom: 0; }
 }
+/* Phones and tablets (Mali 11/26, "too close to the left"): the laptop's base stuck out past the text edge. Laptop and phone move right so the base lines up with the words. */
+@media (max-width: 900px) {
+  .devices .dv-laptop { left: 5.04%; }
+  .devices .dv-phone { left: 69%; }
+  .svc-art .dv-phone { left: 0; }
+}
 
 /* 2. Jump cards */
 .jump-sec { padding-top: 104px; }
