@@ -109,19 +109,19 @@
 
 /* ---------- 7. Phones: animations follow the scroll (Mali 11/26: "controlled on how far down you're going") ----------
    Only where the browser supports scroll-linked animations (the script adds .m-sl). Scroll back up and they rewind.
-   Each range ends by the time the item is fully on screen, so nothing is left half-faded while you read. */
+   Mali 11/26: they play in the lower-middle of the screen, not at the very bottom: every timeline counts from 32% above the bottom edge. */
 @supports (animation-timeline: view()) {
-  .m-sl .sl-up { animation: sl-up linear both; animation-timeline: view(); animation-range: entry 0% entry 260px; }
-  .m-sl .sl-img img { animation: sl-img linear both; animation-timeline: view(); animation-range: entry 0% entry 320px; }
+  .m-sl .sl-up { animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 260px; }
+  .m-sl .sl-img img { animation: sl-img linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 320px; }
   /* Mali 11/26: no fading on phones. Everything is always there and just slides up into place. */
   @keyframes sl-up { from { transform: translateY(34px); } to { transform: none; } }
   @keyframes sl-img { from { scale: 1.1; translate: 0 24px; } to { scale: var(--m-s, 1); translate: none; } }
 
   /* "Where I start": each point's orange check fills in as it scrolls up the screen */
-  .m-sl .m-tick .tiles li { view-timeline-name: --tk; opacity: 1; }  /* the words stay fully visible; only the orange check fills in */
+  .m-sl .m-tick .tiles li { view-timeline-name: --tk; view-timeline-inset: 0 32%; opacity: 1; }  /* the words stay fully visible; only the orange check fills in */
   .m-sl .m-tick .tiles li::before { animation: sl-pop linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
   .m-sl .m-tick .tiles li::after { animation: sl-ring linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
-  .m-sl .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(); animation-range: entry 0% entry 260px; }
+  .m-sl .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 260px; }
   @keyframes sl-pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
   @keyframes sl-ring { from { opacity: 1; } to { opacity: 0; } }
 
@@ -132,12 +132,12 @@
      3. then a line leads down to the next card, which pops into place, and so on.
      Each card names its own timeline (--b1 to --b6); timeline-scope lets the line above a card follow that card. */
   .m-grow-sl { timeline-scope: --b1, --b2, --b3, --b4, --b5, --b6; }
-  .m-grow-sl .branch:nth-child(1) { view-timeline-name: --b1; }
-  .m-grow-sl .branch:nth-child(2) { view-timeline-name: --b2; }
-  .m-grow-sl .branch:nth-child(3) { view-timeline-name: --b3; }
-  .m-grow-sl .branch:nth-child(4) { view-timeline-name: --b4; }
-  .m-grow-sl .branch:nth-child(5) { view-timeline-name: --b5; }
-  .m-grow-sl .branch:nth-child(6) { view-timeline-name: --b6; }
+  .m-grow-sl .branch:nth-child(1) { view-timeline-name: --b1; view-timeline-inset: 0 32%; }
+  .m-grow-sl .branch:nth-child(2) { view-timeline-name: --b2; view-timeline-inset: 0 32%; }
+  .m-grow-sl .branch:nth-child(3) { view-timeline-name: --b3; view-timeline-inset: 0 32%; }
+  .m-grow-sl .branch:nth-child(4) { view-timeline-name: --b4; view-timeline-inset: 0 32%; }
+  .m-grow-sl .branch:nth-child(5) { view-timeline-name: --b5; view-timeline-inset: 0 32%; }
+  .m-grow-sl .branch:nth-child(6) { view-timeline-name: --b6; view-timeline-inset: 0 32%; }
   .m-grow-sl .stem, .m-grow-sl .branch::after { transform-origin: top; animation: sl-draw linear both; animation-range: entry 0px entry 70px; }
   .m-grow-sl .stem { animation-timeline: --b1; }
   .m-grow-sl .branch:nth-child(1)::after { animation-timeline: --b2; }
