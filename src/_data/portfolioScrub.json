@@ -13,9 +13,9 @@
    "vw": 390,
    "vh": 844,
    "max": 8224,
-   "hold": 45,
-   "step": 8,
-   "frames": 1096,
+   "hold": 23,
+   "step": 16,
+   "frames": 548,
    "fps": 30
   }
  },
@@ -33,9 +33,9 @@
    "vw": 390,
    "vh": 844,
    "max": 6052,
-   "hold": 45,
-   "step": 8,
-   "frames": 825,
+   "hold": 23,
+   "step": 16,
+   "frames": 413,
    "fps": 30
   }
  }
