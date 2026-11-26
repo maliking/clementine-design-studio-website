@@ -243,13 +243,20 @@ h1 em, h2 em { white-space: nowrap; }
 .cta .btn { background: var(--accent); color: #1c1d20; }
 .cta em { color: var(--accent-on-dark); }
 
-/* Footer */
-.site-footer { padding: 44px 0 64px; font-size: 16px; }
-.site-footer a { text-decoration: underline; text-underline-offset: 3px; }
-.site-footer .links a { display: block; width: fit-content; margin-bottom: 4px; }
-.site-footer .legal { margin-top: 40px; }
-.site-footer .disc { margin-top: 16px; max-width: 46em; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.7; color: var(--muted); }
-.site-footer .copy { margin-top: 12px; }
+/* Footer (redone 11/25): logo and Circle badge, two link columns, then a thin line with the copyright,
+   policies and a quiet one-line Squarespace disclaimer (it used to be bold all caps). */
+.site-footer { padding: 64px 0 40px; font-size: 16px; }
+.foot-top { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.foot-brand { display: grid; gap: 28px; justify-items: start; }
+.foot-logo img { display: block; width: 190px; height: auto; }
+.foot-col { display: grid; gap: 10px; justify-items: start; }
+.foot-h { font-size: 15px; font-weight: 600; color: var(--green); margin-bottom: 4px; }
+.foot-col a { color: var(--ink); text-decoration: none; }
+.foot-col a:hover, .foot-bottom a:hover { text-decoration: underline; text-underline-offset: 3px; color: var(--accent-ink); }
+.foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px 32px; flex-wrap: wrap; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+.foot-bottom .legal { display: flex; gap: 24px; }
+.foot-bottom a { color: var(--muted); text-decoration: none; }
+.site-footer .disc { margin-top: 14px; max-width: 60em; font-size: 13px; line-height: 1.6; color: var(--muted); opacity: .85; }
 
 /* ---------- Phone ---------- */
 /* Phones and narrow tablets (also wide phones in landscape and foldables). */
@@ -369,7 +376,7 @@ h1 em, h2 em { white-space: nowrap; }
   .cta { padding: 0 12px 12px; }
   .cta-panel { border-radius: 10px; padding: 56px 22px; }
   .cta .lead { margin: 16px auto 28px; }
-  .site-footer { padding: 36px 0 48px; }
+  .site-footer { padding: 48px 0 32px; }
 }
 
 /* Between phone and full desktop: keep the phone layout readable on wider screens. */
@@ -655,11 +662,16 @@ p, li { text-wrap: pretty; }
 a.consult { color: inherit; font-weight: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; text-decoration-color: var(--accent); }
 a.consult:hover { text-decoration-thickness: 2px; }
 
-/* Squarespace Circle Platinum badge (official black version, 2026), straight on the cream footer. */
-.site-footer .foot-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
-.site-footer a.circle-badge { flex: none; display: block; text-decoration: none; }
-.circle-badge img { display: block; width: 210px; height: auto; }
-@media (max-width: 760px) { .site-footer .foot-grid { flex-direction: column; gap: 28px; } .circle-badge img { width: 180px; } }
+/* Squarespace Circle Platinum badge (official black version, 2026), under the logo in the footer. */
+.site-footer a.circle-badge { display: block; text-decoration: none; }
+.circle-badge img { display: block; width: 170px; height: auto; }
+@media (max-width: 900px) {
+  .foot-top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
+  .foot-brand { grid-column: 1 / -1; gap: 22px; }
+  .foot-logo img { width: 170px; }
+  .circle-badge img { width: 150px; }
+  .foot-bottom { flex-direction: column; align-items: flex-start; margin-top: 40px; }
+}
 
 /* Portfolio page (/example-sites/): filters, then the project viewer that opens over the page. */
 .pf-hero { padding-bottom: 44px; }

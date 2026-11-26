@@ -27,8 +27,9 @@
 .post-open, .post-lead { color: inherit; }
 .post-open { display: flex; flex-direction: column; height: 100%; }
 .post-open:focus-visible, .post-lead:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 2px; border-radius: var(--radius); }
-.post-photo { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--tint); }
-.post-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; transition: transform .4s; }
+/* Card pictures: shown whole on a dark green panel with a soft shadow, so white screenshots don't wash out (11/25). */
+.post-photo { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; overflow: hidden; padding: 26px 28px; background: var(--dark); }
+.post-photo img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 6px; box-shadow: 0 12px 28px rgba(0, 0, 0, .35); transition: transform .4s; }
 .post-open:hover .post-photo img, .post-lead:hover .post-photo img { transform: scale(1.03); }
 .post-text { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 24px; }
 .post-date { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
