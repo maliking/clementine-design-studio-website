@@ -7,11 +7,11 @@
     { "key": "about", "label": "About", "url": "/about" },
     { "key": "services", "label": "Services", "url": "/services" },
     { "key": "portfolio", "label": "Portfolio", "url": "/example-sites" },
+    { "key": "plugins", "label": "Plugins", "url": "/plugins" },
     { "key": "blog", "label": "Blog", "url": "/blog" },
     { "key": "contact", "label": "Contact", "url": "/contact" }
   ],
   "footerLinks": [
-    { "label": "Free Squarespace Plugins", "url": "/plugins" },
     { "label": "FAQs", "url": "/faqs" },
     { "label": "Monthly Plans", "url": "/monthly-plans" },
     { "label": "Icompendium Help", "url": "/icompendium-hourly-help" },
