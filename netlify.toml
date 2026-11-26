@@ -43,7 +43,8 @@
 # The demo stays on Mali's Squarespace site until it has a new home. After clementinedesign.studio
 # points to Netlify, these send the demo's old addresses to the same pages on the Squarespace built-in address.
 # 302 (temporary) because the demo will move again.
-# 11/26: /optionkit-demo moved to Mali's friend's site (candeaux.squarespace.com); the other demo pages still point to the old address.
+# 11/26: /optionkit-demo moved to Mali's friend's site (candeaux.squarespace.com). The old Squarespace site is closed,
+# so the other old demo pages now go to /optionkit-demo, /consultation or the home page.
 [[redirects]]
   from = "/optionkit-demo"
   to = "https://candeaux.squarespace.com/optionkit-demo"
@@ -54,35 +55,35 @@
   status = 302
 [[redirects]]
   from = "/optionkit-test"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-test"
+  to = "/optionkit-demo"
   status = 302
 [[redirects]]
   from = "/optionkit-test/*"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/optionkit-test/:splat"
+  to = "/optionkit-demo"
   status = 302
 [[redirects]]
   from = "/store-2"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/store-2"
+  to = "/"
   status = 302
 [[redirects]]
   from = "/store-2/*"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/store-2/:splat"
+  to = "/"
   status = 302
 [[redirects]]
   from = "/booking"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/booking"
+  to = "/consultation"
   status = 302
 [[redirects]]
   from = "/booking/*"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/booking/:splat"
+  to = "/consultation"
   status = 302
 [[redirects]]
   from = "/videos"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/videos"
+  to = "/"
   status = 302
 [[redirects]]
   from = "/videos/*"
-  to = "https://sphere-buttercup-r8ag.squarespace.com/videos/:splat"
+  to = "/"
   status = 302
 
 # ---- Blog and Plugins (added 11/25 by the blog/plugins thread) ----
