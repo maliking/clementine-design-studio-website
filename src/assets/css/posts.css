@@ -121,7 +121,13 @@
 .setup-wide p { max-width: 40em; margin-left: auto; margin-right: auto; }
 .setup-wide .setup-actions { justify-content: center; }
 @media (max-width: 900px) { .setup-help { margin-top: 44px; padding: 24px 22px 26px; } .setup-help h2 { font-size: 26px; } .setup-wide { text-align: left; margin-top: 32px; } .setup-wide .setup-actions { justify-content: flex-start; } .setup-help .setup-actions { flex-direction: column; align-items: flex-start; } }
-.author { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
+.author { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: start; margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
+.author-photo { display: block; width: 120px; height: 120px; border-radius: 50%; overflow: hidden; background: var(--tint); }
+.author-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 600px) {
+  .author { grid-template-columns: 1fr; gap: 20px; }
+  .author-photo { width: 96px; height: 96px; }
+}
 .author .eyebrow { margin-bottom: 12px; }
 .author-name { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 28px; line-height: 1.2; color: var(--ink); margin-bottom: 10px; }
 .author-name a { color: inherit; text-decoration: none; }
