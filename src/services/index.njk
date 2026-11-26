@@ -93,7 +93,7 @@ permalink: /services/
       <div class="svc-work-wrap">
         <ul class="svc-work-row">
           {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if loop.index <= 4 %}
-          <li><a href="/example-sites/#{{ p.slug }}"><img src="{{ p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') }}" alt="Home page of the {{ p.name }} website" width="1200" height="800" loading="lazy" decoding="async"><span>{{ p.name }}</span></a></li>
+          <li><a href="/example-sites/#{{ p.slug }}" data-pf="{{ p.slug }}"><img src="{{ p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') }}" alt="Home page of the {{ p.name }} website" width="1200" height="800" loading="lazy" decoding="async"><span>{{ p.name }}</span></a></li>
           {%- endif %}{% endfor %}
         </ul>
         <button class="svc-work-arrow prev" type="button" aria-label="Previous websites"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
@@ -147,6 +147,9 @@ permalink: /services/
     <p class="center-note">Not sure which one fits? I can help you figure it out on a <a class="consult" href="{{ site.consultUrl }}">free consultation</a>.</p>
   </div>
 </section>
+
+{# The Recent websites pictures open the same in-page viewer as the home page, so closing it brings you back here (Mali 11/26). #}
+{% include "pf-viewer.njk" %}
 
 <!-- 4. ALREADY HAVE A WEBSITE -->
 <section class="band tint" id="s-update">

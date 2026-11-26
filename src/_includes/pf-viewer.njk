@@ -200,7 +200,10 @@
   }
 
   function visible() {
-    return Array.prototype.filter.call(grid.querySelectorAll('.pf-card'), function (c) { return !c.hidden; })
+    var cards = grid.querySelectorAll('.pf-card');
+    // Pages without the card grid (Services' Recent websites row) step through their own [data-pf] links
+    if (!cards.length) return Array.prototype.map.call(grid.querySelectorAll('[data-pf]'), function (a) { return bySlug[a.getAttribute('data-pf')]; }).filter(Boolean);
+    return Array.prototype.filter.call(cards, function (c) { return !c.hidden; })
       .map(function (c) { return bySlug[c.querySelector('.pf-open').getAttribute('data-slug')]; });
   }
 
@@ -221,7 +224,7 @@
     view.close();
     root.classList.remove('pf-lock');
     if (!fromHistory) history.replaceState(null, '', location.pathname);
-    var card = slug && grid.querySelector('[data-slug="' + slug + '"]');
+    var card = slug && grid.querySelector('[data-slug="' + slug + '"], [data-pf="' + slug + '"]');
     if (card) card.focus({ preventScroll: true });
   }
 
@@ -233,8 +236,8 @@
   });
   ['mouseover', 'focusin', 'touchstart'].forEach(function (ev) {
     grid.addEventListener(ev, function (e) {
-      var a = e.target.closest && e.target.closest('.pf-open');
-      if (a) warm(bySlug[a.getAttribute('data-slug')]);
+      var a = e.target.closest && e.target.closest('.pf-open, [data-pf]');
+      if (a) warm(bySlug[a.getAttribute('data-slug') || a.getAttribute('data-pf')]);
     }, { passive: true });
   });
 

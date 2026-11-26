@@ -119,10 +119,10 @@
   @keyframes sl-img { from { scale: 1.16; translate: 0 50px; } to { scale: var(--m-s, 1); translate: none; } }
 
   /* "Where I start": each point's orange check fills in as it scrolls up the screen */
-  .m-sl .m-tick .tiles li { view-timeline-name: --tk; view-timeline-inset: 0 32%; opacity: 1; }  /* the words stay fully visible; only the orange check fills in */
-  .m-sl .m-tick .tiles li::before { animation: sl-pop linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
-  .m-sl .m-tick .tiles li::after { animation: sl-ring linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
-  .m-sl .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 380px; }
+  .m-slt .m-tick .tiles li { view-timeline-name: --tk; view-timeline-inset: 0 32%; opacity: 1; }  /* the words stay fully visible; only the orange check fills in */
+  .m-slt .m-tick .tiles li::before { animation: sl-pop linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
+  .m-slt .m-tick .tiles li::after { animation: sl-ring linear both; animation-timeline: --tk; animation-range: entry 80% cover 42%; }
+  .m-slt .m-tick .closing { opacity: 1; transform: none; animation: sl-up linear both; animation-timeline: view(block 0 32%); animation-range: entry 0% entry 380px; }
   @keyframes sl-pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
   @keyframes sl-ring { from { opacity: 1; } to { opacity: 0; } }
 
