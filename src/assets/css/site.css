@@ -979,3 +979,25 @@ html.pf-lock { overflow: hidden; }
   .svc-top-text { padding-top: 0; }
 }
 .center-head .lead { text-wrap: pretty; }
+
+/* Proof strip between phone and full computer width (901 to 1080px, 11/26): three even columns instead of
+   three stacked rows with full-width lines. Stars sit above their line; the place line goes on two lines. */
+@media (min-width: 901px) and (max-width: 1080px) {
+  .trust-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 0; padding-top: 30px; padding-bottom: 30px; }
+  .trust-item, .trust-item + .trust-item { position: relative; width: auto; flex-direction: column; justify-content: center; gap: 8px; padding: 4px 20px; border: 0; }
+  .trust-item + .trust-item::before { content: ""; position: absolute; left: 0; top: 50%; height: 44px; margin-top: -22px; border-left: 1px solid rgba(51, 52, 59, .18); }
+  .trust p { font-size: 14px; line-height: 1.5; text-align: center; }
+  .trust .tr-dot { display: none; }
+  .trust .tr-2 { display: block; }
+  .trust-item:nth-child(2) { padding: 4px 32px; }
+  .trust p, .trust a { white-space: nowrap; }
+}
+@media (min-width: 901px) and (max-width: 980px) {
+  .trust p { font-size: 13.5px; }
+  .trust-item, .trust-item + .trust-item { padding-left: 16px; padding-right: 16px; }
+  .trust-item:nth-child(2) { padding: 4px 26px; }
+}
+/* Phones (11/26): Mali didn't like the tangerine dots between the proof lines; a faint thin line instead. */
+@media (max-width: 900px) {
+  .trust-item + .trust-item::before { top: 0; left: 50%; width: 120px; height: 0; margin-left: -60px; border: 0; border-top: 1px solid rgba(51, 52, 59, .16); border-radius: 0; background: none; opacity: 1; }
+}

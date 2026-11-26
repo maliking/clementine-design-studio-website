@@ -119,23 +119,6 @@ faqs:
   </div>
 </section>
 
-<section class="band" id="work">
-  <div class="wrap niche-work">
-    <ul class="pf-one">
-      {%- for p in portfolio.projects %}{% if p.slug == "chan-adr" %}
-      {%- set pfHref = "/example-sites/" %}
-      {% include "pf-card.njk" %}
-      {%- endif %}{% endfor %}
-    </ul>
-    <div class="niche-work-text">
-      <div class="eyebrow">From my portfolio</div>
-      <h2>A site for a <em>legal</em> practice</h2>
-      <p>Chan ADR is a mediation practice in the Seattle area led by Priscilla Chan, a former Assistant U.S. Attorney. The site covers her background, how mediation works, testimonials and a blog, with a way to schedule a mediation.</p>
-      <p class="more"><a href="/example-sites/">See more of my work</a></p>
-    </div>
-  </div>
-</section>
-
 {% include "niche-faq.njk" %}
 
 {% include "niche-cta.njk" %}

@@ -24,8 +24,13 @@
 .niche-note h3 { font-size: calc(var(--h3) + 3px); }
 .niche-note p + p { margin-top: 12px; }
 
-/* Case card next to a link card */
-.cases.two.niche-cases { margin-top: 0; }
+/* Example card, with a website strip under it (ads page) */
+.niche-example { display: grid; gap: 28px; }
+.link-strip { background: var(--dark); color: var(--on-dark); border-radius: var(--radius); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+.link-strip h3 { font-size: calc(var(--h3) + 4px); margin-bottom: 10px; }
+.link-strip em { color: var(--accent); }
+.link-strip p { font-size: 17.5px; max-width: 36em; }
+.link-strip .btn { flex: none; background: var(--accent); color: #1c1d20; }
 .link-card { background: var(--dark); color: var(--on-dark); border-radius: var(--radius); padding: 44px 44px 46px; display: flex; flex-direction: column; justify-content: center; }
 .link-card h3 { font-size: calc(var(--h3) + 6px); margin-bottom: 16px; }
 .link-card em { color: var(--accent); }
@@ -56,6 +61,7 @@
   .niche-updates, .tips { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .niche-note { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 26px 22px 28px; }
   .link-card { padding: 30px 22px 32px; }
+  .link-strip { flex-direction: column; align-items: flex-start; gap: 22px; padding: 30px 22px 32px; }
   .tip { padding: 26px 22px 28px; }
   .tips { margin-top: 36px; }
   .tips-photo { aspect-ratio: 16 / 10; }
