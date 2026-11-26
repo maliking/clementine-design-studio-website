@@ -1,0 +1,89 @@
+/* Motion (11/26). Each idea is switched on by a class on <html> (set in base.njk), so any one can be dropped without touching the others.
+   m-reveal: headings, text and photos glide in.   m-hover: buttons, links and cards respond.   m-pin: the "Where I start" section holds still while its points tick in.
+   m-layer: dark bands slide over the section before them.   m-depth: photos and the home devices drift a little while scrolling.
+   Everything is off for "reduce motion" (the classes are never added), and nothing here hides content when JavaScript is off. */
+
+:root { --m-ease: cubic-bezier(.16, 1, .3, 1); }
+
+/* ---------- 1. Reveal ---------- */
+.m-up { opacity: 0; transform: translateY(26px); transition: opacity .9s ease var(--m-d, 0s), transform 1.1s var(--m-ease) var(--m-d, 0s); }
+.m-up.in { opacity: 1; transform: none; }
+.m-hh { opacity: 0; }
+
+/* Headings: each line rises from behind an invisible edge. Words are wrapped by the script and unwrapped when it's done. */
+.m-w { display: inline-block; vertical-align: top; overflow: hidden; padding: .1em .12em .2em; margin: -.1em -.12em -.2em; }
+.m-w > span { display: inline-block; transform: translateY(118%); transition: transform 1.15s var(--m-ease) calc(var(--m-d, 0s) + var(--m-l, 0) * .09s); }
+.in > .m-w > span, .in .m-w > span { transform: none; }
+
+/* Photos: uncover from the top while the picture settles back. */
+/* (The clip is on the picture, not its frame: a fully clipped frame can't be seen by the scroll watcher.) */
+.m-img img { clip-path: inset(0 0 100% 0); scale: 1.16; transition: clip-path 1.3s var(--m-ease) var(--m-d, 0s), scale 1.7s var(--m-ease) var(--m-d, 0s); }
+.m-img.in img { clip-path: inset(0 0 0 0); scale: var(--m-s, 1); }
+
+/* Home page top: nothing is hidden (so the first paint is as fast as before). The wall settles back a touch, and the laptop and phone glide up in front of it. Plain CSS, no script. */
+.m-reveal .home-hero .dv-wall img { animation: m-settle 2s var(--m-ease) both; }
+.m-reveal .home-hero .dv-laptop { animation: m-rise 1.3s var(--m-ease) .12s both; }
+.m-reveal .home-hero .dv-phone { animation: m-rise 1.4s var(--m-ease) .3s both; --m-y: 64px; }
+@keyframes m-settle { from { transform: scale(1.09); } }
+@keyframes m-rise { from { opacity: 0; transform: translateY(var(--m-y, 40px)); } }
+
+/* Pages fade into each other instead of blinking (browsers that don't support it just load normally). */
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+
+/* ---------- 2. Hovers ---------- */
+.m-hover .btn { background-image: linear-gradient(rgba(255, 255, 255, .13), rgba(255, 255, 255, .13)); background-repeat: no-repeat; background-size: 0% 100%; transition: background-size .5s var(--m-ease), transform .3s var(--m-ease), box-shadow .3s ease; }
+.m-hover .cta .btn { background-image: linear-gradient(rgba(255, 255, 255, .22), rgba(255, 255, 255, .22)); }
+.m-hover .btn:active { transform: scale(.98); }
+.m-hover .site-header .nav a { padding-bottom: 3px; background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 0% 2px; transition: background-size .4s var(--m-ease); }
+.m-hover .site-header .nav a.on { background: none; }
+.m-hover .pf-card, .m-hover .post-card { transition: box-shadow .5s ease, transform .5s var(--m-ease); }
+.m-hover .pf-photo img, .m-hover .post-photo:not(.framed) img { transition: transform 1.4s var(--m-ease); }
+.m-hover .pf-more span, .m-hover .post-more span { display: inline-block; transition: transform .4s var(--m-ease); }
+.m-hover .home-svc .plan .more::after { display: inline-block; white-space: pre; transition: transform .4s var(--m-ease); }
+.m-hover .jcard .go { transition: transform .4s var(--m-ease), opacity .15s; }
+.m-hover .hi-link a, .m-hover .ci-call a, .m-hover a.consult { transition: color .25s ease, box-shadow .25s ease; }
+.m-hover .foot-col a, .m-hover .foot-bottom a { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0% 1px; transition: background-size .35s var(--m-ease), color .2s; }
+.m-hover .pf-card:active, .m-hover .post-card:active, .m-hover .home-svc a.plan:active, .m-hover .jcard:active { transform: scale(.99); }
+@media (hover: hover) {
+  .m-hover .btn:hover { background-size: 100% 100%; transform: translateY(-2px); box-shadow: 0 14px 26px -14px rgba(30, 51, 41, .6); }
+  .m-hover .btn:active { transform: translateY(0) scale(.98); }
+  .m-hover .site-header .nav a:not(.on):hover { background-size: 100% 2px; }
+  .m-hover .pf-card:hover, .m-hover .post-card:hover { transform: translateY(-5px); box-shadow: 0 1px 0 var(--line), 0 30px 54px -18px rgba(30, 25, 15, .22); }
+  .m-hover .pf-open:hover .pf-photo img, .m-hover .post-open:hover .post-photo:not(.framed) img { transform: scale(1.06); }
+  .m-hover .pf-open:hover .pf-more, .m-hover .post-open:hover .post-more { text-decoration: none; }
+  .m-hover .pf-open:hover .pf-more span, .m-hover .post-open:hover .post-more span { transform: translateX(6px); }
+  .m-hover .home-svc a.plan:hover { transform: translateY(-5px); }
+  .m-hover .home-svc a.plan:hover .more::after { transform: translateX(6px); }
+  .m-hover .jcard:hover .go { transform: translateY(4px); }
+  .m-hover .hi-link a:hover { color: var(--accent-ink); }
+  .m-hover .foot-col a:hover, .m-hover .foot-bottom a:hover { text-decoration: none; background-size: 100% 1px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .m-hover .btn, .m-hover .pf-card, .m-hover .post-card, .m-hover .pf-photo img, .m-hover .post-photo img, .m-hover .site-header .nav a { transition: none; }
+  .m-hover .btn:hover, .m-hover .pf-card:hover, .m-hover .post-card:hover, .m-hover .home-svc a.plan:hover, .m-hover .pf-open:hover .pf-photo img { transform: none; }
+}
+
+/* ---------- 3. Pinned "Where I start" (services) ---------- */
+.m-pin-on { padding: 0 !important; height: calc(100vh + 140vh); }
+.m-pin-on > .wrap { position: sticky; top: 0; height: 100vh; align-content: center; }
+.m-tick .tiles li { transition: opacity .5s ease; }
+.m-tick .tiles li::before { transition: transform .6s var(--m-ease), opacity .3s ease; }
+.m-tick .tiles li::after { content: ""; position: absolute; left: 0; top: 26px; width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .34); transition: opacity .3s ease; opacity: 0; }
+.m-tick .tiles li:not(.on) { opacity: .34; }
+.m-tick .tiles li:not(.on)::before { transform: scale(.3); opacity: 0; }
+.m-tick .tiles li:not(.on)::after { opacity: 1; }
+.m-tick .closing { transition: opacity .8s ease, transform 1s var(--m-ease); }
+.m-tick .closing:not(.on) { opacity: 0; transform: translateY(18px); }
+@media (max-width: 760px) { .m-tick .tiles li::after { top: 21px; width: 20px; height: 20px; } }
+
+/* ---------- 4. Layers: a dark band slides up over the section before it ---------- */
+.m-stack > :first-child { position: sticky; top: min(0px, calc(100lvh - var(--m-h, 0px))); }
+.m-stack > :last-child { position: relative; z-index: 1; border-radius: 28px 28px 0 0; box-shadow: 0 -24px 60px -30px rgba(20, 30, 24, .45); }
+@media (max-width: 760px) { .m-stack > :last-child { border-radius: 20px 20px 0 0; } }
+
+/* ---------- 5. Depth ---------- */
+.m-par { will-change: translate; }
+.m-depth { --m-s: 1.1; }
+.m-par-img { scale: 1.1; will-change: translate; }
+
+@media print { .m-up, .m-hh, .m-img img, .m-w > span { opacity: 1 !important; transform: none !important; clip-path: none !important; } }
