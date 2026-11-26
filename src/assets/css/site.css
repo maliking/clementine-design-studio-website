@@ -1055,7 +1055,7 @@ html.pf-lock { overflow: hidden; }
 /* Services top, less tan (Mali 11/26: "super homogenous and boring and tan until Where I start on mobile").
    1. "What do you need help with?" sits on dark green, so the color changes on the second screen.
    2. A "Recent websites" row in Website design: her real work, the first photos on the page (swipe on phones, with arrows).
-   3. The Custom Website price card is dark green with orange checks, so the two prices aren't the same tan box twice. */
+   3. The Custom Website price card is dark green with sage checks, so the two prices aren't the same tan box twice. */
 .jump-sec.jump-dark { background: var(--dark); color: var(--on-dark); }
 .jump-dark h2 em { color: var(--accent-on-dark); }
 .jump-dark .jlabel { color: var(--on-dark-muted); }
@@ -1095,5 +1095,5 @@ html.pf-lock { overflow: hidden; }
 .plan-dark h3, .plan-dark .price, .plan-dark .best, .plan-dark .checks li { color: var(--on-dark); }
 .plan-dark .after { color: var(--on-dark-muted); }
 .plan-dark .pages { background: #C8D8CD; color: var(--dark); }
-.plan-dark .checks li::before { background-color: var(--accent); }
+.plan-dark .checks li::before { background-color: #C8D8CD; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none' stroke='%231E3329' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 5.2l3.3 3.3L11 1.5'/%3E%3C/svg%3E"); }  /* sage, not orange: seven bright orange circles were too much (Mali 11/26) */
 .plan-dark .plan-top { border-color: rgba(255, 255, 255, .16); }

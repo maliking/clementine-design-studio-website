@@ -25,7 +25,7 @@
   SIGNS.forEach(function (ev) { window.addEventListener(ev, wake, { passive: true, capture: true }); });
   var human = function (fn) { if (awake) fn(); else waiting.push(fn); };
 
-  /* 3. Pinned "Where I start": on a computer the section holds still while its four points tick in, then the closing line. On phones the points tick in one after another. */
+  /* 3. "Where I start": its four points tick in, then the closing line (no pinning since Mali 11/26). */
   // Phones (Mali 11/26): animations follow the scroll itself (scroll back up and they rewind), using the browser's own scroll-linked
   // animations, so nothing runs in script while scrolling. Phones whose browser can't do that keep the play-once version.
   var SL = window.matchMedia('(max-width: 900px)').matches && !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
@@ -34,18 +34,12 @@
   var start = document.getElementById('s-start');
   if (has('pin') && start && start.querySelector('.tiles')) {
     var lis = start.querySelectorAll('.tiles li'), closing = start.querySelector('.closing'), sw = start.querySelector('.wrap');
-    if (window.innerWidth > 900 && window.innerHeight <= 1400 && sw.offsetHeight + 110 < window.innerHeight) {
-      start.classList.add('m-pin-on');
-      human(function () {
-        start.classList.add('m-tick');
-        onScroll(function () {
-          var r = start.getBoundingClientRect(), p = Math.max(0, Math.min(1, -r.top / (r.height - window.innerHeight)));
-          each(lis, function (li, i) { li.classList.toggle('on', i === 0 ? r.top < window.innerHeight * 0.3 : p > i * 0.2); });
-          closing.classList.toggle('on', p > 0.8);
-        });
-      });
-    } else if (SL) human(function () {
+    // Mali 11/26: on a computer the section used to hold still while the points ticked in, and it felt "stuck". Now it never
+    // holds: wherever the browser can, the checks fill in as you scroll past (rewinding going up), same as on phones.
+    var SLT = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
+    if (SLT) human(function () {
       if (start.getBoundingClientRect().top < window.innerHeight) return;
+      root.classList.add('m-slt');
       start.classList.add('m-tick');
     }); else if ('IntersectionObserver' in window) human(function () {
       if (start.getBoundingClientRect().top < window.innerHeight) return;
