@@ -1,13 +1,41 @@
 ---
 layout: base.njk
-title: "Contact"
+title: "Thank You"
 nav: contact
 permalink: /contact/thank-you/
 eleventyExcludeFromCollections: true
 ---
-<section class="hero page-hero">
+{#- Shown after the contact form is sent. Mali 11/26: fuller page, and a plain text link back instead of a button. No reply time promised (she hasn't set one). -#}
+<style>
+  .thanks-hero .lead { max-width: 30em; margin: 24px auto 0; }
+  .thanks-hero .lead + p { margin-top: 14px; }
+  .thanks-hero .lead + p a { color: var(--green); font-weight: 600; box-shadow: 0 2px 0 var(--accent); padding-bottom: 2px; }
+  .thanks-hero .lead + p a:hover { color: var(--accent-ink); }
+  .text-link { display: inline-block; font-weight: 600; color: var(--green); text-decoration: none; }
+  .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .thanks-hero .text-link { margin-top: 30px; }
+  .thanks-work .pf-grid { margin-bottom: 36px; }
+</style>
+<section class="hero page-hero thanks-hero">
   <div class="wrap center-head">
     <h1>Thank <em>you!</em></h1>
-    <p style="margin-top: 32px;"><a class="btn btn-line" href="/">Back to Home</a></p>
+    <p class="lead">Your message came through, and I’ll get back to you by email.</p>
+    <p>If you’d like to talk it through, you can also <a href="{{ site.consultUrl }}">book a free 20-minute Zoom call</a>.</p>
+    <a class="text-link" href="/"><span aria-hidden="true">←</span> Back to home</a>
+  </div>
+</section>
+
+<section class="band tint thanks-work">
+  <div class="wrap">
+    <div class="center-head">
+      <h2>A few recent <em>favorites</em></h2>
+    </div>
+    <ul class="pf-grid">
+      {%- set pfHref = "/example-sites/" %}
+      {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if p.home and p.home <= 3 %}
+      {% include "pf-card.njk" %}
+      {%- endif %}{% endfor %}
+    </ul>
+    <p class="center"><a class="text-link" href="/example-sites/">See the full portfolio <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
