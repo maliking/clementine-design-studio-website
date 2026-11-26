@@ -34,6 +34,14 @@
       "video": true
     },
     {
+      "slug": "the-path-home",
+      "name": "The Path Home",
+      "type": "Therapy Practice",
+      "group": "fitness",
+      "tags": ["calm", "natural", "warm"],
+      "about": "A therapist in Mount Kisco, New York, who works with individuals and couples on trauma, addiction, eating disorders and relationship issues, in person and by telehealth. The site covers her practice areas, her approach and background, and common questions about fees and insurance, with a way to request a free consultation."
+    },
+    {
       "slug": "redwoods-greenfields",
       "home": 2,
       "name": "Redwoods & Greenfields",
