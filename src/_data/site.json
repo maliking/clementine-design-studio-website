@@ -1,7 +1,8 @@
 {
   "name": "Clementine Design Studio",
   "url": "https://clementinedesign.studio",
-  "consultUrl": "/consultation",
+  "consultUrl": "/consultation/",
+  "gaId": "G-5D09TW83EK",
   "nav": [
     { "key": "home", "label": "Home", "url": "/" },
     { "key": "about", "label": "About", "url": "/about" },
