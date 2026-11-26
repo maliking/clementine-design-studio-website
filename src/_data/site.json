@@ -1,7 +1,8 @@
 {
   "name": "Clementine Design Studio",
   "url": "https://clementinedesign.studio",
-  "consultUrl": "/consultation",
+  "consultUrl": "/consultation/",
+  "gaId": "G-5D09TW83EK",
   "nav": [
     { "key": "home", "label": "Home", "url": "/" },
     { "key": "about", "label": "About", "url": "/about" },
@@ -17,6 +18,7 @@
     { "label": "Icompendium Help", "url": "/icompendium-hourly-help" },
     { "label": "Private Practice Therapist Websites", "url": "/private-practice-therapist-websites" },
     { "label": "Google Ads for Therapists", "url": "/google-ads-for-therapists" },
+    { "label": "Google Ads for Dentists", "url": "/google-ads-for-dentists" },
     { "label": "Law Firm Websites", "url": "/law-firm-website-design" }
   ]
 }

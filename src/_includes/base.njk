@@ -5,25 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }} | {{ site.name }}</title>
 {% if description %}<meta name="description" content="{{ description }}">{% endif %}
-{% if preview %}<meta name="robots" content="noindex, nofollow">{% endif %}
+{% if preview %}<meta name="robots" content="noindex, nofollow">{% elif noindex %}<meta name="robots" content="noindex">{% endif %}
 <link rel="canonical" href="{{ site.url }}{{ canonicalPath or (page.url | replace('/index.html', '')) }}">
-{% if postMeta %}{% include "post-meta.njk" %}{% endif %}
+{% if postMeta %}{% include "post-meta.njk" %}{% else %}
+{#- Sharing preview for pages that aren't posts (posts have their own in post-meta.njk). Added 11/26. -#}
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+{% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
+<meta property="og:url" content="{{ site.url }}{{ canonicalPath or (page.url | replace('/index.html', '')) }}">
+<meta property="og:image" content="{{ site.url }}{{ shareImage or '/assets/img/share-mali.jpg' }}">
+<meta name="twitter:card" content="summary">
+{% endif %}
 {% include "org-schema.njk" %}
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="preconnect" href="https://p.typekit.net" crossorigin>
 {# Headings: IvyPresto Display needs an Adobe Fonts web project from Mali's own Adobe account (see README). Until then a free stand-in loads. #}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap">
 <link rel="stylesheet" href="https://use.typekit.net/dfz0hqs.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 {% if extraCss %}<link rel="stylesheet" href="/assets/css/{{ extraCss }}">{% endif %}
+{% if not preview %}
+{#- Google Analytics 4 (property "Clementine", hello@maliking.com). Live site only, so previews don't count as visits. Added 11/26.
+    Lead tracking: "generate_lead" fires when the contact form's thank-you page opens, and when someone books on the Calendly
+    widget on /consultation. Both are marked as key events in GA. -#}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gaId }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.gaId }}');
+  {% if leadEvent %}gtag('event', 'generate_lead', { lead_type: '{{ leadEvent }}' });{% endif %}
+  window.addEventListener('message', function (e) {
+    if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
+      gtag('event', 'generate_lead', { lead_type: 'consultation_booked' });
+    }
+  });
+</script>
+{% endif %}
 </head>
 <body>
 
 <header class="site-header">
-  <a class="logo" href="/"><img src="/assets/img/logo.png" alt="{{ site.name }}"></a>
+  <a class="logo" href="/"><img src="/assets/img/logo.png" alt="{{ site.name }}" width="379" height="88"></a>
   <nav class="nav">
     {%- for item in site.nav %}<a href="{{ item.url }}"{% if item.key == nav %} class="on" aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor -%}
   </nav>

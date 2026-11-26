@@ -8,6 +8,8 @@
 {% if post.image %}<meta property="og:image" content="{{ site.url }}{{ post.image }}">{% endif %}
 <meta property="article:published_time" content="{{ post.published }}">
 <meta property="article:modified_time" content="{{ post.modified }}">
+<meta property="article:author" content="{{ site.url }}/about">
+<meta name="author" content="Mali King">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
@@ -23,9 +25,16 @@
   "image": (site.url + post.image) if post.image else undefined,
   "datePublished": post.published,
   "dateModified": post.modified,
-  "author": ({ "@type": "Person", "@id": site.url + "/#mali", "name": "Mali King", "url": site.url + "/about" } if post.author == "mali" else { "@type": "Organization", "name": site.name, "url": site.url }),
+  "author": { "@type": "Person", "@id": site.url + "/#mali", "name": "Mali King", "url": site.url + "/about" },
   "publisher": { "@type": "Organization", "name": site.name, "url": site.url, "logo": { "@type": "ImageObject", "url": site.url + "/assets/img/logo.png" } }
 } | dump | safe }}</script>
+{#- Breadcrumb trail for Google: Home > Blog (or Plugins) > this post. -#}
+{%- set crumbName = "Plugins" if nav == "plugins" else "Blog" %}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+  { "@type": "ListItem", "position": 2, "name": crumbName, "item": site.url + "/" + nav },
+  { "@type": "ListItem", "position": 3, "name": post.title, "item": absUrl }
+] } | dump | safe }}</script>
 {%- if post.faq and post.faq.length %}
 {#- Optional: a post can list its visible FAQ as `faq: [{q, a}]` in the data file. Keep it word-for-word the same as the FAQ on the page. -#}
 {%- set faqItems = [] %}

@@ -158,6 +158,15 @@
       "group": "experts",
       "tags": ["classic", "trustworthy", "clear"],
       "about": "A law firm with offices in Oakland and San Francisco that handles general civil cases, family law and personal injury. The site covers its practice areas, attorneys, a blog and legal resources, with a client portal, a language switcher and a way to request a consultation."
+    },
+    {
+      "slug": "honest-family-dental",
+      "unlisted": true,
+      "name": "Honest Family Dental",
+      "type": "Family Dental Practice",
+      "group": "fitness",
+      "tags": ["friendly", "fresh", "clear"],
+      "about": "A family dental practice in Austin, Texas. The site covers why patients choose the practice, its membership plans and prices, patient reviews, and the office’s hours and location, with a button to book an appointment."
     }
   ]
 }

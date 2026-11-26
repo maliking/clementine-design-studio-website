@@ -103,8 +103,35 @@
 .post-body tbody td:first-child { font-weight: 600; white-space: nowrap; }
 .post-body [class$="__header"] { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-weight: 600; font-size: 19px; }
 
-.author { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
+/* Plugin pages: offer to set the plugin up (Mali 11/26). Linen card, same as the services "makes sense if" box. */
+.setup-help { margin-top: 56px; padding: 32px 36px 34px; background: var(--tint); border-radius: var(--radius); }
+.setup-help h2 { font-size: 32px; line-height: 1.15; margin-bottom: 10px; }
+.setup-help p { font-size: 17px; margin-bottom: 22px; }
+.setup-help .setup-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-bottom: 0; }
+.setup-alt { font-size: 15.5px; font-weight: 600; color: var(--green); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.setup-alt:hover { color: var(--ink); }
+.custom-strip { display: inline-flex; align-items: center; gap: 22px; margin-top: 26px; padding: 12px 12px 12px 26px; background: var(--card); border-radius: 10px; box-shadow: 0 1px 0 var(--line), 0 10px 26px rgba(30, 25, 15, .08); color: var(--ink); text-decoration: none; font-size: 16.5px; text-align: left; white-space: nowrap; }
+.custom-strip b { font-weight: 600; }
+.custom-strip .cs-btn { flex: none; background: var(--dark); color: #fff; font-weight: 600; font-size: 15px; padding: 12px 18px; border-radius: 6px; transition: opacity .2s; }
+.custom-strip:hover .cs-btn { opacity: .88; }
+@media (max-width: 900px) {
+  .custom-strip { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 18px 18px 20px; margin-top: 22px; white-space: normal; }
+}
+.setup-wide { margin-top: 48px; text-align: center; padding: 44px 40px 46px; }
+.setup-wide p { max-width: 40em; margin-left: auto; margin-right: auto; }
+.setup-wide .setup-actions { justify-content: center; }
+@media (max-width: 900px) { .setup-help { margin-top: 44px; padding: 24px 22px 26px; } .setup-help h2 { font-size: 26px; } .setup-wide { text-align: left; margin-top: 32px; } .setup-wide .setup-actions { justify-content: flex-start; } .setup-help .setup-actions { flex-direction: column; align-items: flex-start; } }
+.author { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: start; margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); font-size: 16.5px; color: var(--muted); }
+.author-photo { display: block; width: 120px; height: 120px; border-radius: 50%; overflow: hidden; background: var(--tint); }
+.author-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 600px) {
+  .author { grid-template-columns: 1fr; gap: 20px; }
+  .author-photo { width: 96px; height: 96px; }
+}
 .author .eyebrow { margin-bottom: 12px; }
+.author-name { font-family: var(--display); font-weight: var(--h-weight); letter-spacing: var(--h-track); font-size: 28px; line-height: 1.2; color: var(--ink); margin-bottom: 10px; }
+.author-name a { color: inherit; text-decoration: none; }
+.author-name a:hover { color: var(--accent-ink); }
 
 .post-pager { padding: 0 0 96px; }
 .post-pager-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
