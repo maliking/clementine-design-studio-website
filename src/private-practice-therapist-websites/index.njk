@@ -42,6 +42,33 @@ faqs:
 
 {% include "trust.njk" %}
 
+<section class="band tint" id="work">
+  <div class="wrap niche-work">
+    <ul class="pf-one">
+      {%- for p in portfolio.projects %}{% if p.slug == "the-path-home" %}
+      {%- set pfHref = "" %}
+      {% include "pf-card.njk" %}
+      {%- endif %}{% endfor %}
+    </ul>
+    <div class="niche-work-text">
+      <div class="eyebrow">From my portfolio</div>
+      <h2>A website for a <em>therapy</em> practice</h2>
+      <p>The Path Home is a therapy practice in Mount Kisco, New York, for individuals and couples, in person and by telehealth.</p>
+      <p class="list-intro">What I built:</p>
+      <ul class="checks sm">
+        <li>A page for each of her six practice areas, from couples therapy to EMDR</li>
+        <li>Answers to common questions about fees and insurance</li>
+        <li>A “Request a Free Consultation” button on every page</li>
+        <li>The nearby towns she serves, right on the homepage</li>
+        <li>A training call so she can update the site herself</li>
+      </ul>
+      <p class="more"><a href="#the-path-home" data-pf="the-path-home">See the whole site</a></p>
+    </div>
+  </div>
+</section>
+
+{% include "pf-viewer.njk" %}
+
 <section class="band" id="included">
   <div class="wrap niche-list">
     <div>

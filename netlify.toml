@@ -161,12 +161,8 @@
   to = "/services/#s-update"
   status = 301
 [[redirects]]
-  from = "/website-in-a-day"
-  to = "/services/#s-website"
-  status = 301
-[[redirects]]
   from = "/website-in-a-day-package"
-  to = "/services/#s-website"
+  to = "/website-in-a-day"
   status = 301
 [[redirects]]
   from = "/website-in-a-week"
