@@ -154,7 +154,7 @@
     each(document.querySelectorAll('main > section.band.dark'), function (dark) {
       var prev = dark.previousElementSibling;
       while (prev && /^(STYLE|SCRIPT)$/.test(prev.tagName)) prev = prev.previousElementSibling;
-      if (!prev || prev.tagName !== 'SECTION' || prev === document.querySelector('main > section') || prev.classList.contains('trust') || dark.classList.contains('m-pin-on')) return;
+      if (!prev || prev.tagName !== 'SECTION' || prev === document.querySelector('main > section') || prev.classList.contains('trust') || dark.classList.contains('m-pin-on') || dark.classList.contains('m-flat')) return;
       var st = document.createElement('div');
       st.className = 'm-stack';
       prev.parentNode.insertBefore(st, prev);

@@ -36,19 +36,23 @@ permalink: /about/
       <h2>A little more <em>about me</em></h2>
       <p class="lead">I love what I do, so I work a lot. When I’m not working, you can find me at the beach with my 14-year-old pug Sydney, drawing with pastels, reading books on psychology, listening to comedy podcasts, and traveling to countries with good food!</p>
       <div class="ab-life-extra">
-        <figure class="ab-pug"><img src="/assets/img/about-sydney.webp" alt="Sydney, Mali's 14-year-old pug, on the beach" width="640" height="640" loading="lazy" decoding="async"><figcaption>Sydney, my 14-year-old pug</figcaption></figure>
-        <p class="ab-reading"><span>Currently reading</span><i>The Status Game</i> by Will Storr</p>
+        <img class="ab-pug" src="/assets/img/about-sydney.webp" alt="Sydney, Mali's 14-year-old pug, on the beach" width="640" height="640" loading="lazy" decoding="async">
+        <div class="ab-notes">
+          <p><span>My 14-year-old pug</span><i>Sydney</i></p>
+          <p><span>Currently reading</span><i>The Status Game</i> by Will Storr</p>
+          <p><span>Currently listening to</span><i>Giggly Squad</i> podcast</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- A few places I've worked from (Mali 11/28: city on each, no Hawaii or Monterey; only the Malang café gets a light blur, on a stranger and her screen). -->
+<!-- A few places I've worked from (Mali 11/28: city on each, Berat + Sarajevo added 11/28, no Hawaii or Monterey; only the Malang café gets a light blur, on a stranger and her screen). -->
 <section class="band ab-places">
   <div class="wrap">
     <h2>A few places I’ve <em>worked from</em></h2>
     <ul>
-      {%- for pl in [["montenegro", "Kotor, Montenegro"], ["bolivia", "La Paz, Bolivia"], ["malang", "Malang, Indonesia"], ["buenos-aires", "Buenos Aires, Argentina"], ["kuala-lumpur", "Kuala Lumpur, Malaysia"], ["macedonia", "Ohrid, North Macedonia"]] %}
+      {%- for pl in [["montenegro", "Kotor, Montenegro"], ["bolivia", "La Paz, Bolivia"], ["malang", "Malang, Indonesia"], ["buenos-aires", "Buenos Aires, Argentina"], ["kuala-lumpur", "Kuala Lumpur, Malaysia"], ["macedonia", "Ohrid, North Macedonia"], ["berat", "Berat, Albania"], ["sarajevo", "Sarajevo, Bosnia and Herzegovina"]] %}
       <li><img src="/assets/img/places-{{ pl[0] }}.webp" alt="Mali's laptop set up to work in {{ pl[1] }}" width="640" height="800" loading="lazy" decoding="async"><span>{{ pl[1] }}</span></li>
       {%- endfor %}
     </ul>
@@ -56,13 +60,13 @@ permalink: /about/
 </section>
 
 <!-- Numbers (11/26): the facts from her bio, pulled out so they're easy to spot. -->
-<section class="band dark ab-stats m-still">{# m-still: no slide-up, the band is too short to hold the movement #}
+<section class="band dark ab-stats m-still m-flat">{# m-still: no slide-up; m-flat: no layer slide or rounded corners, a plain straight band (Mali 11/28) #}
   <div class="wrap">
     <ul>
-      <li><b>350+</b><span>websites built</span></li>
-      <li><b>7+ years</b><span>designing websites</span></li>
-      <li><b>5.0</b><span>from 115 client reviews</span></li>
-      <li><b>Platinum</b><span>Squarespace Circle Partner</span></li>
+      <li><b>350+</b><span>websites<br class="ab-br"> built</span></li>
+      <li><b>7+ years</b><span>designing<br class="ab-br"> websites</span></li>
+      <li><b>5.0</b><span>from 115<br class="ab-br"> client reviews</span></li>
+      <li><b>Platinum</b><span>Squarespace<br class="ab-br"> Circle Partner</span></li>
     </ul>
   </div>
 </section>
