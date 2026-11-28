@@ -1,0 +1,58 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+{#- A plain-text summary of the site for AI tools like ChatGPT, Claude and Perplexity (see llmstxt.org). Added 11/28.
+    Facts and prices must match /services and /about. The blog and plugin lists fill in by themselves from the data files. -#}
+# Clementine Design Studio
+
+> I'm Mali King, a web designer in Monterey, California. I design and build websites for small businesses, mostly on Squarespace, and also on Shopify and WordPress. I'm a Squarespace Circle Platinum Partner, I've built more than 350 websites over 7+ years, and I have a 5.0 rating from 115 client reviews. I work on my own, so clients work directly with me, and I work with businesses everywhere.
+
+My Squarespace Marketplace and 99designs profiles use the name "Clementine Studio". Besides websites, I help with SEO, Google Ads, Facebook and Instagram ads, LinkedIn posts, email newsletters, monthly website maintenance and automations. I also built OptionKit, a Squarespace plugin for product options that change the price (sold through JuiceKit, getjuicekit.com).
+
+## Services and prices
+
+All prices are in US dollars. After a free 20-minute consultation, I send a quote with exact prices. Nothing starts until the client approves it.
+
+- [Website-in-a-Day]({{ site.url }}/website-in-a-day): $1,500. A 1 to 5 page Squarespace website, built in one day.
+- [Custom Website]({{ site.url }}/services/): from $3,000. 5+ pages on Squarespace, Shopify or WordPress, live in about 3 to 4 weeks.
+- [Hourly help]({{ site.url }}/services/): $150 an hour for updates, layout changes and troubleshooting on an existing website.
+- [Monthly maintenance]({{ site.url }}/monthly-plans): about $300 a month for ongoing changes and fixes.
+- Logo and branding: $750 to $3,000.
+- SEO: $1,200 to $3,000 to set up, then from $400 a month.
+- Google Ads: from $750 to set up, then from $500 a month to manage, plus the ad budget paid to Google.
+- Facebook and Instagram ads: from $750 to set up, then from $500 a month to manage, plus the ad budget paid to Facebook and Instagram.
+- LinkedIn posts: $500 to set up, then from $500 a month.
+- Email follow-ups and newsletters: from $300 a month.
+
+## Main pages
+
+- [Home]({{ site.url }}/): what I do and recent websites
+- [About Mali King]({{ site.url }}/about/): background, experience and how I work
+- [Services and prices]({{ site.url }}/services/): every service with its price
+- [Portfolio]({{ site.url }}/example-sites/): websites I've built, with full-page screenshots
+- [Monthly plans]({{ site.url }}/monthly-plans): maintenance, SEO, ads and newsletter plans
+- [Private practice therapist websites]({{ site.url }}/private-practice-therapist-websites)
+- [Google Ads for therapists]({{ site.url }}/google-ads-for-therapists)
+- [Google Ads for dentists]({{ site.url }}/google-ads-for-dentists)
+- [Law firm website design]({{ site.url }}/law-firm-website-design)
+- [Icompendium hourly help]({{ site.url }}/icompendium-hourly-help)
+- [FAQs]({{ site.url }}/faqs)
+- [Book a free consultation]({{ site.url }}/consultation/)
+- [Contact]({{ site.url }}/contact/)
+
+## Blog
+
+{% for post in blogPosts %}- [{{ post.title | safe }}]({{ site.url }}{{ post.url }}){% if post.seoDescription %}: {{ post.seoDescription | safe }}{% endif %}
+{% endfor %}
+## Squarespace plugins and code
+
+{% for post in pluginPosts %}- [{{ post.title | safe }}]({{ site.url }}{{ post.url }}){% if post.seoDescription %}: {{ post.seoDescription | safe }}{% endif %}
+{% endfor %}
+## Profiles
+
+- [Squarespace Marketplace](https://www.squarespace.com/designer/profile/5240211)
+- [99designs](https://99designs.com/profiles/clementinedesignstudio)
+- [Yelp](https://www.yelp.com/biz/clementine-design-studio-monterey)
+- [LinkedIn](https://www.linkedin.com/in/maliking)
+- [Instagram](https://www.instagram.com/clementinedesign.studio/)
