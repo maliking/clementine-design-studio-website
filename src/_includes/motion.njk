@@ -127,7 +127,7 @@
 
     // Everything below the first screen plays once as it scrolls into view. (The top of the page is never hidden; the home page devices glide in with plain CSS.)
     human(function () {
-      each(document.querySelectorAll('main > section:not(:first-of-type):not(.trust):not(.m-pin-on), main > .m-stack > section'), function (sec) {
+      each(document.querySelectorAll('main > section:not(:first-of-type):not(.trust):not(.m-pin-on):not(.m-still), main > .m-stack > section:not(.m-still)'), function (sec) {
         var items = [];
         each(sec.querySelectorAll(':scope > .wrap, :scope > div > .wrap, :scope > .wrap-wide'), function (w) {
           each(w.children, function (c) { items = items.concat(expand(c, 0)); });
