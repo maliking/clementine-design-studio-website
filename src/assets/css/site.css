@@ -1118,6 +1118,8 @@ html.pf-lock { overflow: hidden; }
 .ab-n { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #C8D8CD; color: var(--dark); font-family: var(--display); font-size: 22px; line-height: 1; padding-bottom: 3px; margin-bottom: 20px; }
 .ab-how-list h3 { font-size: 26px; margin-bottom: 10px; }
 .ab-how-list p { font-size: 17px; color: var(--muted); }
+.ab-how-note { max-width: 640px; margin: 36px auto 0; text-align: center; font-family: var(--display); font-style: italic; font-size: 24px; line-height: 1.35; }
+.ab-how-note span { display: block; }
 .ab-work .svc-work { margin-top: 0; }
 .ab-reviews .center-head { margin-bottom: 36px; }
 .ab-reviews .rev-meta { margin-top: 10px; color: var(--on-dark-muted); }
@@ -1135,6 +1137,7 @@ html.pf-lock { overflow: hidden; }
   .ab-how-list li { padding: 26px 22px 24px; }
   .ab-how-list h3 { font-size: 23px; }
   .ab-n { margin-bottom: 14px; }
+  .ab-how-note { font-size: 21px; margin-top: 28px; }
   .ab-reviews .rev-list { grid-template-columns: minmax(0, 1fr); }
   .ab-reviews .rev-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
 }
