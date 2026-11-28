@@ -1,5 +1,5 @@
 {#- Prices in hasOfferCatalog must match /services (added 11/26 because Google's AI mixed up old and new prices). -#}
-{#- Who runs this site, for search engines and AI tools. "Clementine Studio" is the name on her Squarespace Marketplace profile (character limit there). Add new profile links to sameAs. -#}
+{#- Who runs this site, for search engines and AI tools. "Clementine Studio" is the name on her Squarespace Marketplace profile (character limit there). Add new profile links to sameAs. The city is on purpose: city only, never a street address (11/28). -#}
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org",
   "@graph": [
@@ -25,12 +25,20 @@
           { "@type": "Offer", "name": "Monthly Maintenance", "description": "Ongoing website updates and fixes, billed monthly.", "url": site.url + "/monthly-plans", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "300", "priceCurrency": "USD", "unitText": "month" } },
           { "@type": "Offer", "name": "Logo and Branding", "url": site.url + "/services/#s-update", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "maxPrice": "3000", "priceCurrency": "USD" } },
           { "@type": "Offer", "name": "SEO", "description": "$1,200 to $3,000 to set up, then from $400 a month.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "1200", "maxPrice": "3000", "priceCurrency": "USD" } },
-          { "@type": "Offer", "name": "Google Ads Management", "description": "From $750 to set up, then from $500 a month, plus the ad budget paid to Google.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } }
+          { "@type": "Offer", "name": "Google Ads Management", "description": "From $750 to set up, then from $500 a month, plus the ad budget paid to Google.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "Facebook and Instagram Ads", "description": "From $750 to set up, then from $500 a month, plus the ad budget paid to Facebook and Instagram.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "LinkedIn Posts", "description": "$500 to set up, then from $500 a month.", "url": site.url + "/services/", "priceSpecification": { "@type": "PriceSpecification", "price": "500", "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "Email Follow-ups and Newsletters", "description": "From $300 a month.", "url": site.url + "/services/", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": "300", "priceCurrency": "USD", "unitText": "month" } }
         ]
       },
+      "location": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Monterey", "addressRegion": "CA", "addressCountry": "US" } },
+      "award": "Squarespace Circle Platinum Partner",
+      "knowsAbout": ["Squarespace", "Shopify", "WordPress", "Web design", "SEO", "Google Ads", "Email newsletters"],
       "sameAs": [
         "https://www.squarespace.com/designer/profile/5240211",
-        "https://99designs.com/profiles/clementinedesignstudio"
+        "https://99designs.com/profiles/clementinedesignstudio",
+        "https://www.yelp.com/biz/clementine-design-studio-monterey",
+        "https://www.instagram.com/clementinedesign.studio/"
       ]
     },
     {
@@ -41,9 +49,12 @@
       "url": site.url + "/about",
       "image": site.url + "/assets/img/headshot.jpg",
       "worksFor": { "@id": site.url + "/#business" },
+      "homeLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Monterey", "addressRegion": "CA", "addressCountry": "US" } },
+      "knowsAbout": ["Squarespace", "Shopify", "WordPress", "Web design", "SEO", "Google Ads"],
       "sameAs": [
         "https://www.squarespace.com/designer/profile/5240211",
-        "https://99designs.com/profiles/clementinedesignstudio"
+        "https://99designs.com/profiles/clementinedesignstudio",
+        "https://www.linkedin.com/in/maliking"
       ]
     }
   ]
