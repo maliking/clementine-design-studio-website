@@ -88,27 +88,7 @@ permalink: /services/
       </div>
     </div>
 
-    <div class="svc-work">
-      <div class="svc-work-head"><h3>Recent websites</h3><a href="/example-sites/">See all</a></div>
-      <div class="svc-work-wrap">
-        <ul class="svc-work-row">
-          {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if loop.index <= 4 %}
-          <li><a href="/example-sites/#{{ p.slug }}" data-pf="{{ p.slug }}"><img src="{{ p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') }}" alt="Home page of the {{ p.name }} website" width="1200" height="800" loading="lazy" decoding="async"><span>{{ p.name }}</span></a></li>
-          {%- endif %}{% endfor %}
-        </ul>
-        <button class="svc-work-arrow prev" type="button" aria-label="Previous websites"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
-        <button class="svc-work-arrow next" type="button" aria-label="More websites"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
-      </div>
-    </div>
-    <script>
-      (function () {
-        var w = document.currentScript.previousElementSibling.querySelector('.svc-work-wrap'), row = w.querySelector('.svc-work-row');
-        function upd() { w.classList.toggle('at-start', row.scrollLeft < 8); w.classList.toggle('at-end', row.scrollLeft + row.clientWidth > row.scrollWidth - 8); }
-        w.querySelector('.next').addEventListener('click', function () { row.scrollBy({ left: row.clientWidth * .8, behavior: 'smooth' }); });
-        w.querySelector('.prev').addEventListener('click', function () { row.scrollBy({ left: -row.clientWidth * .8, behavior: 'smooth' }); });
-        row.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
-      })();
-    </script>
+    {% include "recent-sites.njk" %}
 
     <div class="plans">
       <div class="plan">
