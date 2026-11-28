@@ -156,7 +156,7 @@ h1 em, h2 em { white-space: nowrap; }
 .update-head { padding-right: 20px; }
 .update-head .lead { margin-top: 20px; }
 .ucard { background: var(--card); border-radius: var(--radius); padding: 34px 34px 36px; border: 1px solid var(--line); }
-.ucard .price { display: inline-block; margin: 14px 0 16px; padding: 8px 16px 5px; border-radius: 999px; background: var(--accent-soft); font-weight: 700; font-size: 18px; }
+.ucard .price { display: inline-block; margin: 14px 0 16px; padding: 7px 16px 6px; border-radius: 999px; background: #C8D8CD; color: #1E3329; font-weight: 700; font-size: 18px; line-height: 1.4; } /* sage, Mali 11/28 */
 
 /* 5. Where I start */
 .start-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 72px; align-items: start; }
