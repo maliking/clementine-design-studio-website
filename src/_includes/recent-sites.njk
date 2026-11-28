@@ -4,7 +4,7 @@
       <div class="svc-work-wrap">
         <ul class="svc-work-row">
           {%- for p in portfolio.projects | selectattr("home") | sort(false, false, "home") %}{% if loop.index <= 4 %}
-          <li><a href="/example-sites/#{{ p.slug }}" data-pf="{{ p.slug }}"><img src="{{ p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') }}" alt="Home page of the {{ p.name }} website" width="1200" height="800" loading="lazy" decoding="async"><span>{{ p.name }}</span></a></li>
+          <li><a href="/example-sites/#{{ p.slug }}" data-pf="{{ p.slug }}">{%- set pCard = p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') %}{% set pSizes = pfSizes[p.slug].card if (not p.card and pfSizes[p.slug]) else [] %}<img src="{{ pCard }}"{% if pSizes.length %} srcset="{% for w in pSizes %}{{ pCard | replace('card.webp', 'card-' + w + '.webp') }} {{ w }}w, {% endfor %}{{ pCard }} 1200w" sizes="(max-width: 900px) 78vw, 290px"{% endif %} alt="Home page of the {{ p.name }} website" width="1200" height="800" loading="lazy" decoding="async"><span>{{ p.name }}</span></a></li>
           {%- endif %}{% endfor %}
         </ul>
         <button class="svc-work-arrow prev" type="button" aria-label="Previous websites"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>

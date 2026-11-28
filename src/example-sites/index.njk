@@ -30,6 +30,7 @@ permalink: /example-sites/
     <ul class="pf-grid" id="pf-grid">
       {%- set pfHref = "" %}
       {%- for p in portfolio.projects %}{% if not p.unlisted %}
+      {%- set pfEager = loop.index if loop.index <= 3 else false %}
       {% include "pf-card.njk" %}
       {%- endif %}{% endfor %}
     </ul>

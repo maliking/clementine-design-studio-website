@@ -1,8 +1,12 @@
 {#- One portfolio card. Needs `p` (a project from _data/portfolio.json) and `pfHref` ("" when the page includes pf-viewer.njk, so the card opens in place; "/example-sites/" otherwise). -#}
 {%- set pImg = portfolioImages[p.slug] %}
+{#- Smaller copies (11/28): phones and regular screens get a lighter picture that's still sharp. pfEager (portfolio page, first row)
+    loads the top cards right away instead of waiting, since they're the first thing people see. -#}
+{%- set pCard = p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') %}
+{%- set pSizes = pfSizes[p.slug].card if (not p.card and pfSizes[p.slug]) else [] %}
 <li class="pf-card" data-group="{{ p.group }}">
   <a class="pf-open" href="{{ pfHref }}#{{ p.slug }}" data-slug="{{ p.slug }}">
-    <div class="pf-photo"><img src="{{ p.card or ('/assets/img/portfolio/' + p.slug + '/card.webp') }}" alt="Home page of the {{ p.name }} website" width="1200" height="800" loading="lazy" decoding="async"></div>
+    <div class="pf-photo"><img src="{{ pCard }}"{% if pSizes.length %} srcset="{% for w in pSizes %}{{ pCard | replace('card.webp', 'card-' + w + '.webp') }} {{ w }}w, {% endfor %}{{ pCard }} 1200w" sizes="(max-width: 900px) calc(100vw - 40px), (max-width: 1180px) calc(50vw - 62px), 381px"{% endif %} alt="Home page of the {{ p.name }} website" width="1200" height="800"{% if pfEager %}{% if pfEager == 1 %} fetchpriority="high"{% endif %}{% else %} loading="lazy"{% endif %} decoding="async"></div>
     <div class="pf-body">
       <h3>{{ p.name }}</h3>
       <p class="pf-type">{{ p.type }}</p>
