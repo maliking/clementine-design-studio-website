@@ -46,13 +46,15 @@
 <script type="application/json" id="pf-data">{{ portfolio.projects | dump | safe }}</script>
 <script type="application/json" id="pf-images">{{ portfolioImages | dump | safe }}</script>
 <script type="application/json" id="pf-scrub">{{ portfolioScrub | dump | safe }}</script>
+<script type="application/json" id="pf-sizes">{{ pfSizes | dump | safe }}</script>
 <script>
 (function () {
   var data = JSON.parse(document.getElementById('pf-data').textContent);
   var images = JSON.parse(document.getElementById('pf-images').textContent);
   var scrubs = JSON.parse(document.getElementById('pf-scrub').textContent);
+  var sizes = JSON.parse(document.getElementById('pf-sizes').textContent);
   var bySlug = {};
-  data.forEach(function (p) { p.img = images[p.slug] || null; p.scrub = (p.video && scrubs[p.slug]) || null; bySlug[p.slug] = p; });
+  data.forEach(function (p) { p.img = images[p.slug] || null; p.scrub = (p.video && scrubs[p.slug]) || null; p.sm = sizes[p.slug] || {}; bySlug[p.slug] = p; });
   var grid = document.getElementById('pf-grid') || document.body;
   var view = document.getElementById('pf-view');
   var root = document.documentElement;
@@ -74,6 +76,18 @@
   });
 
   // The full page comes in slices. Each slice loads when it's close to being scrolled into view.
+  // Speed-up 11/28: each slice also has a half-width copy (scripts/portfolio-sizes.py). The browser picks the copy that's
+  // sharp enough for the screen, so phones and regular screens download much less, and retina laptops still get full size.
+  var tileSizes = {
+    desktop: '(max-width: 900px) calc(100vw - 40px), calc(min(1280px, 100vw - 48px) - 396px)',
+    phone: '(max-width: 900px) calc(100vw - 40px), 272px'
+  };
+  function tileSrc(p, kind, i) { return base(p) + kind.charAt(0) + '-' + String(i + 1).padStart(2, '0') + '.webp'; }
+  function setTile(im, p, kind, i) {
+    var info = p.img[kind], src = tileSrc(p, kind, i), sm = p.sm[kind];
+    if (sm) { im.sizes = tileSizes[kind]; im.srcset = src.replace('.webp', '-' + sm + '.webp') + ' ' + sm + 'w, ' + src + ' ' + info.w + 'w'; }
+    im.src = src;
+  }
   var observers = [];
   function fillTiles(scroller, p, kind) {
     var info = p.img && p.img[kind];
@@ -83,7 +97,7 @@
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         var im = en.target; io.unobserve(im);
-        im.src = im.getAttribute('data-src');
+        setTile(im, p, kind, Number(im.getAttribute('data-i')));
       });
     }, { root: scroller, rootMargin: '1800px 0px' });
     observers.push(io);
@@ -91,9 +105,9 @@
       var im = document.createElement('img');
       im.width = info.w; im.height = h; im.alt = i === 0 ? 'The whole ' + p.name + ' home page on a ' + (kind === 'desktop' ? 'computer' : 'phone') : '';
       im.decoding = 'async';
-      var src = base(p) + kind.charAt(0) + '-' + String(i + 1).padStart(2, '0') + '.webp';
+      im.style.aspectRatio = info.w + ' / ' + h; // same shape whichever copy loads, so the slices still meet exactly
       im.onload = function () { im.classList.add('ready'); };
-      if (i < 2) im.src = src; else { im.setAttribute('data-src', src); io.observe(im); }
+      if (i < 2) setTile(im, p, kind, i); else { im.setAttribute('data-i', i); io.observe(im); }
       scroller.appendChild(im);
     });
   }
@@ -151,7 +165,7 @@
     if (!p || !p.img || warmed[p.slug]) return;
     warmed[p.slug] = true;
     ['desktop', 'phone'].forEach(function (k) {
-      if (p.img[k]) (new Image()).src = base(p) + k.charAt(0) + '-01.webp';
+      if (p.img[k]) setTile(new Image(), p, k, 0);
     });
   }
 
